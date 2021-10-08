@@ -1,16 +1,19 @@
 <template>
-  <Home :usertype ="usertype"/>
+  <!-- <Home :usertype ="usertype"/> -->
   <!-- <Modal/> -->
+  <Project/>
 </template>
 
 <script>
 // import Modal from "./components/modal.vue"
-import Home from "./components/Home.vue"
+// import Home from "./components/Home.vue"
+import Project from "./components/Project.vue"
 export default {
   name: 'App',
   components: {
-    Home
+    // Home
     // Modal
+    Project
 },
   data(){
     return{

@@ -53,7 +53,7 @@ export default {
     props:["projectName","projectAssignees","projectAssigned","projectDue","projectStatus",'projectReward']
 }
 </script>
-<style scoped>
+<style>
 th{
     width:50%;
     text-align: right;

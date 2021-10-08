@@ -14,7 +14,7 @@
   :projectDue ="'12/10/2021'" :projectStatus = "'incomplete'"  :projectReward = "'460'"/>
   <EmployerProject :projectName ="'Proj2'" :projectAssignees = "'Karin'" :projectAssigned = "'11/6/2021'"
   :projectDue ="'12/10/2021'" :projectStatus = "'incomplete'"  :projectReward = "'460'"/>
-  <AddItem/>
+  <AddItem :itemType="'project'"/>
 
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -89,7 +89,8 @@ export default {
 .pageContent{
   min-height:100vh;
   margin-top:60px;
-  background:grey;
+  background:rgba(248, 248, 248, 1)
+;
   padding-top:60px;
   padding-bottom:60px;
 }

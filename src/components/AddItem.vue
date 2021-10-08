@@ -9,8 +9,13 @@
         add
         </span>
           </div>
-          Add Project
-
+          <h2 v-if="itemType === 'project'">
+            Add Project
+          </h2>
+          
+         <h2 v-if="itemType === 'task'">
+            Add task
+          </h2>
 
       </div>
 
@@ -22,7 +27,8 @@
 </template>
 <script>
 export default {
-    name:"AddItem"
+    name:"AddItem",
+    props:["itemType"]
 }
 </script>
 <style scoped>
