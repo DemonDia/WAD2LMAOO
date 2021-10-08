@@ -50,10 +50,13 @@ h1{
   /* background:grey; */
   padding-top:60px;
   padding-bottom:60px;
+      justify-content: center;
+
 }
 #project-name{
     width: max-content;
     margin: auto;
+    margin-top:60px;
     box-shadow: 0px 5px 0px rgba(83, 90, 249, 0.81);
 }
 </style>
