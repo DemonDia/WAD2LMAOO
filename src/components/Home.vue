@@ -4,7 +4,9 @@
 <div class = "pageContent">
   <!-- {{usertype}} -->
   <div v-if="usertype ==='employer'">
-GG
+<EmployerProject :projectName ="'Proj1'"/>
+<EmployerProject :projectName ="'Proj2'"/>
+
   </div>
   <div v-else>
   </div>
@@ -15,10 +17,13 @@ GG
 <script>
 // import { onBeforeMount } from '@vue/runtime-core'
 import Navbar from "./Navbar.vue"
+import EmployerProject from "./EmployerProject.vue"
+
 export default {
     name:"Home",
       components: {
-    Navbar
+    Navbar,
+    EmployerProject
   },
   props:["usertype"],
   data(){
