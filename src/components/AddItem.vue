@@ -1,5 +1,5 @@
 <template>
-    <div class="card addCard" style="width: 18rem;">
+    <div class="card addCard" style="width: 18rem;" data-toggle="modal" data-target="#exampleModal">
 
   <div class = "card-body">
       <!-- <AccountCheckIcon/> -->
@@ -10,6 +10,7 @@
         </span>
           </div>
           Add Project
+
 
       </div>
 
