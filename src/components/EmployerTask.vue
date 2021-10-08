@@ -25,7 +25,7 @@
 
     </table>
     <button class = "btn project-btn">Edit</button>
-    <button class = "btn delete-btn">Delete</button>
+    <button class = "btn delete-btn" data-toggle="modal" data-target="#deleteModal">Delete</button>
       </div>
 
 
@@ -71,7 +71,7 @@
 
     </table>
     <button class = "btn project-btn">Edit</button>
-    <button class = "btn delete-btn">Delete</button>
+    <button class = "btn delete-btn" data-toggle="modal" data-target="#deleteModal">Delete</button>
       </div> 
       </div>
 
@@ -108,6 +108,25 @@
   </div>
 
 
+<!-- Modal -->
+<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title" id="exampleModalLabel">Delete task</h3>
+
+      </div>
+      <div class="modal-body">
+        Are you sure? This task CANNOT be reversed!
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Yes</button>
+      </div>
+    </div>
+    <h5>Click anywhere to cancel</h5>
+  </div>
+</div>
 
 </div>    
 </template>
@@ -185,5 +204,16 @@ table{
 .complete-title{
     background: rgba(3, 128, 38, 1);
     color: white;
+}
+.modal-title{
+    margin:auto;
+}
+.modal-dialog h5{
+  color:white;
+}
+.modal-footer{
+    display: flex;
+    justify-content: center;
+
 }
 </style>

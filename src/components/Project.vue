@@ -13,6 +13,39 @@
     <AddItem :itemType = "'task'"/>
     </div>
 
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title" id="exampleModalLabel" align="center">Add new task</h2>
+      </div>
+      <div class="modal-body">
+        <table class="table">
+          <tr>
+            <th scope = "row">Project Name</th>
+            <td><input type = "text" class = "form-control" /></td>
+          </tr>
+          <tr>
+            <th scope = "row">Rewarded points:</th>
+            <td><input type = "number" class = "form-control" /></td>
+          </tr>
+          <tr>
+            <th scope = "row">Project due:</th>
+            <td><input type = "date" class = "form-control" /></td>
+          </tr>
+
+        </table>
+        <button class = "btn new-task-btn" data-dismiss="modal">Add task</button>
+      </div>
+    
+
+    </div>
+    <h5>Click anywhere to cancel</h5>
+  </div>
+</div>
+
+
+
 </div>
 </template>
 <script>
@@ -58,6 +91,14 @@ h1{
     margin: auto;
     margin-top:60px;
     box-shadow: 0px 5px 0px rgba(83, 90, 249, 0.81);
+}
+.modal-title{
+  margin: auto;
+}
+.new-task-btn{
+background: linear-gradient(0deg, #504DFF, #504DFF), rgba(78, 74, 255, 0.61);
+border-radius: 5px;
+color: white;
 }
 </style>
 <style>

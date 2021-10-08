@@ -39,7 +39,7 @@
           </tr>
           <tr>
             <th scope = "row">Add assignees:</th>
-            <td><input type = "date" class = "form-control" /></td>
+            <td><input type = "text" class = "form-control" /></td>
           </tr>
         </table>
         <button class = "btn new-project-btn" data-dismiss="modal">Assign project</button>
