@@ -1,17 +1,19 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+  <Home :usertype ="usertype"/>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
+// import Home from './components/Home.vue'
+import Home from "./components/Home.vue"
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    Home
+  },
+  data(){
+    return{
+      usertype:"employer"
+    }
   }
 }
 </script>
@@ -23,6 +25,7 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+  min-height:100vh;
+  display: flex;
 }
 </style>

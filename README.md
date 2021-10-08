@@ -1,4 +1,4 @@
-# test-app
+# WAD2 proj
 
 ## Project setup
 ```
