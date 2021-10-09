@@ -1,13 +1,16 @@
 <template>
-<div>
-    <input type = "date" class = "form-control" placeholder="Choose a date" v-model="chooseDate"/>
-    <!-- {{convertDate}} -->
+<div style = "width:100%;">
+    <Navbar/>
+    <h1 id = "calendar-name">Calendar</h1>
+    <div id = "calendar-contaner">
+<div id = "date-selector">
+    <label>Select date:</label>
+<input type = "date" class = "form-control" v-model="chooseDate"/>
+</div>
 
-    <!-- <div>
-        {{convertDate.getMonth()}}
-    </div> -->
-    <!-- {{getDays}} -->
-    <table class=  "table">
+<div id = "cal-table-container">
+
+    <table class=  "table table-bordered">
   <thead>
     <tr>
       <th scope="col">Mon</th>
@@ -17,26 +20,54 @@
       <th scope="col">Fri</th>
       <th scope="col">Sat</th>
       <th scope="col">Sun</th>
-      <!-- <th scope="col">Wed</th> -->
+
     </tr>
   </thead>
-  <!-- <tbody v-for="dey in getDays.length" :key="dey"> -->
+
     <tbody>
       <tr v-for="week in getDays" :key ="week">
-          <td v-for= "day in week" :key = "day">{{day}}</td>
+          <!-- 7 days in a week -->
+          <td v-for = "number in 7" :key = "number">
+
+            <div v-if = "(week.map(day => day.day).includes(number-1))" class = "cal-date">
+<!-- default -->
+
+                  <div v-if = "week.filter(day => day.day ===number-1)[0].task.length === 0">
+                    <h5>{{week.filter(day => day.day ===number-1)[0].date}}</h5>
+                  </div>
+
+<!-- that day has task(s) due -->
+                  <div v-else class = "have-task">
+                    <h5>{{week.filter(day => day.day ===number-1)[0].date}}</h5>
+                  </div>
+              </div>
+              <div v-else class = "blank-space">
+                  <!-- blank -->
+
+              </div>
+
+          </td>
           
-          <!-- <td v-if = "getDays[dey-1].week ===1">getDays[dey-1]</td> -->
-          <!-- <td v-if = "getDays[dey-1].week ===1">{{getDays[dey-1]}}</td> -->
       </tr>
 
   </tbody>
     </table>
+
+</div>
+
+
+    </div>
+    
 </div>
 
 </template>
 <script>
+import Navbar from "./Navbar.vue"
 export default {
     name:"Calendar",
+    components:{
+        Navbar
+    },
     data(){
         return {
             date: new Date(),
@@ -89,6 +120,68 @@ export default {
     },
 }
 </script>
-<style>
+<style scoped>
+#calendar-name{
+        width: max-content;
+    margin: auto;
+    margin-top:60px;
+    box-shadow: 0px 5px 0px rgba(83, 90, 249, 0.81);
+}
+#cal-table-container{
+        background: #E3E9FF;
+        margin:10px;
 
+}
+
+#date-selector label{
+    width:auto;
+    text-align:right;
+    margin-right:10px;
+}
+
+#date-selector input{
+    width:300px;
+    
+    margin-right:10px;
+}
+#date-selector{
+    margin-top: 20px;
+    align-items: center;
+    justify-content: center;
+    /* margin: auto; */
+    display: flex;
+}
+th{
+    color:#8265E3;
+}
+table{
+    /* background: #E3E9FF; */
+}
+#calendar-contaner{
+    /* margin:10px; */
+}
+
+td{
+    width:100px;
+    height:150px;
+    background:white;
+}
+td div{
+    height:100%;
+    width:100%;
+
+}
+/* .blank-space{
+    background:rgb(133, 133, 133);
+} */
+.cal-date{
+    /* background:rgb(228, 228, 228); */
+    display:grid;
+    align-items: start;
+    padding:15px;
+}
+.have-task{
+    background:rgb(0, 85, 124);
+    color:white;
+}
 </style>
