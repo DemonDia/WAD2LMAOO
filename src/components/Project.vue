@@ -1,6 +1,6 @@
 <template>
 <div class = "page">
-    <Navbar :usertype="'employer'"/>
+    <Navbar :usertype="'employee'"/>
     <h1 id = "project-name">Project Name</h1>
     <div class = "task-container">
         

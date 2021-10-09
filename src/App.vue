@@ -1,19 +1,23 @@
 <template>
   <!-- <Home :usertype ="usertype"/> -->
   <!-- <Modal/> -->
-  <Project/>
+  <!-- <Project/> -->
+  <Calendar/>
+
 </template>
 
 <script>
 // import Modal from "./components/modal.vue"
 // import Home from "./components/Home.vue"
-import Project from "./components/Project.vue"
+// import Project from "./components/Project.vue"
+import Calendar from "./components/Calendar.vue"
 export default {
   name: 'App',
   components: {
     // Home
     // Modal
-    Project
+    // Project
+    Calendar
 },
   data(){
     return{

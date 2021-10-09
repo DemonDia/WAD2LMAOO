@@ -10,7 +10,7 @@
     <table class="table">
         <tr>
             <th scope = "row" align="end">Project due:</th>
-            <td></td>
+            <td>15/11/2020</td>
         </tr>
         <tr>
             <th scope = "row">Reward:</th>
