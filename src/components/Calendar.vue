@@ -31,7 +31,9 @@
 
             <div v-if = "(week.map(day => day.day).includes(number-1))" class = "cal-date">
 <!-- default -->
-
+<div v-if = "(week.filter(day => day.day ===number-1)[0].date === date.getDate())&&
+    (week.filter(day => day.day ===number-1)[0].year === date.getFullYear())&&
+    (week.filter(day => day.day ===number-1)[0].month === date.getMonth()) " id = "today-date">
                   <div v-if = "week.filter(day => day.day ===number-1)[0].task.length === 0">
                     <h5>{{week.filter(day => day.day ===number-1)[0].date}}</h5>
                   </div>
@@ -40,7 +42,22 @@
                   <div v-else class = "have-task">
                     <h5>{{week.filter(day => day.day ===number-1)[0].date}}</h5>
                   </div>
+</div>
+<div v-else>
+                  <div v-if = "week.filter(day => day.day ===number-1)[0].task.length === 0">
+                    <h5>{{week.filter(day => day.day ===number-1)[0].date}}</h5>
+                  </div>
+
+<!-- that day has task(s) due -->
+                  <div v-else class = "have-task">
+                    <h5>{{week.filter(day => day.day ===number-1)[0].date}}</h5>
+                  </div>
+</div>
+
               </div>
+
+
+
               <div v-else class = "blank-space">
                   <!-- blank -->
 
@@ -97,13 +114,13 @@ export default {
             let days = []
             var startDate = new Date(year,month,1)
             var endDate = new Date(year,month+1,0)
-            console.log("start",startDate)
-            console.log("end",endDate)
+            // console.log("start",startDate)
+            // console.log("end",endDate)
             var loop = startDate;
             var week = 1;
             while(loop <=endDate){
-                
-                days.push({"date":loop.getDate(),"day":loop.getDay(),"week":week,"task":[]})
+                console.log(year,month)
+                days.push({"date":loop.getDate(),"year":year,"month":month,"day":loop.getDay(),"week":week,"task":[]})
                 let next = loop.setDate(loop.getDate()+1);
                 loop = new Date(next)
                 if(loop.getDay() == 0){
@@ -183,5 +200,8 @@ td div{
 .have-task{
     background:rgb(0, 85, 124);
     color:white;
+}
+#today-date{
+    border-top:5px rgb(82, 93, 243) solid;
 }
 </style>

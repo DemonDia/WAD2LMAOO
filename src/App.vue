@@ -2,8 +2,8 @@
   <!-- <Home :usertype ="usertype"/> -->
   <!-- <Modal/> -->
   <!-- <Project/> -->
-  <!-- <Calendar/> -->
-  <Dashboard/>
+  <Calendar/>
+  <!-- <Dashboard/> -->
 
 </template>
 
@@ -11,16 +11,16 @@
 // import Modal from "./components/modal.vue"
 // import Home from "./components/Home.vue"
 // import Project from "./components/Project.vue"
-// import Calendar from "./components/Calendar.vue"
-import Dashboard from "./components/Employee_Dashboard.vue"
+import Calendar from "./components/Calendar.vue"
+// import Dashboard from "./components/Employee_Dashboard.vue"
 export default {
   name: 'App',
   components: {
     // Home
     // Modal
     // Project
-    // Calendar
-    Dashboard
+    Calendar
+    // Dashboard
 },
   data(){
     return{

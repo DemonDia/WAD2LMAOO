@@ -177,6 +177,7 @@ export default {
 </script>
 
 <style>
+/* employer */
     .page{
         min-height: 100vh;
         width:100%;
