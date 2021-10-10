@@ -86,6 +86,7 @@ export default {
     },
     data() {
         return {
+
             taskStatus: {
                 chart: {
                     type: 'pie'
@@ -171,6 +172,8 @@ export default {
                     color: "#6c9fe6"
                 }]
             },
+
+            
         }
     }
 }
