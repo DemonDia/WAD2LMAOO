@@ -3,8 +3,8 @@
     <Navbar :usertype="'employee'"/>
     
     <div class=  "container">
-        <!-- <h3>To-do list</h3>
-        {{completed}}
+        <h3>To-do list</h3>
+        <!-- {{completed}}
         <br>
         {{tasks}}
         <br>
