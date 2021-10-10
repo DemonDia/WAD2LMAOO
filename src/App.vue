@@ -2,7 +2,8 @@
   <!-- <Home :usertype ="usertype"/> -->
   <!-- <Modal/> -->
   <!-- <Project/> -->
-  <Calendar/>
+  <!-- <Calendar/> -->
+  <Dashboard/>
 
 </template>
 
@@ -10,18 +11,21 @@
 // import Modal from "./components/modal.vue"
 // import Home from "./components/Home.vue"
 // import Project from "./components/Project.vue"
-import Calendar from "./components/Calendar.vue"
+// import Calendar from "./components/Calendar.vue"
+import Dashboard from "./components/Employee_Dashboard.vue"
 export default {
   name: 'App',
   components: {
     // Home
     // Modal
     // Project
-    Calendar
+    // Calendar
+    Dashboard
 },
   data(){
     return{
-      usertype:"employer"
+      // usertype:"employer"
+      usertype:"employee"
     }
   }
 }
