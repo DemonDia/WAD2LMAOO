@@ -1,26 +1,29 @@
 <template>
-  <!-- <Home :usertype ="usertype"/> -->
+  <Home :usertype ="usertype"/>
   <!-- <Modal/> -->
   <!-- <Project/> -->
-  <Calendar/>
+  <!-- <Calendar/> -->
   <!-- <Dashboard/> -->
 <!-- <EmployeeToDo/> -->
+<!-- <authenticate/> -->
 </template>
 
 <script>
+// import Authenticate from "./components/Authenticate.vue"
 // import Modal from "./components/modal.vue"
-// import Home from "./components/Home.vue"
+import Home from "./components/Home.vue"
 // import Project from "./components/Project.vue"
-import Calendar from "./components/Calendar.vue"
+// import Calendar from "./components/Calendar.vue"
 // import Dashboard from "./components/Employee_Dashboard.vue"
 // import EmployeeToDo from "./components/EmployeeToDoList.vue"
 export default {
   name: 'App',
   components: {
-    // Home
+    // Authenticate
+    Home
     // Modal
     // Project
-    Calendar
+    // Calendar
     // Dashboard
     // EmployeeToDo
 },

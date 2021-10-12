@@ -89,7 +89,9 @@ export default {
         return {
             date: new Date(),
             chooseDate:null,
-            days:[]
+            days:[],
+            // where google calendar API will come in
+            tasks: [],
             }
     },
     computed:{
