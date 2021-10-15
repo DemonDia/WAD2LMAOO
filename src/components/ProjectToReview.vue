@@ -11,9 +11,11 @@
             <ProjectMember/>
             <ProjectMember/>
             <ProjectMember/>
-
             <ProjectMember/>
 
+            <ProjectMember/>
+            <ProjectMember/>
+            <ProjectMember/>
         </div>
     </div>
 </template>
@@ -31,28 +33,28 @@ h3{
     color: white;
 }
 .projectReviewContainer{
-    display: flex;
-    height:300px;
-    margin:10px;
-    width:100%;
+    display:block;
+    height:400px;
+    margin-bottom: 50px;
+    max-width:100%;
     align-items: center;
-
-
 }
 .projectName{
-    width:15%;
+    display: block;
+    max-width:20%;
     background: linear-gradient(57.11deg, #6D9DF8 -4.9%, #6461FF 101.23%, rgba(109, 157, 248, 0.64) 101.24%, rgba(109, 157, 248, 0) 101.24%);
     /* margin:10px; */
-    padding:10px;
+    margin-left: 20px;
+    padding: 10px;
     border-radius:10px;
-    height:100%;
+    height:13%;
 }
 .projectMembers{
     display: flex;
-    max-width:80%;
     /* background:blue; */
-    margin:10px;
-    height:100%;
+    max-width: 90%;
+    margin: 10px;
+    height: 90%;
     overflow-x: scroll;
 }
 </style>
