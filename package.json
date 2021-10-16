@@ -14,8 +14,10 @@
     "core-js": "^3.6.5",
     "highcharts": "^9.2.2",
     "highcharts-vue": "^1.4.0",
+    "v-rating": "^1.1.2",
     "vue": "^3.2.19",
-    "vue-router": "^4.0.11"
+    "vue-router": "^4.0.11",
+    "vue3-star-ratings": "^1.0.7"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.5.0",

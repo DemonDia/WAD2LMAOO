@@ -1,12 +1,13 @@
 <template>
-  <!-- <Home :usertype ="usertype"/> -->
+  <!-- <Home :usertype = "usertype"/> -->
   <!-- <Modal/> -->
   <!-- <Project/> -->
   <!-- <Calendar/> -->
   <!-- <Dashboard/> -->
 <!-- <EmployeeToDo/> -->
 <!-- <authenticate/> -->
-<ProjectReview/>
+<!-- <ProjectReview/> -->
+<MemberToReview/>
 </template>
 
 <script>
@@ -17,7 +18,8 @@
 // import Calendar from "./components/Calendar.vue"
 // import Dashboard from "./components/Employee_Dashboard.vue"
 // import EmployeeToDo from "./components/EmployeeToDoList.vue"
-import ProjectReview from "./components/ProjectReview.vue"
+// import ProjectReview from "./components/ProjectReview.vue"
+import MemberToReview from "./components/MemberToReview.vue"
 export default {
   name: 'App',
   components: {
@@ -28,7 +30,8 @@ export default {
     // Calendar
     // Dashboard
     // EmployeeToDo
-    ProjectReview
+    // ProjectReview
+    MemberToReview
 },
   data(){
     return{
