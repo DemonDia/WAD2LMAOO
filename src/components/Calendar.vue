@@ -1,6 +1,6 @@
 <template>
 <div style = "width:100%;">
-    <Navbar/>
+    <!-- <Navbar/> -->
     <h1 id = "calendar-name">Calendar</h1>
     <div id = "calendar-contaner">
 <div id = "date-selector">
@@ -79,12 +79,12 @@
 
 </template>
 <script>
-import Navbar from "./Navbar.vue"
+// import Navbar from "./Navbar.vue"
 export default {
     name:"Calendar",
-    components:{
-        Navbar
-    },
+    // components:{
+    //     Navbar
+    // },
     data(){
         return {
             date: new Date(),
@@ -173,12 +173,7 @@ export default {
 th{
     color:#8265E3;
 }
-table{
-    /* background: #E3E9FF; */
-}
-#calendar-contaner{
-    /* margin:10px; */
-}
+
 
 td{
     width:100px;

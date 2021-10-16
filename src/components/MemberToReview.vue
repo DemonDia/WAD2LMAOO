@@ -1,6 +1,6 @@
 <template>
     <div class = "page">
-        <Navbar/>
+        <!-- <Navbar/> -->
         <div class = "review-container">
             <h2>[Project A] Reviewing for</h2>
             <div class = "card member-card">
@@ -59,11 +59,11 @@
 // import Rating from 'v-rating';
 import vue3StarRatings from "vue3-star-ratings";
 
-import Navbar from "./Navbar.vue"
+// import Navbar from "./Navbar.vue"
 export default {
     name:"MemberToReview",
     components:{
-        Navbar,
+        // Navbar,
         vue3StarRatings
     },
     data(){

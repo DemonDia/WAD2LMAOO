@@ -1,5 +1,6 @@
 <template>
-  <!-- <Home :usertype = "usertype"/> -->
+<Navbar :usertype = "usertype"/>
+  <Home/>
   <!-- <Modal/> -->
   <!-- <Project/> -->
   <!-- <Calendar/> -->
@@ -7,31 +8,38 @@
 <!-- <EmployeeToDo/> -->
 <!-- <authenticate/> -->
 <!-- <ProjectReview/> -->
-<MemberToReview/>
+<!-- <MemberToReview/> -->
+
+<!-- <EmployeeList/> -->
 </template>
 
 <script>
+import Navbar from "./components/Navbar.vue"
 // import Authenticate from "./components/Authenticate.vue"
 // import Modal from "./components/modal.vue"
-// import Home from "./components/Home.vue"
+import Home from "./components/Home.vue"
 // import Project from "./components/Project.vue"
 // import Calendar from "./components/Calendar.vue"
 // import Dashboard from "./components/Employee_Dashboard.vue"
 // import EmployeeToDo from "./components/EmployeeToDoList.vue"
 // import ProjectReview from "./components/ProjectReview.vue"
-import MemberToReview from "./components/MemberToReview.vue"
+// import MemberToReview from "./components/MemberToReview.vue"
+// import EmployeeList from "./components/EmployeeList.vue"
 export default {
   name: 'App',
   components: {
+    Navbar,
     // Authenticate
-    // Home
+    Home
     // Modal
     // Project
     // Calendar
     // Dashboard
     // EmployeeToDo
     // ProjectReview
-    MemberToReview
+    // MemberToReview,
+    // EmployeeList
+    
 },
   data(){
     return{
