@@ -1,42 +1,42 @@
 <template>
-<Navbar :usertype = "usertype"/>
-  <Home/>
+<!-- <Navbar /> -->
+  <!-- <Home/> -->
   <!-- <Modal/> -->
   <!-- <Project/> -->
   <!-- <Calendar/> -->
   <!-- <Dashboard/> -->
 <!-- <EmployeeToDo/> -->
 <!-- <authenticate/> -->
-<!-- <ProjectReview/> -->
+<ProjectReview/>
 <!-- <MemberToReview/> -->
 
 <!-- <EmployeeList/> -->
 </template>
 
 <script>
-import Navbar from "./components/Navbar.vue"
+// import Navbar from "./components/Navbar.vue"
 // import Authenticate from "./components/Authenticate.vue"
 // import Modal from "./components/modal.vue"
-import Home from "./components/Home.vue"
+// import Home from "./components/Home.vue"
 // import Project from "./components/Project.vue"
 // import Calendar from "./components/Calendar.vue"
 // import Dashboard from "./components/Employee_Dashboard.vue"
 // import EmployeeToDo from "./components/EmployeeToDoList.vue"
-// import ProjectReview from "./components/ProjectReview.vue"
+import ProjectReview from "./components/ProjectReview.vue"
 // import MemberToReview from "./components/MemberToReview.vue"
 // import EmployeeList from "./components/EmployeeList.vue"
 export default {
   name: 'App',
   components: {
-    Navbar,
+    // Navbar,
     // Authenticate
-    Home
+    // Home
     // Modal
     // Project
     // Calendar
     // Dashboard
     // EmployeeToDo
-    // ProjectReview
+    ProjectReview
     // MemberToReview,
     // EmployeeList
     
