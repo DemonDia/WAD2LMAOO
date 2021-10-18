@@ -5,12 +5,23 @@
     <div class = "task-container">
         
     <ProjectDetail/>
+    <AddItem :itemType = "'task'"/>
     <EmployerTask :taskStatus = "'incomplete'" :taskReward="'1500'" :taskDue="'14/11/2021'"/>
     <EmployerTask :taskStatus = "'review'" :taskReward="'300'" :taskDue="'11/10/2021' " />
     <EmployerTask :taskStatus = "'complete'" :taskReward="'500'" :completedAt="'17/9/2021'"
     :completedBy="'Matilda'"/>
-    <EmployerTask/>
-    <AddItem :itemType = "'task'"/>
+    <EmployerTask :taskStatus = "'incomplete'" :taskReward="'1500'" :taskDue="'14/11/2021'"/>
+    <EmployerTask :taskStatus = "'incomplete'" :taskReward="'1500'" :taskDue="'14/11/2021'"/>
+    <EmployerTask :taskStatus = "'incomplete'" :taskReward="'1500'" :taskDue="'14/11/2021'"/>
+    <EmployerTask :taskStatus = "'incomplete'" :taskReward="'1500'" :taskDue="'14/11/2021'"/>
+    <EmployerTask :taskStatus = "'incomplete'" :taskReward="'1500'" :taskDue="'14/11/2021'"/>
+    <EmployerTask :taskStatus = "'incomplete'" :taskReward="'1500'" :taskDue="'14/11/2021'"/>
+
+    <EmployerTask :taskStatus = "'incomplete'" :taskReward="'1500'" :taskDue="'14/11/2021'"/>
+
+    <EmployerTask :taskStatus = "'incomplete'" :taskReward="'1500'" :taskDue="'14/11/2021'"/>
+    <EmployerTask :taskStatus = "'incomplete'" :taskReward="'1500'" :taskDue="'14/11/2021'"/>
+    
     </div>
 
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">

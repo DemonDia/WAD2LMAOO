@@ -16,7 +16,9 @@
          <h2 v-if="itemType === 'task'">
             Add task
           </h2>
-
+        <h2 v-if="itemType === 'employee'">
+            Add employee
+          </h2>
       </div>
 
 
