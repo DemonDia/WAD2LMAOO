@@ -7,9 +7,9 @@
   <!-- <Dashboard/> -->
 <!-- <EmployeeToDo/> -->
 <!-- <authenticate/> -->
-<ProjectReview/>
+<!-- <ProjectReview/> -->
 <!-- <MemberToReview/> -->
-
+<AddEmployee/>
 <!-- <EmployeeList/> -->
 </template>
 
@@ -22,9 +22,12 @@
 // import Calendar from "./components/Calendar.vue"
 // import Dashboard from "./components/Employee_Dashboard.vue"
 // import EmployeeToDo from "./components/EmployeeToDoList.vue"
-import ProjectReview from "./components/ProjectReview.vue"
+// import ProjectReview from "./components/ProjectReview.vue"
 // import MemberToReview from "./components/MemberToReview.vue"
+
 // import EmployeeList from "./components/EmployeeList.vue"
+import AddEmployee from "./components/AddEmployee.vue"
+
 export default {
   name: 'App',
   components: {
@@ -36,9 +39,11 @@ export default {
     // Calendar
     // Dashboard
     // EmployeeToDo
-    ProjectReview
+    // ProjectReview
     // MemberToReview,
+
     // EmployeeList
+    AddEmployee
     
 },
   data(){
