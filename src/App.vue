@@ -10,7 +10,8 @@
 <!-- <ProjectReview/> -->
 <!-- <MemberToReview/> -->
 <!-- <AddEmployee/> -->
-<EmployeeList/>
+<!-- <EmployeeList/> -->
+<ProfilePage/>
 </template>
 
 <script>
@@ -24,8 +25,8 @@
 // import EmployeeToDo from "./components/EmployeeToDoList.vue"
 // import ProjectReview from "./components/ProjectReview.vue"
 // import MemberToReview from "./components/MemberToReview.vue"
-
-import EmployeeList from "./components/EmployeeList.vue"
+import ProfilePage from "./components/EmployeeProfile.vue"
+// import EmployeeList from "./components/EmployeeList.vue"
 // import AddEmployee from "./components/AddEmployee.vue"
 
 export default {
@@ -41,15 +42,15 @@ export default {
     // EmployeeToDo
     // ProjectReview
     // MemberToReview,
-
-    EmployeeList
+    ProfilePage
+    // EmployeeList
     // AddEmployee
     
 },
   data(){
     return{
       // usertype:"employer"
-      usertype:"employer"
+      usertype:"employee"
     }
   }
 }
