@@ -9,8 +9,9 @@
 <!-- <authenticate/> -->
 <!-- <ProjectReview/> -->
 <!-- <MemberToReview/> -->
-<AddEmployee/>
+<!-- <AddEmployee/> -->
 <!-- <EmployeeList/> -->
+<ProfilePage/>
 </template>
 
 <script>
@@ -24,9 +25,9 @@
 // import EmployeeToDo from "./components/EmployeeToDoList.vue"
 // import ProjectReview from "./components/ProjectReview.vue"
 // import MemberToReview from "./components/MemberToReview.vue"
-
+import ProfilePage from "./components/EmployeeProfile.vue"
 // import EmployeeList from "./components/EmployeeList.vue"
-import AddEmployee from "./components/AddEmployee.vue"
+// import AddEmployee from "./components/AddEmployee.vue"
 
 export default {
   name: 'App',
@@ -41,15 +42,15 @@ export default {
     // EmployeeToDo
     // ProjectReview
     // MemberToReview,
-
+    ProfilePage
     // EmployeeList
-    AddEmployee
+    // AddEmployee
     
 },
   data(){
     return{
       // usertype:"employer"
-      usertype:"employer"
+      usertype:"employee"
     }
   }
 }
