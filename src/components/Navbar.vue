@@ -1,6 +1,6 @@
 <template>
 <div >
-<nav class="navbar navbar-dark fixed-top" id = "barz">
+<nav class="navbar navbar-expand-sm navbar-dark fixed-top" id = "barz">
   <div class="container-fluid">
     <a class="navbar-brand" href="#" >ProJeck</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
@@ -8,7 +8,9 @@
     </button>
     <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
       <div class="offcanvas-header">
-        <h5 class="offcanvas-title" style = "color:white" id="offcanvasNavbarLabel">Fella</h5>
+        <h5 class="offcanvas-title" style = "color:white" id="offcanvasNavbarLabel">
+          {{loggedUser.name}}
+          </h5>
         <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
       </div>
       <div class="offcanvas-body">
@@ -32,25 +34,30 @@
             <a class="nav-link" href="#">Settings</a>
           </li>
          <li class="nav-item">
-            <a class="nav-link" href="#">Logout</a>
+            <a class="nav-link" href="#" v-on:click = "logoutUser">Logout</a>
           </li>
         </ul>
 
         <ul class="navbar-nav justify-content-end flex-grow-1 pe-3" v-else>
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">Home</a>
+            
+              <router-link class = "nav-link" to="/home">Home</router-link>
+          
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">To-do</a>
+            <router-link class = "nav-link" to="/emptasks">To-do</router-link>
+            <!-- <a class="nav-link" href="#">To-do</a> -->
           </li>
          <li class="nav-item">
-            <a class="nav-link" href="#">Calendar</a>
+            <!-- <a class="nav-link" href="#">Calendar</a> -->
+            <router-link class = "nav-link" to="/calendar">Calendar</router-link>
           </li>
          <li class="nav-item">
-            <a class="nav-link" href="#">Settings</a>
+           <router-link class = "nav-link" to="/profile">Profile</router-link>
+
           </li>
          <li class="nav-item">
-            <a class="nav-link" href="#">Logout</a>
+            <a class="nav-link" href="#" v-on:click = "logoutUser">Logout</a>
           </li>
         </ul>
 
@@ -62,15 +69,20 @@
 </div>
 </template>
 <script>
+import mixin from "../mixin"
 export default {
     name:"Navbar",
-    props: ["usertype"],
+    // props: ["usertype"],
+    mixins:[mixin],
     data(){
         return{
 
         }
     },
     beforeMount(){
+      this.getUserType();
+      this.getLoggedUser();
+
       console.log(this.usertype)
     }
 

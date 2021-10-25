@@ -11,10 +11,13 @@
 <!-- <MemberToReview/> -->
 <!-- <AddEmployee/> -->
 <!-- <EmployeeList/> -->
-<ProfilePage/>
+<!-- <ProfilePage/> -->
+<!-- <Authenticate/> -->
+<router-view/>
 </template>
 
 <script>
+// import Authenticate from "./components/Authenticate.vue";
 // import Navbar from "./components/Navbar.vue"
 // import Authenticate from "./components/Authenticate.vue"
 // import Modal from "./components/modal.vue"
@@ -25,12 +28,14 @@
 // import EmployeeToDo from "./components/EmployeeToDoList.vue"
 // import ProjectReview from "./components/ProjectReview.vue"
 // import MemberToReview from "./components/MemberToReview.vue"
-import ProfilePage from "./components/EmployeeProfile.vue"
+// import ProfilePage from "./components/EmployeeProfile.vue"
 // import EmployeeList from "./components/EmployeeList.vue"
 // import AddEmployee from "./components/AddEmployee.vue"
 
+import mixin from "./mixin"
 export default {
   name: 'App',
+  mixins:[mixin],
   components: {
     // Navbar,
     // Authenticate
@@ -42,7 +47,7 @@ export default {
     // EmployeeToDo
     // ProjectReview
     // MemberToReview,
-    ProfilePage
+    // ProfilePage
     // EmployeeList
     // AddEmployee
     
@@ -50,7 +55,7 @@ export default {
   data(){
     return{
       // usertype:"employer"
-      usertype:"employee"
+      // usertype:"employee"
     }
   }
 }

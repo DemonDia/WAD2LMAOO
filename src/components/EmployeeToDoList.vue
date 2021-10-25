@@ -1,6 +1,6 @@
 <template>
 <div class = "page">
-    <Navbar :usertype="'employee'"/>
+    <Navbar/>
     
     <div class=  "container">
         <h3>To-do list</h3>
@@ -61,12 +61,20 @@
     
 </template>
 <script>
+import mixin from "../mixin"
 import Navbar from "./Navbar.vue"
 export default {
  name:"EmployeeToDo",
+ mixins:[mixin],
  components:{
      Navbar
  },
+   beforeMount(){
+       this.getUserType()
+        if(this.usertype === "na"){
+            this.$router.push("/authenticate")
+        }
+  },
  data(){
      return{
          completed:[],

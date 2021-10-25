@@ -1,9 +1,10 @@
 <template>
-<div class = "page">
-<Navbar :usertype ="usertype"/>
+<div>
+<div class = "page" v-if = "usertype !== 'na'">
+<Navbar/>
 <!-- <div class = "pageContent"> -->
     <!-- {{usertype}} -->
-    <div v-if="usertype ==='employer'">
+    <div>
     <!-- <div v-if="usertype ==='employer'" class = "employer-projects"> -->
         <!-- <EmployerProject :projectName ="'Proj1'" :projectAssignees = "'Ruby Kurosawa'" :projectAssigned = "'14/7/2021'"
         :projectDue ="'14/11/2021'" :projectStatus = "'incomplete'"  :projectReward = "'500'"/>
@@ -107,7 +108,7 @@
             </div>
         </div>
   </div>
-  <div v-else>
+  <!-- <div v-else>
         <div id="bg">
             <div class="container">
                 <div class="row justify-content-between">
@@ -164,9 +165,12 @@
             </div>
         </div>
 
-  </div>
+  </div> -->
 </div>
-
+<div v-else>
+<h3>You are not logged in.</h3>
+</div>
+</div>
 
 <!-- </div> -->
     
@@ -175,18 +179,26 @@
 // import { onBeforeMount } from '@vue/runtime-core'
 import {Chart} from 'highcharts-vue'
 import Navbar from "./Navbar.vue"
+import mixin from "../mixin"
 // import EmployerProject from "./EmployerProject.vue"
 // import AddItem from "./AddItem.vue"
 
 export default {
     name:"Home",
+    mixins:[mixin],
       components: {
     Navbar,
     // EmployerProject,
     // AddItem,
     highcharts: Chart 
   },
-  props:["usertype"],
+//   props:["usertype"],
+  beforeMount(){
+       this.getUserType()
+        if(this.usertype === "na"){
+            this.$router.push("/authenticate")
+        }
+  },
     methods: {
         currentMonth() {
             const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];

@@ -1,6 +1,6 @@
 <template>
 <div style = "width:100%;">
-    <!-- <Navbar/> -->
+    <Navbar/>
     <h1 id = "calendar-name">Calendar</h1>
     <div id = "calendar-contaner">
 <div id = "date-selector">
@@ -79,12 +79,23 @@
 
 </template>
 <script>
-// import Navbar from "./Navbar.vue"
+import Navbar from "./Navbar.vue"
+import mixin from "../mixin"
 export default {
     name:"Calendar",
-    // components:{
-    //     Navbar
-    // },
+    mixins:[mixin],
+    components:{
+        Navbar
+    },
+      beforeMount(){
+       this.getUserType()
+        if(this.usertype === "na"){
+            this.$router.push("/authenticate")
+        }
+        // else{
+        //     this.$router.push("/authenticate")
+        // }
+  },
     data(){
         return {
             date: new Date(),

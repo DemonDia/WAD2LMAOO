@@ -60,8 +60,10 @@
 
 </template>
 <script>
+import mixin from "../mixin"
 export default {
     name:"Authenticate",
+    mixins:[mixin],
     data(){
         return{
             status:"login",
@@ -71,30 +73,68 @@ export default {
             cfmPass:"",
             isError:false,
             isSuccess:false,
-            errorMsg:[],
+            // errorMsg:[],
             msgOutput:""
         }
     },
+    beforeMount(){
+        this.getUserType();
+        if((this.usertype === "employer")||(this.usertype === "employee")){
+            this.$router.push("/home")
+        }
+    },
+    
     methods:{
         login(){
             if(this.status ==="login"){
                 if(!this.validateEmail(this.email)){
                     this.isError = true
-                    this.errorMsg.push("Invalid email.")
+                    this.msgOutput = "Invalid email."
                     
                 }
                 if(this.pass ===""){
                     this.isError = true
-                    this.errorMsg.push("Password cannot be empty.")
+                    this.msgOutput = "Password cannot be empty."
                 }
-            if(this.isError){
-                this.isSuccess = false
-                this.msgOutput = this.errorMsg.join(" ")
-            }else{
-                this.isError = false
-                this.isSuccess = true
-                            this.email = ""
-            this.pass = ""
+                else{
+                // check if account exists
+                var match = this.accountList.filter(
+                    account => account.email === this.email
+                )
+                console.log(match.length)
+
+                // check if any match
+                if(match.length === 0){
+                    // this.errorMsg = "No such account exists"
+                    this.isError = true
+                    this.msgOutput = "No such account exists"
+                }
+                else{
+                    // check if pass is correct
+                    if(match[0].password !== this.pass ){
+                        //  wrong pass
+                    this.isError = true
+                    this.msgOutput = "Wrong password"
+                    }
+                    else{
+                    this.isError = false
+                    this.isSuccess = true
+                    this.email = ""
+                    this.pass = ""
+                    console.log("yay")
+                    sessionStorage.setItem("loggedUser",
+                    JSON.stringify(match[0]))
+                    this.loggedUser =  JSON.parse(sessionStorage.loggedUser)
+                    this.$router.push("/home")
+                    }
+                    
+                
+                }
+
+                // this.isError = false
+                // this.isSuccess = true
+                // this.email = ""
+                // this.pass = ""
 
             }
                 // check for email and pass
@@ -128,6 +168,7 @@ export default {
             }else{
                 this.isError = false
                 this.isSuccess = true
+                
             this.email = ""
             this.compName = ""
             this.pass = ""

@@ -4,7 +4,7 @@
         href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" 
         integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" 
         crossorigin="anonymous">
-    <Navbar :usertype ="'employee'"/>
+    <Navbar/>
     <h3>Profile Page</h3>
     <div class="container">
         <div class="row">
@@ -116,12 +116,13 @@
 
 <script>
 import Navbar from "./Navbar.vue"
-
+import mixin from "../mixin"
 export default {
     name:"ProfilePage",
     components: {
         Navbar,
     },
+    mixins:[mixin],
     methods: {
         sortTable(key,direction) {
             this.sort = `${key} > ${direction}`
@@ -134,6 +135,12 @@ export default {
             }
         }
     },
+      beforeMount(){
+       this.getUserType()
+        if(this.usertype === "na"){
+            this.$router.push("/authenticate")
+        }
+  },
     data() {
         return {
             filter: '',
