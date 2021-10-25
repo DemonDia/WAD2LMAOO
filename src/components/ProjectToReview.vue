@@ -5,17 +5,26 @@
             
         </div>
         <div class = "projectMembers">
+            <router-link class = "nav-link" to="/review/member">
             <ProjectMember/>
+            </router-link>
+            <router-link class = "nav-link" to="/review/member">
             <ProjectMember/>
+            </router-link>
+                        <router-link class = "nav-link" to="/review/member">
             <ProjectMember/>
+            </router-link>
+                        <router-link class = "nav-link" to="/review/member">
             <ProjectMember/>
-            <ProjectMember/>
-            <ProjectMember/>
-            <ProjectMember/>
+            </router-link>
 
+                        <router-link class = "nav-link" to="/review/member">
             <ProjectMember/>
+            </router-link>
+                        <router-link class = "nav-link" to="/review/member">
             <ProjectMember/>
-            <ProjectMember/>
+            </router-link>
+
         </div>
     </div>
 </template>
@@ -34,9 +43,10 @@ h3{
 }
 .projectReviewContainer{
     display:block;
-    height:400px;
+    /* height:400px; */
     margin-bottom: 50px;
-    max-width:100%;
+    width: 90vw;
+    margin: 10px auto;
     align-items: center;
 }
 .projectName{
@@ -52,7 +62,7 @@ h3{
 .projectMembers{
     display: flex;
     /* background:blue; */
-    max-width: 90%;
+    /* max-width: 90%; */
     margin: 10px;
     height: 90%;
     overflow-x: scroll;

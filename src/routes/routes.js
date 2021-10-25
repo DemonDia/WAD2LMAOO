@@ -13,14 +13,16 @@ import Authenticate from "../components/Authenticate.vue";
 import Home from "../components/Home.vue"
 //
 import Calendar from "../components/Calendar.vue"
-// import Project from "./components/Project.vue"
-// import Dashboard from "./components/Employee_Dashboard.vue"
+import Project from "../components/Project.vue"
 import EmployeeToDo from "../components/EmployeeToDoList.vue"
-// import ProjectReview from "./components/ProjectReview.vue"
-// import MemberToReview from "./components/MemberToReview.vue"
+import ProjectReview from "../components/ProjectReview.vue"
+import MemberToReview from "../components/MemberToReview.vue"
 import ProfilePage from "../components/EmployeeProfile.vue"
-// import EmployeeList from "./components/EmployeeList.vue"
-// import AddEmployee from "./components/AddEmployee.vue"
+import EmployeeList from "../components/EmployeeList.vue"
+import AddEmployee from "../components/AddEmployee.vue"
+import ErrorPage from "../components/ErrorPage.vue"
+// import EmployerProject from "../components/EmployerProject.vue"
+import EmployerProjects from "../components/EmployerProjects"
 const routes = [
 	{
 		path: '/',
@@ -50,9 +52,48 @@ const routes = [
 	},
 	{
 		path: "/profile",
-		nam:"Profile",
+		name:"Profile",
 		component:ProfilePage
+	}
+	,{
+		path:"/:catchAll(.*)",
+		name:"Error",
+		component:ErrorPage
+	}
+	,{
+		path:"/employees",
+		name:"EmployeeList",
+		component:EmployeeList
+	}
+	,{
+		path:"/employees/add",
+		name:"AddEmployee",
+		component:AddEmployee
+	}
+	,{
+		path:"/projects",
+		name:"Projects",
+		component:EmployerProjects
 	},
+
+	{
+		path:"/projects/project",
+		name:"Project",
+		component:Project
+	},
+
+	{
+		path:"/review",
+		name:"Review",
+		component:ProjectReview
+
+	},
+	{
+		path:"/review/member",
+		name:"ReviewMember",
+		component:MemberToReview
+
+	}
 ];
 
 const router = createRouter({

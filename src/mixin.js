@@ -7,7 +7,8 @@ export default{
                 this.loggedUser = JSON.parse(sessionStorage.loggedUser)
             }
             catch{
-                this.loggedUser = null;
+                this.loggedUser = "na";
+                this.usertype = "na"
             }
             console.log(this.loggedUser)
         },

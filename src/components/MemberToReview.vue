@@ -49,8 +49,13 @@
             </table>
              {{rating}}
              <div class = "btn-container">
-                 <button class=  'btn btn-danger'>Cancel</button>
-                 <button class=  'btn btn-primary'>Submit</button>
+                 <router-link class = 'btn btn-danger' to="/review">
+                 Cancel
+                 </router-link>
+                 <!-- <button class=  'btn btn-danger'>Cancel</button> -->
+                 <button class=  'btn btn-primary'
+                 style = "background:#504DFF"
+                 v-on:click = "submit">Submit</button>
              </div>
         </div>
     </div>
@@ -58,7 +63,7 @@
 <script>
 // import Rating from 'v-rating';
 import vue3StarRatings from "vue3-star-ratings";
-
+import mixin from "../mixin"
 // import Navbar from "./Navbar.vue"
 export default {
     name:"MemberToReview",
@@ -66,9 +71,22 @@ export default {
         // Navbar,
         vue3StarRatings
     },
+    mixins:[mixin],
     data(){
         return{
             rating:0
+        }
+    },
+      beforeMount(){
+       this.getUserType()
+        if(this.usertype !== "employer"){
+            this.$router.push("/")
+        }
+  },
+
+    methods:{
+        submit(){
+            this.$router.push("/review")
         }
     }
 

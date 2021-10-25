@@ -23,7 +23,11 @@
             
         </div>
         <div class = "employee-container">
+            <router-link to ="/employees/add"
+            style = "text-decoration: none;">
             <AddItem :itemType="'employee'" />
+            </router-link>
+            
                         <div class = "card employee-box">
                 <h3>Thomas Tan</h3>
                 <table class = "table employee-table">
@@ -132,11 +136,19 @@
 <script>
 import Navbar from "./Navbar.vue"
 import AddItem from "./AddItem.vue"
+import mixin from "../mixin"
 export default {
     name:"EmployeeList",
     components:{
         Navbar,
         AddItem
+    },
+    mixins:[mixin],
+    beforeMount(){
+        this.getUserType()
+        if(this.usertype != "employer"){
+            this.$router.push("/")
+        }
     }
 
 }

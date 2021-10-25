@@ -61,8 +61,9 @@
 
                 </table>
                 <div class = "button-container">
-                <button class = "btn fire-btn">Cancel</button>
-                <button class = "btn view-btn">Add</button>
+                    <router-link to = "/employees" class = "btn fire-btn">Cancel</router-link>
+                <!-- <button class = "btn fire-btn">Cancel</button> -->
+                <button class = "btn view-btn" v-on:click = "submit">Add</button>
                 </div>
             </div>
         </div>
@@ -70,11 +71,26 @@
 </template>
 <script>
 import Navbar from "./Navbar.vue"
+import mixin from "../mixin"
 export default {
     name:"AddEmployee",
     components:{
         Navbar
-    }
+    },
+    mixins:[mixin],
+
+    methods:{
+        submit(){
+            this.$router.push("/employees")
+        }
+    },
+      beforeMount(){
+       this.getUserType()
+        if(this.usertype !== "employer"){
+            this.$router.push("/")
+        }
+  },
+
 }
 </script>
 <style scoped>

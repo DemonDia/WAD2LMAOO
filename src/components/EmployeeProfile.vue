@@ -137,8 +137,8 @@ export default {
     },
       beforeMount(){
        this.getUserType()
-        if(this.usertype === "na"){
-            this.$router.push("/authenticate")
+        if(this.usertype != "employee"){
+            this.$router.push("/")
         }
   },
     data() {

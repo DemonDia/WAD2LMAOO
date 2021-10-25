@@ -87,14 +87,11 @@ export default {
     components:{
         Navbar
     },
-      beforeMount(){
+  beforeMount(){
        this.getUserType()
         if(this.usertype === "na"){
             this.$router.push("/authenticate")
         }
-        // else{
-        //     this.$router.push("/authenticate")
-        // }
   },
     data(){
         return {
@@ -151,6 +148,9 @@ export default {
 }
 </script>
 <style scoped>
+table{
+    table-layout: fixed
+}
 #calendar-name{
         width: max-content;
     margin: auto;
@@ -183,6 +183,7 @@ export default {
 }
 th{
     color:#8265E3;
+    text-align: center;
 }
 
 
@@ -190,7 +191,9 @@ td{
     width:100px;
     height:150px;
     background:white;
+    text-align: center;
 }
+
 td div{
     height:100%;
     width:100%;
@@ -201,6 +204,7 @@ td div{
 } */
 .cal-date{
     /* background:rgb(228, 228, 228); */
+    
     display:grid;
     align-items: start;
     padding:15px;

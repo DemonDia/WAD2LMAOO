@@ -5,11 +5,11 @@
   </div>
   <div class = "card-body">
       <!-- <AccountCheckIcon/> -->
-  <div class = "iconContainer">
+  <!-- <div class = "iconContainer">
         <span class="material-icons">
 build
 </span>
-  Edit</div>
+  Edit</div> -->
 
       <div class = "project-details">
     <table class="table">
@@ -47,10 +47,17 @@ build
 </template>
 <script>
 // import { AccountCheckIcon } from '@icons/material'
-
+import mixin from "../mixin"
 export default {
     name:"EmployerProject",
-    props:["projectName","projectAssignees","projectAssigned","projectDue","projectStatus",'projectReward']
+    mixins:[mixin],
+    props:["projectName","projectAssignees","projectAssigned","projectDue","projectStatus",'projectReward'],
+      beforeMount(){
+       this.getUserType()
+        if(this.usertype !== "employer"){
+            this.$router.push("/")
+        }
+  },
 }
 </script>
 <style>

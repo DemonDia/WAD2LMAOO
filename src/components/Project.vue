@@ -64,14 +64,22 @@ import ProjectDetail from "./ProjectDetail.vue"
 import Navbar from "./Navbar.vue"
 import EmployerTask from "./EmployerTask.vue"
 import AddItem from "./AddItem.vue"
+import mixin from "../mixin"
 export default {
     name:"Project",
+    mixins:[mixin],
     components:{
         ProjectDetail,
         Navbar,
         EmployerTask,
         AddItem
-    }
+    },
+      beforeMount(){
+       this.getUserType()
+        if(this.usertype !== "employer"){
+            this.$router.push("/")
+        }
+  },
 }
 </script>
 <style scoped>

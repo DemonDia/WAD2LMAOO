@@ -16,19 +16,22 @@
       <div class="offcanvas-body">
         <ul class="navbar-nav justify-content-end flex-grow-1 pe-3" v-if="usertype === 'employer'">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">Home</a>
+            <router-link class = "nav-link" to="/home">Home</router-link>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Projects</a>
+            <router-link class = "nav-link" to="/projects">Projects</router-link>
+            <!-- <a class="nav-link" href="#">Projects</a> -->
           </li>
          <li class="nav-item">
-            <a class="nav-link" href="#">Calendar</a>
+            <router-link class = "nav-link" to="/calendar">Calendar</router-link>
           </li>
          <li class="nav-item">
-            <a class="nav-link" href="#">Employees</a>
+           <router-link class = "nav-link" to="/employees">Employees</router-link>
+            <!-- <a class="nav-link" href="#">Employees</a> -->
           </li>
          <li class="nav-item">
-            <a class="nav-link" href="#">Review</a>
+           <router-link class = "nav-link" to="/review">Review</router-link>
+            <!-- <a class="nav-link" href="#">Review</a> -->
           </li>
          <li class="nav-item">
             <a class="nav-link" href="#">Settings</a>
@@ -83,7 +86,7 @@ export default {
       this.getUserType();
       this.getLoggedUser();
 
-      console.log(this.usertype)
+      // console.log(this.usertype)
     }
 
 }

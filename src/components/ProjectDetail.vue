@@ -27,7 +27,10 @@
 
 
     </table>
-    <button class = "btn project-btn">Back</button>
+    <router-link to ="/projects" class = "btn project-btn">
+    Back
+    </router-link>
+    <!-- <button class = "btn project-btn">Back</button> -->
       </div>
 
 
