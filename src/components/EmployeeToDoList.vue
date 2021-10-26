@@ -3,7 +3,7 @@
     <Navbar/>
     
     <div class=  "container">
-        <h3>To-do list</h3>
+        <h3 style="color: black">To-do list</h3>
         <!-- {{completed}}
         <br>
         {{tasks}}
@@ -131,5 +131,8 @@ export default {
         box-shadow: 0px 5px 0px rgba(83, 90, 249, 0.81);
         width:max-content;
         margin: 20px auto;
+}
+table th{
+    text-align: start;
 }
 </style>
