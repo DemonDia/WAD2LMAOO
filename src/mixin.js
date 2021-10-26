@@ -13,6 +13,7 @@ export default{
             console.log(this.loggedUser)
         },
         getUserType(){
+            // check employer/employee
             try{
                 this.loggedUser = JSON.parse(sessionStorage.loggedUser)
                 this.usertype = this.loggedUser.user_type;
