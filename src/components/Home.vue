@@ -59,55 +59,69 @@
             <div class="container-fluid">
                 <div class="row justify-content-between">
                     <h1 class="col-xl-4">{{currentMonth()}} Summary</h1>
-                    <div class="card task-info col-2">
-                        <div class="card-body">
-                            <h5 class="card-title">Total No. of Task(s)</h5>
-                            <h4 class="card-text pt-2">59</h4>
-                        </div>
-                    </div>   
-                    <div class="card task-info col-2">
-                        <div class="card-body">
-                            <h5 class="card-title">No. of Completed Task(s)</h5>
-                            <h4 class="card-text pt-2">25</h4>
-                        </div>
-                    </div>  
-                    <div class="card task-info col-2">
-                        <div class="card-body">
-                            <h5 class="card-title">No. of Incomplete Task(s)</h5>
-                            <h4 class="card-text pt-2">32</h4>
-                        </div>
-                    </div>  
-                </div>
-                <div class="row p-2 my-4 bg-white border border-dark">
-                    <div class="row mx-0 p-0 justify-content-between">
-                        <highcharts :options="taskStatus_employer" class="chart col border border-dark"></highcharts>
-                        <highcharts :options="revenue" class="chart col border border-dark"></highcharts>
+                    <div class="row col-xl-8 justify-content-between">
+                        <div class="card task-info g-2 mx-3 col-4 col-xl-4 col-md-4">
+                            <div class="card-body">
+                                <h5 class="card-title">Total No. of Task(s)</h5>
+                                <h4 class="card-text pt-2">59</h4>
+                            </div>
+                        </div>   
+                        <div class="card task-info g-2 mx-3 col-4 col-xl-4 col-md-4">
+                            <div class="card-body">
+                                <h5 class="card-title">No. of Completed Task(s)</h5>
+                                <h4 class="card-text pt-2">25</h4>
+                            </div>
+                        </div>  
+                        <div class="card task-info g-2 mx-3 col-4 col-xl-4 col-md-4">
+                            <div class="card-body">
+                                <h5 class="card-title">No. of Incomplete Task(s)</h5>
+                                <h4 class="card-text pt-2">32</h4>
+                            </div>
+                        </div>  
                     </div>
-                    <div class="row mx-0 p-0 justify-content-between">
-                        <highcharts :options="taskDist_employer" class="chart col-5 border border-dark"></highcharts>
-                        <div class="task_list col border border-dark">
-                            <h5 class="border-bottom border-dark py-3">Project Task List</h5><input type="text" placeholder="Filter by task/status/person" class="w-100" v-model="filter" />
-                            <table class="table table-hover">
-                                <thead>
-                                    <tr>
-                                        <th scope="col">Task Status <button class="button" @click="sortTable('status', direction)"><img src="../assets/sort.png"></button></th>
-                                        <th scope="col">Task Name <button class="button" @click="sortTable('task', direction)"><img src="../assets/sort.png"></button></th>
-                                        <th scope="col">Project Name <button class="button" @click="sortTable('proj', direction)"><img src="../assets/sort.png"></button></th>
-                                        <th scope="col">Person In-charge <button class="button" @click="sortTable('person', direction)"><img src="../assets/sort.png"></button></th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr v-for="(row, index) in filteredRows" :key="`task-${index}`">
-                                        <td>{{ row.status }}</td>
-                                        <td>{{ row.task }}</td>
-                                        <td>{{ row.proj }}</td>
-                                        <td>{{ row.person }}</td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                    
+                </div>
+                <div class="container-fluid p-0">
+                    <div class="row p-2 my-4 bg-white border border-dark">
+                        <div class="container-fluid">
+                            <div class="row mx-0 p-0 justify-content-between">
+                                <div class="col-md-6" width="100%"><highcharts :options="taskStatus_employer" class="chart col border border-dark"></highcharts></div>
+                                <div class="col-md-6" width="100%"><highcharts :options="revenue" class="chart col border border-dark"></highcharts></div>
+                            </div>
                         </div>
+                        <div class="container-fluid">
+                            <div class="row mx-0 p-0 justify-content-between">
+                                <div class="col-md-6"><highcharts :options="taskDist_employer" class="chart border border-dark" width="100%"></highcharts></div>
+                                <div class="col-md-6">
+                                    <div class="task_list border border-dark">
+                                        <h5 class="border-bottom border-dark py-2" >Project Task List</h5><input type="text" placeholder="Filter by task/status/person" class="w-100" v-model="filter" />
+                                        <table class="table table-hover">
+                                            <thead>
+                                                <tr>
+                                                    <th scope="col">Task Status <button class="button" @click="sortTable('status', direction)"><img src="../assets/sort.png"></button></th>
+                                                    <th scope="col">Task Name <button class="button" @click="sortTable('task', direction)"><img src="../assets/sort.png"></button></th>
+                                                    <th scope="col">Project Name <button class="button" @click="sortTable('proj', direction)"><img src="../assets/sort.png"></button></th>
+                                                    <th scope="col">Person In-charge <button class="button" @click="sortTable('person', direction)"><img src="../assets/sort.png"></button></th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr v-for="(row, index) in filteredRows" :key="`task-${index}`">
+                                                    <td>{{ row.status }}</td>
+                                                    <td>{{ row.task }}</td>
+                                                    <td>{{ row.proj }}</td>
+                                                    <td>{{ row.person }}</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                    
+                            </div>
+                        </div>
+                        
                     </div>
                 </div>
+                
             </div>
         </div>
   </div>
@@ -427,6 +441,9 @@ export default {
 <style>
 /* .container-fluid{
     background: white;
+} */
+/* .highcharts-title{
+    font-family: Arial, Helvetica, sans-serif
 } */
 .table{
     table-layout:fixed;
