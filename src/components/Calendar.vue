@@ -1,7 +1,7 @@
 <template>
 <div style = "width:100%;">
     <Navbar/>
-    <h1 id = "calendar-name">Calendar</h1>
+    <h1 id = "calendar-name"  class="mb-4">Calendar</h1>
     <div id = "calendar-contaner">
 <div id = "date-selector">
     <label>Select date:</label>
@@ -152,9 +152,9 @@ table{
     table-layout: fixed
 }
 #calendar-name{
-        width: max-content;
+    width: max-content;
     margin: auto;
-    margin-top:60px;
+    margin-top: 80px;
     box-shadow: 0px 5px 0px rgba(83, 90, 249, 0.81);
 }
 #cal-table-container{

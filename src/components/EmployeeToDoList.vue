@@ -3,7 +3,7 @@
     <Navbar/>
     
     <div class=  "container">
-        <h3 style="color: black">To-do list</h3>
+        <h1 style="color: black" class="mb-4">To-do list</h1>
         <!-- {{completed}}
         <br>
         {{tasks}}
@@ -12,9 +12,9 @@
         <table class = "table table-bordered">
             <thead>
                 <tr>
-                    <th scope = "col">Task Name</th>
-                    <th scope = "col">Task Due</th>
-                    <th scope = "col">Complete</th>
+                    <th style="background: #b6cefb;" scope = "col">Task Name</th>
+                    <th style="background: #b6cefb;" scope = "col">Task Due</th>
+                    <th style="background: #b6cefb;" scope = "col">Complete</th>
 
                 </tr>
                 
@@ -127,7 +127,7 @@ export default {
 .container{
     margin-top: 80px;
 }
-.container h3{
+.container h1{
         box-shadow: 0px 5px 0px rgba(83, 90, 249, 0.81);
         width:max-content;
         margin: 20px auto;

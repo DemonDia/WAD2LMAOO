@@ -2,7 +2,7 @@
 <div >
 <nav class="navbar navbar-expand-sm navbar-dark fixed-top" id = "barz">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#" ><img src="../assets/projeck.png" width="60" height="47" ></a>
+    <a class="navbar-brand" href="src\components\Home.vue" ><img src="../assets/projeck.png" width="60" height="47" ></a>
     <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -15,55 +15,55 @@
       </div>
       <div class="offcanvas-body">
         <ul class="navbar-nav justify-content-end flex-grow-1 pe-3" v-if="usertype === 'employer'">
-          <li class="nav-item">
+
+          <!-- employer -->
+          <li class="nav-item px-2">
             <router-link class = "nav-link" to="/home">Home</router-link>
           </li>
-          <li class="nav-item">
+          <li class="nav-item px-2">
             <router-link class = "nav-link" to="/projects">Projects</router-link>
             <!-- <a class="nav-link" href="#">Projects</a> -->
           </li>
-         <li class="nav-item">
+         <li class="nav-item px-2">
             <router-link class = "nav-link" to="/calendar">Calendar</router-link>
           </li>
-         <li class="nav-item">
+         <li class="nav-item px-2">
            <router-link class = "nav-link" to="/employees">Employees</router-link>
             <!-- <a class="nav-link" href="#">Employees</a> -->
           </li>
-         <li class="nav-item">
+         <li class="nav-item px-2">
            <router-link class = "nav-link" to="/review">Review</router-link>
             <!-- <a class="nav-link" href="#">Review</a> -->
           </li>
-         <li class="nav-item">
+         <li class="nav-item px-2">
             <a class="nav-link" href="#">Settings</a>
           </li>
-         <li class="nav-item">
+         <li class="nav-item px-2">
             <a class="nav-link" href="#" v-on:click = "logoutUser">Logout</a>
           </li>
         </ul>
 
+        <!-- employee -->
         <ul class="navbar-nav justify-content-end flex-grow-1 pe-3" v-else>
-          <li class="nav-item">
-            
-              <router-link class = "nav-link" to="/home">Home</router-link>
-          
+          <li class="nav-item px-3">
+            <router-link class = "nav-link" to="/home">Home</router-link>
           </li>
-          <li class="nav-item">
+          <li class="nav-item px-3">
             <router-link class = "nav-link" to="/emptasks">To-do</router-link>
             <!-- <a class="nav-link" href="#">To-do</a> -->
           </li>
-         <li class="nav-item">
+         <li class="nav-item px-3">
             <!-- <a class="nav-link" href="#">Calendar</a> -->
             <router-link class = "nav-link" to="/calendar">Calendar</router-link>
           </li>
-         <li class="nav-item">
+         <li class="nav-item px-3">
            <router-link class = "nav-link" to="/profile">Profile</router-link>
 
           </li>
-         <li class="nav-item">
+         <li class="nav-item px-3">
             <a class="nav-link" href="#" v-on:click = "logoutUser">Logout</a>
           </li>
         </ul>
-
         
       </div>
     </div>
@@ -71,6 +71,7 @@
 </nav>
 </div>
 </template>
+
 <script>
 import mixin from "../mixin"
 export default {
