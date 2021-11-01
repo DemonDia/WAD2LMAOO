@@ -52,7 +52,7 @@
     <h5>Click anywhere to cancel</h5>
   </div>
 </div> -->
-        <div id="bg">
+        <div id="bg" class="row m-4">
             <div class="container">
                 <div class="row justify-content-between">
                     <h1 class="col-xl-4">{{currentMonth()}} Summary</h1>
@@ -422,6 +422,7 @@ export default {
 }
 </script>
 <style>
+
 .page{
     min-height: 100vh;
     width:100%;
