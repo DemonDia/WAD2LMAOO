@@ -2,7 +2,7 @@
 <div >
 <nav class="navbar navbar-expand-sm navbar-dark fixed-top" id = "barz">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#" >ProJeck</a>
+    <a class="navbar-brand" href="#" ><img src="../assets/projeck.png" width="60" height="47" ></a>
     <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -93,7 +93,10 @@ export default {
 </script>
 <style scoped>
 #barz,#offcanvasNavbar{
-    background: linear-gradient(57.11deg, #86B0FF -4.9%, #6461FF 101.23%, rgba(133, 175, 255, 0.61) 101.24%, rgba(52, 97, 184, 0.64) 101.24%);    
+    /* background: linear-gradient(57.11deg, #86B0FF -4.9%, #6461FF 101.23%, rgba(133, 175, 255, 0.61) 101.24%, rgba(52, 97, 184, 0.64) 101.24%);     */
+    background: #6461FF;
+    padding-top: 0%;
+    padding-bottom: 0%;
 }
 .active-page{
     background: rgb(3, 3, 117);
