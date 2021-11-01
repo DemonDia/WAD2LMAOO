@@ -81,27 +81,28 @@
                     </div>
                     
                 </div>
+                
                 <div class="container-fluid p-0">
-                    <div class="row p-2 my-4 bg-white border border-dark">
+                    <div class="row p-2 my-4 border border-dark" id="bgcolor">
                         <div class="container-fluid">
                             <div class="row mx-0 p-0 justify-content-between">
-                                <div class="col-md-6" width="100%"><highcharts :options="taskStatus_employer" class="chart col border border-dark"></highcharts></div>
-                                <div class="col-md-6" width="100%"><highcharts :options="revenue" class="chart col border border-dark"></highcharts></div>
+                                <div class="col-md-6" width="100%"><b><highcharts :options="taskStatus_employer" class="chart col border border-dark"></highcharts></b></div>
+                                <div class="col-md-6" width="100%"><b><highcharts :options="revenue" class="chart col border border-dark"></highcharts></b></div>
                             </div>
                         </div>
                         <div class="container-fluid">
                             <div class="row mx-0 p-0 justify-content-between">
-                                <div class="col-md-6"><highcharts :options="taskDist_employer" class="chart border border-dark" width="100%"></highcharts></div>
+                                <div class="col-md-6"><b><highcharts :options="taskDist_employer" class="chart border border-dark" width="100%"></highcharts></b></div>
                                 <div class="col-md-6">
-                                    <div class="task_list border border-dark">
-                                        <h5 class="border-bottom border-dark py-2" >Project Task List</h5><input type="text" placeholder="Filter by task/status/person" class="w-100" v-model="filter" />
-                                        <table class="table table-hover">
+                                    <div class="task_list border border-dark bg-white ">
+                                        <h6 class="pt-2 " style="font-size: 18px"><b >Project Task List</b></h6><input type="text" placeholder="Filter by task/status/person" class="w-100 mx-2" v-model="filter" />
+                                        <table class="table table-hover mt-2 table-striped">
                                             <thead>
                                                 <tr>
-                                                    <th scope="col">Task Status <button class="button" @click="sortTable('status', direction)"><img src="../assets/sort.png"></button></th>
-                                                    <th scope="col">Task Name <button class="button" @click="sortTable('task', direction)"><img src="../assets/sort.png"></button></th>
-                                                    <th scope="col">Project Name <button class="button" @click="sortTable('proj', direction)"><img src="../assets/sort.png"></button></th>
-                                                    <th scope="col">Person In-charge <button class="button" @click="sortTable('person', direction)"><img src="../assets/sort.png"></button></th>
+                                                    <th style="background: #b6cefb" scope="col">Task Status <button class="button" @click="sortTable('status', direction)"><img src="../assets/sort.png"></button></th>
+                                                    <th style="background: #b6cefb" scope="col">Task Name <button class="button" @click="sortTable('task', direction)"><img src="../assets/sort.png"></button></th>
+                                                    <th style="background: #b6cefb" scope="col">Project Name <button class="button" @click="sortTable('proj', direction)"><img src="../assets/sort.png"></button></th>
+                                                    <th style="background: #b6cefb" scope="col">Person In-charge <button class="button" @click="sortTable('person', direction)"><img src="../assets/sort.png"></button></th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -441,10 +442,15 @@ export default {
 <style>
 /* .container-fluid{
     background: white;
+    rgb(255, 255, 193);
 } */
-/* .highcharts-title{
+#bgcolor{
+    background: rgb(255, 220, 156);
+}
+.highcharts-title{
     font-family: Arial, Helvetica, sans-serif
-} */
+}
+
 .table{
     table-layout:fixed;
     width:100%;
