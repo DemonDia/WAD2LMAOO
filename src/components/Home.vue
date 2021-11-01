@@ -57,9 +57,11 @@
 </div> -->
         <div id="bg" class="row m-4">
             <div class="container-fluid">
-                <div class="row justify-content-between">
-                    <h1 class="col-xl-4">{{currentMonth()}} Summary</h1>
-                    <div class="row col-xl-8 justify-content-between">
+                <div class="row">
+                    <div>
+                        <h1 class="heading"> {{currentMonth()}} Summary</h1>
+                    </div>
+                    <div class="row justify-content-between px-5">
                         <div class="card task-info g-2 mx-3 col-4 col-xl-4 col-md-4">
                             <div class="card-body">
                                 <h5 class="card-title">Total No. of Task(s)</h5>
@@ -444,6 +446,12 @@ export default {
     background: white;
     rgb(255, 255, 193);
 } */
+.heading{
+    box-shadow: 0px 5px 0px rgba(83, 90, 249, 0.81);
+    width:max-content;
+    margin: 57px auto;
+}
+
 #bgcolor{
     background: rgb(255, 220, 156);
 }
@@ -494,12 +502,12 @@ color: white;
 /* employee homepage aka dashboard */
 
     .container {
-        margin-top: 80px;
+        margin:auto;
     }
 
     h1 {
         text-align: left;
-        padding-top: 25px;
+        /* padding-top: 25px; */
     }
 
     .task-info {

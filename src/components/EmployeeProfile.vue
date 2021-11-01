@@ -207,9 +207,7 @@ export default {
     height: auto;
 }
 h1{
-    box-shadow: 0px 5px 0px rgba(83, 90, 249, 0.81);
-    width:max-content;
-    margin: 80px auto;
+    
 }
 
 .page{
