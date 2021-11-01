@@ -1,66 +1,63 @@
 <template>
-<div :style="{'background-image':'url(http://krisaru.com/wp-content/uploads/2011/11/background-website-light-blue-wallpapers-background2.jpg)'}"> 
+<div class="page-container" >
+    <!-- <div :style="{'background-image':'url(http://krisaru.com/wp-content/uploads/2011/11/background-website-light-blue-wallpapers-background2.jpg)'}">  -->
+        <div  class = "authenticate-container">
+            <div id = "register" v-if="status === 'register'">
+                <!-- <h3>Register</h3> -->
+            
+                <form id = "registerForm">
+                    <h3>Register</h3>
+                    <label>Email:</label>
+                    <input class = "form-control" type = "email" placeholder="Email" v-model="email"/>
 
-<div  class = "authenticate-container">
-    <div id = "register" v-if="status === 'register'">
-        <!-- <h3>Register</h3> -->
-    
-        <form id = "registerForm">
-            <h3>Register</h3>
-            <label>Email:</label>
-            <input class = "form-control" type = "email" placeholder="Email" v-model="email"/>
+                    <label>Company:</label>
+                    <input class = "form-control" type = "text" placeholder="Company name" v-model="compName"/>
 
-            <label>Company:</label>
-            <input class = "form-control" type = "text" placeholder="Company name" v-model="compName"/>
+                    <label>Password:</label>
+                    <input class = "form-control" min = "8" type = "password" placeholder="Password" v-model="pass"/>
 
-            <label>Password:</label>
-            <input class = "form-control" min = "8" type = "password" placeholder="Password" v-model="pass"/>
+                    <label>Confirm Password:</label>
+                    <input class = "form-control" type = "password" placeholder="Re-enter password" v-model="cfmPass"/>
+                    <div class="alert alert-danger" role="alert" v-if="isError">
+                        {{msgOutput}}
+                    </div>
+                    <div class="alert alert-success" role="alert" v-if="isSuccess">
+                        Success!
+                    </div>
+                    <button class = "btn" @click = register>Sign up</button>
+                </form>
+                <div id ="registerActionContainer">
+                Already have an account? Click  <a style = "color:blue" href = "#" @click = changePage>here</a> to login.
+                </div>
+            </div>
+            <div id = "login" v-else >
+                <!-- <h3>Register</h3> -->
+            
+                <form id = "loginForm">
+                    <h3>Login</h3>
+                    <label>Email:</label>
+                    <input class = "form-control" type = "email" placeholder="Email" v-model="email"/>
+                    <label>Password:</label>
+                    <input class = "form-control" type = "password" placeholder="Password" v-model="pass"/>
+                    <div class="alert alert-danger" role="alert" v-if="isError">
+                    {{msgOutput}}
+                    </div>
+                    <div class="alert alert-success" role="alert" v-if="isSuccess">
+                    Success!
+                    </div>
+                    <button class = "btn" @click = login>Login</button>
+                </form>
+                <div id ="loginActionContainer">
+                    Don't have an account? Click  <a style = "color:blue" href = "#" @click = changePage>here</a> to join us today!
+                </div>
+                
+            </div>
 
-
-            <label>Confirm Password:</label>
-            <input class = "form-control" type = "password" placeholder="Re-enter password"
-            v-model="cfmPass"/>
-            <div class="alert alert-danger" role="alert" v-if="isError">
-  {{msgOutput}}
-</div>
-<div class="alert alert-success" role="alert" v-if="isSuccess">
-  Success!
-</div>
-            <button class = "btn" @click = register>Sign up</button>
-        </form>
-        <div id ="registerActionContainer">
-        Already have an account? Click  <a style = "color:blue" href = "#" @click = changePage>here</a> to login.
         </div>
-    </div>
-    <div id = "login" v-else >
-        <!-- <h3>Register</h3> -->
-    
-        <form id = "loginForm">
-            <h3>Login</h3>
-            <label>Email:</label>
-            <input class = "form-control" type = "email" placeholder="Email" v-model="email"/>
-
-
-            <label>Password:</label>
-            <input class = "form-control" type = "password" placeholder="Password" v-model="pass"/>
-<div class="alert alert-danger" role="alert" v-if="isError">
-  {{msgOutput}}
+    <!-- </div> -->
 </div>
-<div class="alert alert-success" role="alert" v-if="isSuccess">
-  Success!
-</div>
-            <button class = "btn" @click = login>Login</button>
-        </form>
-        <div id ="loginActionContainer">
-            Don't have an account? Click  <a style = "color:blue" href = "#" @click = changePage>here</a> to join us today!
-        </div>
-        
-    </div>
-
-
-</div>
-  </div>
 </template>
+
 <script>
 import mixin from "../mixin"
 export default {
@@ -201,7 +198,11 @@ export default {
 </script>
 <style scoped>
 /* universal */
-
+.page-container{
+    display: flex;
+    align-items: center;
+    margin: auto;
+}
 .alert{
     margin-top:10px;
 }
@@ -211,7 +212,7 @@ export default {
     width:60vh;
     /* height:60vh; */
     /* align-self: center; */
-    margin: auto;
+    /* margin: auto; */
     /* justify-self: center; */
     color:white;
 
