@@ -93,8 +93,8 @@ export default {
 </script>
 <style scoped>
 #barz,#offcanvasNavbar{
-    /* background: linear-gradient(57.11deg, #86B0FF -4.9%, #6461FF 101.23%, rgba(133, 175, 255, 0.61) 101.24%, rgba(52, 97, 184, 0.64) 101.24%);     */
-    background: #6461FF;
+    background: linear-gradient(57.11deg, #86B0FF -4.9%, #5b59fd 101.23%, rgba(133, 175, 255, 0.61) 101.24%, rgba(52, 97, 184, 0.64) 101.24%);    
+    /* background: #6461FF; */
     padding-top: 0%;
     padding-bottom: 0%;
 }

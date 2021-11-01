@@ -1,10 +1,13 @@
 <template>
 <div>
 <div class = "page" v-if = "usertype !== 'na'">
-<Navbar/>
+    <div class="container">
+        <Navbar/>
+    </div>
+
 <!-- <div class = "pageContent"> -->
     <!-- {{usertype}} -->
-    <div>
+    <div class="container-fluid" style="background: white">
     <!-- <div v-if="usertype ==='employer'" class = "employer-projects"> -->
         <!-- <EmployerProject :projectName ="'Proj1'" :projectAssignees = "'Ruby Kurosawa'" :projectAssigned = "'14/7/2021'"
         :projectDue ="'14/11/2021'" :projectStatus = "'incomplete'"  :projectReward = "'500'"/>
@@ -53,7 +56,7 @@
   </div>
 </div> -->
         <div id="bg" class="row m-4">
-            <div class="container">
+            <div class="container-fluid">
                 <div class="row justify-content-between">
                     <h1 class="col-xl-4">{{currentMonth()}} Summary</h1>
                     <div class="card task-info col-2">
@@ -422,7 +425,16 @@ export default {
 }
 </script>
 <style>
-
+/* .container-fluid{
+    background: white;
+} */
+.table{
+    table-layout:fixed;
+    width:100%;
+}
+.task_list{
+    overflow-y:scroll;
+}
 .page{
     min-height: 100vh;
     width:100%;
