@@ -1,4 +1,6 @@
 <template>
+<div :style="{'background-image':'url(http://krisaru.com/wp-content/uploads/2011/11/background-website-light-blue-wallpapers-background2.jpg)'}"> 
+
 <div  class = "authenticate-container">
     <div id = "register" v-if="status === 'register'">
         <!-- <h3>Register</h3> -->
@@ -27,7 +29,7 @@
             <button class = "btn" @click = register>Sign up</button>
         </form>
         <div id ="registerActionContainer">
-        Already have an account? Click  <a style = "color:white" href = "#" @click = changePage>here</a> to login.
+        Already have an account? Click  <a style = "color:blue" href = "#" @click = changePage>here</a> to login.
         </div>
     </div>
     <div id = "login" v-else >
@@ -50,14 +52,14 @@
             <button class = "btn" @click = login>Login</button>
         </form>
         <div id ="loginActionContainer">
-            Don't have an account? Click  <a style = "color:black" href = "#" @click = changePage>here</a> to join us today!
+            Don't have an account? Click  <a style = "color:blue" href = "#" @click = changePage>here</a> to join us today!
         </div>
         
     </div>
 
 
 </div>
-
+  </div>
 </template>
 <script>
 import mixin from "../mixin"
@@ -199,6 +201,7 @@ export default {
 </script>
 <style scoped>
 /* universal */
+
 .alert{
     margin-top:10px;
 }
@@ -211,7 +214,6 @@ export default {
     margin: auto;
     /* justify-self: center; */
     color:white;
-
 
     box-shadow: 0px 4px 10px 10px rgba(0, 0, 0, 0.25);
 
@@ -233,7 +235,7 @@ label{
 form{
     display: grid;
     /* justify-content: center; */
-    padding:20px;
+    padding:30px;
     width:100%;
 }
 
