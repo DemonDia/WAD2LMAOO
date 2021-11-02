@@ -2,42 +2,15 @@
     <div  class = "employer-projects"> 
         <Navbar/>
         <div class = "contentz">
-        <router-link to ="/projects/project"
-        style = "text-decoration:none">
-<EmployerProject :projectName ="'Proj2'" :projectAssignees = "'Karin'" :projectAssigned = "'11/6/2021'"
-        :projectDue ="'12/10/2021'" :projectStatus = "'incomplete'"  :projectReward = "'460'"/>
-        </router-link>
-
-        <router-link to ="/projects/project"
-        style = "text-decoration:none">
-<EmployerProject :projectName ="'Proj2'" :projectAssignees = "'Karin'" :projectAssigned = "'11/6/2021'"
-        :projectDue ="'12/10/2021'" :projectStatus = "'incomplete'"  :projectReward = "'460'"/>
-        </router-link>
-
-        <router-link to ="/projects/project"
-        style = "text-decoration:none">
-<EmployerProject :projectName ="'Proj2'" :projectAssignees = "'Karin'" :projectAssigned = "'11/6/2021'"
-        :projectDue ="'12/10/2021'" :projectStatus = "'incomplete'"  :projectReward = "'460'"/>
-        </router-link>
+        
 
                 <router-link to ="/projects/project"
-        style = "text-decoration:none">
-<EmployerProject :projectName ="'Proj2'" :projectAssignees = "'Karin'" :projectAssigned = "'11/6/2021'"
-        :projectDue ="'12/10/2021'" :projectStatus = "'incomplete'"  :projectReward = "'460'"/>
-        </router-link>
+        style = "text-decoration:none" v-for = "project in projects"  :key= "project.id" > 
+        <!-- {{project}} -->
 
 
-                <router-link to ="/projects/project"
-        style = "text-decoration:none">
-<EmployerProject :projectName ="'Proj2'" :projectAssignees = "'Karin'" :projectAssigned = "'11/6/2021'"
-        :projectDue ="'12/10/2021'" :projectStatus = "'incomplete'"  :projectReward = "'460'"/>
-        </router-link>
-
-
-                <router-link to ="/projects/project"
-        style = "text-decoration:none">
-<EmployerProject :projectName ="'Proj2'" :projectAssignees = "'Karin'" :projectAssigned = "'11/6/2021'"
-        :projectDue ="'12/10/2021'" :projectStatus = "'incomplete'"  :projectReward = "'460'"/>
+<EmployerProject :projectName = project.project_name :projectAssigned = project.assigned_date
+        :projectDue = project.due_date :projectStatus = project.project_status  :projectReward = "'460'"/>
         </router-link>
         
 
@@ -59,18 +32,18 @@
             <th scope = "row">Project Name</th>
             <td><input type = "text" class = "form-control" /></td>
           </tr>
-          <tr>
+          <!-- <tr>
             <th scope = "row">Rewarded points:</th>
             <td><input type = "number" class = "form-control" /></td>
-          </tr>
+          </tr> -->
           <tr>
             <th scope = "row">Project due:</th>
             <td><input type = "date" class = "form-control" /></td>
           </tr>
-          <tr>
+          <!-- <tr>
             <th scope = "row">Add assignees:</th>
             <td><input type = "text" class = "form-control" /></td>
-          </tr>
+          </tr> -->
         </table>
         <button class = "btn new-project-btn" data-dismiss="modal">Assign project</button>
       </div>

@@ -12,10 +12,10 @@
             <th scope = "row" align="end">Project due:</th>
             <td>15/11/2020</td>
         </tr>
-        <tr>
+        <!-- <tr>
             <th scope = "row">Reward:</th>
             <td>500 </td>
-        </tr>
+        </tr> -->
         <tr>
             <th scope = "row">Status:</th>
             <td>Incomplete</td>

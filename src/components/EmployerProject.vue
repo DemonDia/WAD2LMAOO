@@ -13,10 +13,10 @@ build
 
       <div class = "project-details">
     <table class="table">
-        <tr>
+        <!-- <tr>
             <th scope = "row" align="end">Assigned to:</th>
             <td>{{projectAssignees}} </td>
-        </tr>
+        </tr> -->
         <tr>
             <th scope = "row">Assigned date:</th>
             <td>{{projectAssigned}} </td>
@@ -29,10 +29,10 @@ build
             <th scope = "row">Status:</th>
             <td>{{projectStatus}} </td>
         </tr>
-        <tr>
+        <!-- <tr>
             <th scope = "row">Reward:</th>
             <td>{{projectReward}} </td>
-        </tr>
+        </tr> -->
 
     </table>
     <button class = "btn project-btn">Project Details</button>
@@ -51,7 +51,7 @@ import mixin from "../mixin"
 export default {
     name:"EmployerProject",
     mixins:[mixin],
-    props:["projectName","projectAssignees","projectAssigned","projectDue","projectStatus",'projectReward'],
+    props:["projectName","projectAssigned","projectDue","projectStatus" ],
       beforeMount(){
        this.getUserType()
         if(this.usertype !== "employer"){
