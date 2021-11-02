@@ -65,19 +65,19 @@
                         <div class="card task-info g-2 mx-3 col-4 col-xl-4 col-md-4">
                             <div class="card-body">
                                 <h5 class="card-title">Total No. of Task(s)</h5>
-                                <h4 class="card-text pt-2">59</h4>
+                                <h4 class="card-text pt-2">{{ totalTasks }} </h4>
                             </div>
                         </div>   
                         <div class="card task-info g-2 mx-3 col-4 col-xl-4 col-md-4">
                             <div class="card-body">
                                 <h5 class="card-title">No. of Completed Task(s)</h5>
-                                <h4 class="card-text pt-2">25</h4>
+                                <h4 class="card-text pt-2">{{completedTasks}} </h4>
                             </div>
                         </div>  
                         <div class="card task-info g-2 mx-3 col-4 col-xl-4 col-md-4">
                             <div class="card-body">
                                 <h5 class="card-title">No. of Incomplete Task(s)</h5>
-                                <h4 class="card-text pt-2">32</h4>
+                                <h4 class="card-text pt-2">{{incompleteTasks}}  </h4>
                             </div>
                         </div>  
                     </div>
@@ -128,64 +128,7 @@
             </div>
         </div>
   </div>
-  <!-- <div v-else>
-        <div id="bg">
-            <div class="container">
-                <div class="row justify-content-between">
-                    <h1 class="col-xl-4">{{currentMonth()}} Summary</h1>
-                    <div class="card task-info col-2">
-                        <div class="card-body">
-                            <h5 class="card-title">Total No. of Task(s)</h5>
-                            <h4 class="card-text pt-2">10</h4>
-                        </div>
-                    </div>   
-                    <div class="card task-info col-2">
-                        <div class="card-body">
-                            <h5 class="card-title">No. of Completed Task(s)</h5>
-                            <h4 class="card-text pt-2">2</h4>
-                        </div>
-                    </div>  
-                    <div class="card task-info col-2">
-                        <div class="card-body">
-                            <h5 class="card-title">No. of Incomplete Task(s)</h5>
-                            <h4 class="card-text pt-2">8</h4>
-                        </div>
-                    </div>  
-                </div>
-                <div class="row p-2 my-4 bg-white border border-dark">
-                    <div class="row mx-0 p-0 justify-content-between">
-                        <highcharts :options="taskStatus" class="chart col border border-dark"></highcharts>
-                        <highcharts :options="rewardHist" class="chart col border border-dark"></highcharts>
-                    </div>
-                    <div class="row mx-0 p-0 justify-content-between">
-                        <highcharts :options="taskDist" class="chart col-5 border border-dark"></highcharts>
-                        <div class="task_list col border border-dark">
-                            <h5 class="border-bottom border-dark py-3">Project Task List</h5>
-                            <table class="table table-hover">
-                                <thead>
-                                    <tr>
-                                        <th scope="col">Task Status</th>
-                                        <th scope="col">Task Name</th>
-                                        <th scope="col">Project Name</th>
-                                        <th scope="col">Deadline</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr v-for="(row, index) in filteredRows" :key="`task-${index}`">
-                                        <td>{{ row.status }}</td>
-                                        <td>{{ row.task }}</td>
-                                        <td>{{ row.proj }}</td>
-                                        <td>{{ row.deadline }}</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
 
-  </div> -->
 </div>
 <div v-else>
 <h3>You are not logged in.</h3>
@@ -436,8 +379,48 @@ export default {
 
                 return task.includes(searchTerm) || status.includes(searchTerm) || person.includes(searchTerm);
             });
-        }
+        },
+          totalTasks(){
+                if(this.loggedUser.user_type === "employee"){
+                    console.log(typeof this.tasks.filter(task => task.user_id === this.loggedUser.user_id))
+                        console.log(this.tasks.filter(task => task.user_id === this.loggedUser.user_id))
+
+                    return this.tasks.filter(task => task.user_id === this.loggedUser.user_id).length
+                }
+                else{
+                    return this.tasks.length
+                }
+            },
+
+          incompleteTasks(){
+                if(this.loggedUser.user_type === "employee"){
+ 
+
+                    return this.tasks.filter(task =>( task.user_id === this.loggedUser.user_id&&
+                        (task.task_status !== "Completed") )).length
+                }
+                else{
+                    return this.tasks.filter(task =>
+                        (task.task_status !== "Completed")).length
+                }
+            },
+
+          completedTasks(){
+                if(this.loggedUser.user_type === "employee"){
+ 
+
+                    return this.tasks.filter(task =>( task.user_id === this.loggedUser.user_id&&
+                        (task.task_status === "Completed") )).length
+                }
+                else{
+                    return this.tasks.filter(task =>
+                        (task.task_status === "Completed")).length
+                }
+            },
+
   }
+  ,
+
 
 }
 </script>

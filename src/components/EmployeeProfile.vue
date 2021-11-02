@@ -102,20 +102,25 @@
                         <div class="height-100 container mt-3">
                             <div class="card p-3">
                                 <div class="d-flex justify-content-between align-items-center">
-                                    <div class="ratings"> <i class="fa fa-star rating-color"></i> <i class="fa fa-star rating-color"></i> <i class="fa fa-star rating-color"></i> <i class="fa fa-star rating-color"></i> <i class="fa fa-star"></i> </div>
-                                    <h5 class="review-count">12 Reviews</h5>
+                                    <div class="ratings"> 
+                                        <!-- {{averageReviews}} -->
+                                        <i class="fa fa-star rating-color" v-for="index in averageReviews" :key="index"  ></i> 
+                                        <!-- <i class="fa fa-star rating-color"></i> 
+                                        <i class="fa fa-star rating-color"></i> 
+                                        <i class="fa fa-star rating-color"></i>  -->
+                                        <i class="fa fa-star" v-for="index in 5-averageReviews" :key="index" ></i> </div>
+                                    <h5 class="review-count"> {{reviews.length}} Reviews</h5>
                                 </div>
                                 <div class="mt-5 card ">
-                                    <div class="card-body d-flex flex-column align-items-center">
+                                    <div class="card-body d-flex flex-column align-items-center"
+                                    v-for = "review in reviews" v-bind:key= "review.id">
                                         <h5 class="review-stat card-title">Anon</h5>
+                                        <!-- {{review}} -->
                                         <div class="small-ratings card-subtitle"> 
-                                            <i class="fa fa-star rating-color"></i> 
-                                            <i class="fa fa-star rating-color"></i> 
-                                            <i class="fa fa-star rating-color"></i> 
-                                            <i class="fa fa-star rating-color"></i> 
-                                            <i class="fa fa-star rating-color"></i> 
+                                            <i v-for="index in review.ratings" :key="index" class="fa fa-star rating-color"></i> 
+                                            <i v-for="index in 5-review.ratings" :key="index"  class="fa fa-star"></i> 
                                         </div>
-                                        <p class="card-text">John is helpful and completes his tasks on time.</p>
+                                        <p class="card-text">{{review.comments}} </p>
                                     </div>
                                 </div>
                             </div>
@@ -158,6 +163,8 @@ export default {
         if(this.usertype != "employee"){
             this.$router.push("/")
         }
+        console.log(this.loggedUser.name)
+        console.log(this.tasks)
   },
     data() {
         return {
@@ -165,12 +172,13 @@ export default {
             sort: '',
             direction: 'asc',
             columns: ['task','proj','status','person'],
+
             rows: [
                 {task:'Setup Database', proj: 'Project 2', status: 'In Progress', person: 'John', deadline: '20/11/2021'},
                 {task:'Draft Proposal', proj: 'Project 1', status: 'New', person: 'John', deadline: '2/11/2021'},
                 {task:'UI Testing', proj: 'Project 1',status: 'Completed', person: 'John', deadline: '10/11/2021'}
             ],
-            details: {name:"John", password:"IT123john", email:"john_IT.gmail.com", department:"IT", position:"Team Lead", current_points:"10", employment_type: "Full Time"}
+
         }
     },
     computed: {
@@ -183,6 +191,30 @@ export default {
 
                 return task.includes(searchTerm) || status.includes(searchTerm) || person.includes(searchTerm);
             });
+        },
+        details(){
+            var department = this.departments.filter(department => department.department_id === this.loggedUser.department_id)[0].department_name
+            return{
+                name:this.loggedUser.name,
+                password:this.loggedUser.password,email:this.loggedUser.email
+                ,department:department,position:this.loggedUser.position
+                ,current_points:this.loggedUser.current_pts,employment_type:"Full Time"
+            }
+        },
+        reviews(){
+            return this.reviews.filter(review => review.user_id === this.loggedUser.user_id)
+        },
+        averageReviews(){
+            var total = 0
+            var listedRatings = this.reviews.filter(review => review.user_id === this.loggedUser.user_id)
+           console.log(listedRatings)
+           for(let i = 0; i < listedRatings.length; i++){
+               total+= listedRatings[i].ratings
+           }
+        //    for(rating in ratings){
+        //         total+=ratings[rating].rating
+        //     }
+            return Math.round(total/listedRatings.length)
         }
     }
 }
