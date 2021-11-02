@@ -31,7 +31,8 @@
         </div>
         <div class = "employee-container-fluid">
             <div class="row w-100 m-0">
-                <div class="col-xl-3 col-lg-4 col-md-6 w-auto m-0">
+                <!-- <div class="col-xl-3 col-lg-4 col-md-6 w-auto m-0"> -->
+                <div class="col-xl-3 col-lg-3 col-md-6">
                     <div class = "card employee-box">
                         <h3>Thomas Tan</h3>
                         <table class = "table employee-table">
@@ -58,7 +59,8 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-xl-3 col-lg-4 col-md-6 w-auto m-0">
+                <!-- <div class="col-xl-3 col-lg-4 col-md-6 w-auto m-0"> -->
+                <div class="col-xl-3 col-lg-3 col-md-6">
                     <div class = "card employee-box">
                         <h3>Thomas Tan</h3>
                         <table class = "table employee-table">
@@ -86,7 +88,8 @@
                     </div>
                 </div>
 
-                <div class="col-xl-3 col-lg-4 col-md-6 w-auto m-0">
+                <!-- <div class="col-xl-3 col-lg-4 col-md-6 w-auto m-0"> -->
+                <div class="col-xl-3 col-lg-3 col-md-6">
                     <div class = "card employee-box">
                         <h3>Thomas Tan</h3>
                         <table class = "table employee-table">
@@ -114,7 +117,8 @@
                     </div>
                 </div>
 
-                <div class="col-xl-3 col-lg-4 col-md-6 w-auto m-0">
+                <!-- <div class="col-xl-3 col-lg-4 col-md-6 w-auto m-0"> -->
+                <div class="col-xl-3 col-lg-3 col-md-6 ">
                     <div class = "card employee-box">
                         <h3>Thomas Tan</h3>
                         <table class = "table employee-table">
