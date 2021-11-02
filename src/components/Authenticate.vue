@@ -34,18 +34,20 @@
                 <!-- <h3>Register</h3> -->
             
                 <form id = "loginForm">
-                    <h3>Login</h3>
-                    <label>Email:</label>
+                    <img src="../assets/projeck.png" id="form-logo">
+                    <h2>Welcome to Projeck</h2>
+                    <p id="sub-header"> Login with your Projeck account</p>
+                    <label class="my-2">Email:</label>
                     <input class = "form-control" type = "email" placeholder="Email" v-model="email"/>
-                    <label>Password:</label>
-                    <input class = "form-control" type = "password" placeholder="Password" v-model="pass"/>
+                    <label class="my-2">Password:</label>
+                    <input class = "form-control mb-3" type = "password" placeholder="Password" v-model="pass"/>
                     <div class="alert alert-danger" role="alert" v-if="isError">
                     {{msgOutput}}
                     </div>
                     <div class="alert alert-success" role="alert" v-if="isSuccess">
                     Success!
                     </div>
-                    <button class = "btn" @click = login>Login</button>
+                    <button class = "btn" @click = login><span>Login</span></button>
                 </form>
                 <div id ="loginActionContainer">
                     Don't have an account? Click  <a style = "color:blue" href = "#" @click = changePage>here</a> to join us today!
@@ -219,16 +221,53 @@ export default {
     box-shadow: 0px 4px 10px 10px rgba(0, 0, 0, 0.25);
 
 }
-
+#form-logo{
+    /* width: 50px; */
+    max-width: 100%;
+    height: auto;
+    margin: auto;
+    padding-bottom: 20px;
+}
+#sub-header{
+    font-size: 13px;
+    color: rgb(240, 240, 240);
+}
 .btn{
-    background: #504DFF;
-    color: white;
+    /* background: #504DFF; */
+    background: rgb(253, 198, 97);;
+    color: black;
     margin-top:10px;
-
+    border: 1px solid black;
     width:180px;
     justify-self: center;
+    box-shadow: 0 8px 8px 0 rgba(0,0,0,0.2), 0 6px 10px 0 rgba(0,0,0,0.19);
+}
+/* btn */
+.btn span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
 }
 
+.btn span:after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+.btn:hover span {
+  padding-right: 25px;
+}
+
+.btn:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+/* end btn */
 label{
     text-align: start;
 }
@@ -265,9 +304,10 @@ form{
 
 
 #loginActionContainer{
-    background: white;
+    background: rgb(255, 236, 185);
     color:black;
-    padding:10px;
+    padding:7px;
+    font-size: 13px;
 }
 
 </style>
