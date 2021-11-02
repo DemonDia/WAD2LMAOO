@@ -2,7 +2,7 @@
     <div class = "page">
         <Navbar/>
         <div class = "add-employee-container">
-            <h2>Add Employee</h2>
+            <h1 id = "add-emp-header"  class="mb-4">Add Employee</h1>
             <div class = "card onboarding-form">
                 <table class = "form-table">
                     <tr>
@@ -94,6 +94,12 @@ export default {
 }
 </script>
 <style scoped>
+#add-emp-header{
+    width: max-content;
+    margin: auto;
+    /* margin-top: 80px; */
+    box-shadow: 0px 5px 0px rgba(83, 90, 249, 0.81);
+}
 .page{
     min-height: 100vh;
     width:100%;
@@ -158,7 +164,7 @@ textarea{
 }
 
 
-.view-btn{
+/* .view-btn{
     background: #6360FF;
 border-radius: 5px;
 width:200px;
@@ -173,6 +179,28 @@ padding:10px;
 color: white;
 background:  rgba(147, 7, 7, 1);
 margin: 5px;
+
+} */
+.view-btn{
+    /* background: #6360FF; */
+    background: rgb(253, 198, 97);
+    border-radius: 5px;
+    width:200px;
+    padding:10px;
+    color: black;
+    margin: 5px;
+    border: 1px solid black;
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.2), 0 2px 2px 0 rgba(0,0,0,0.19);
+}
+.fire-btn{
+    border-radius: 5px;
+    width:200px;
+    padding:10px;
+    color: black;
+    background:  rgb(255, 153, 153);
+    margin: 5px;
+    border: 1px solid black;
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.2), 0 2px 2px 0 rgba(0,0,0,0.19);
 
 }
 </style>
