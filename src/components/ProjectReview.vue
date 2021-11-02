@@ -4,9 +4,9 @@
         <div class = "projectsContainer">
             <ProjectToReview/>
             <ProjectToReview/>
+            <!-- <ProjectToReview/>
             <ProjectToReview/>
-            <ProjectToReview/>
-            <ProjectToReview/>
+            <ProjectToReview/> -->
 
         </div>
     </div>

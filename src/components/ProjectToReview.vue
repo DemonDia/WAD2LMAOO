@@ -14,10 +14,9 @@
                         <router-link class = "nav-link" to="/review/member">
             <ProjectMember/>
             </router-link>
-                        <router-link class = "nav-link" to="/review/member">
+                        <router-link class = "nav-link" to="/review/member"> 
             <ProjectMember/>
             </router-link>
-
                         <router-link class = "nav-link" to="/review/member">
             <ProjectMember/>
             </router-link>
@@ -29,6 +28,7 @@
     </div>
 </template>
 <script>
+
 import ProjectMember from "./ProjectMember.vue";
 export default {
     name:"ProjectToReview",

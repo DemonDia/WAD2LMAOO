@@ -28,11 +28,6 @@
     <button class = "btn delete-btn" data-toggle="modal" data-target="#deleteModal">Delete</button>
       </div>
 
-
-
-
-
-
       </div>
 
   </div>

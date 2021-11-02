@@ -5,7 +5,7 @@
             <h2>[Project A] Reviewing for</h2>
             <div class = "card member-card">
                 <h3 class = "member-name">Person name</h3>
-                <div class = "person-image"></div>
+                <div class = "person-image"><img src = "../assets/john.png"></div> 
             </div>            
             <!-- <div class = "review-form">
                 <div class = "form-row">
@@ -86,6 +86,7 @@ export default {
 
     methods:{
         submit(){
+            alert("You have submitted review for" + this.accountList.name); // need get the name of user
             this.$router.push("/review")
         }
     }
@@ -118,6 +119,7 @@ h2{
     width:100%;
     height:300px;
     background: #EFEFEF;
+
 }
 .member-name{
     padding:10px;
