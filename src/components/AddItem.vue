@@ -1,5 +1,5 @@
 <template>
-    <div class="card addCard" style="width: 18rem;" data-toggle="modal" data-target="#exampleModal">
+    <div class="card addCard w-auto" style="width: 18rem;" data-toggle="modal" data-target="#exampleModal">
 
   <div class = "card-body">
       <!-- <AccountCheckIcon/> -->
@@ -39,6 +39,7 @@ export default {
     margin:10px;
     border: none;
     border: 5px rgba(113, 152, 255, 1) solid;
+    height: 360px;
 }
 
 .circle{
@@ -73,4 +74,5 @@ display: grid;
     align-items: center;
     justify-content: center;
 }
+
 </style>

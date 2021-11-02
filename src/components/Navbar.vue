@@ -102,5 +102,8 @@ export default {
 .active-page{
     background: rgb(3, 3, 117);
 }
-
+.navbar-nav{
+    display: flex;
+    flex-wrap: wrap;
+}
 </style>

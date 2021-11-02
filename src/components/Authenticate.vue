@@ -217,7 +217,6 @@ export default {
     /* margin: auto; */
     /* justify-self: center; */
     color:white;
-
     box-shadow: 0px 4px 10px 10px rgba(0, 0, 0, 0.25);
 
 }
@@ -234,7 +233,7 @@ export default {
 }
 .btn{
     /* background: #504DFF; */
-    background: rgb(253, 198, 97);;
+    background: rgb(253, 198, 97);
     color: black;
     margin-top:10px;
     border: 1px solid black;
