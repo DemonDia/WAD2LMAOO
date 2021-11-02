@@ -107,4 +107,5 @@ export default {
     display: flex;
     flex-wrap: wrap;
 }
+
 </style>
