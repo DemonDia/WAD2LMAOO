@@ -2,7 +2,8 @@
 <div >
 <nav class="navbar navbar-expand-sm navbar-dark fixed-top" id = "barz">
   <div class="container-fluid">
-    <a class="navbar-brand" href="src\components\Home.vue" ><img src="../assets/projeck.png" width="60" height="47" ></a>
+    <router-link class = "nav-link" to="/"><img src="../assets/projeck.png" width="60" height="47" ></router-link>
+    <!-- <a class="navbar-brand" href="src\components\Home.vue" ></a> -->
     <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
       <span class="navbar-toggler-icon"></span>
     </button>

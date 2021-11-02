@@ -42,11 +42,11 @@
                 <td class = "task-due-date">22/12/2021</td>
                 <td class = "status"><input type = "checkbox" value = "task4" v-model = "completed"/></td>
             </tr> -->
-            <tr v-for= "task in incompleteTasks" v-bind:key="task.id">
-                <td class = "task-name">{{task.name}} </td>
-                <td class = "task-due-date">{{task.due}}</td>
+            <tr v-for= "task in incompleteTasks" v-bind:key="task.task_id">
+                <td class = "task-name">{{task.task_name}} </td>
+                <td class = "task-due-date">{{task.due_date}}</td>
                 <!-- {{task.id}} -->
-                <td class = "status"><input type = "checkbox" v-bind:value = task.id  v-model = "completed"/></td>
+                <td class = "status"><input type = "checkbox" v-bind:value = task.task_id  v-model = "completed"/></td>
             </tr>
 
 
@@ -74,15 +74,16 @@ export default {
         if(this.usertype != "employee"){
             this.$router.push("/")
         }
+        console.log(this.loggedUser)
   },
  data(){
      return{
          completed:[],
-         tasks:[
-             {"id":1,"name":"IRM Proposal", "due":"22/12/2021","status":"incomplete"},
-             {"id":2,"name":"IRM Proposal", "due":"22/12/2021","status":"incomplete"},
-             {"id":3,"name":"IRM Proposal", "due":"22/12/2021","status":"incomplete"}
-         ]
+        //  tasks:[
+        //      {"id":1,"name":"IRM Proposal", "due":"22/12/2021","status":"incomplete"},
+        //      {"id":2,"name":"IRM Proposal", "due":"22/12/2021","status":"incomplete"},
+        //      {"id":3,"name":"IRM Proposal", "due":"22/12/2021","status":"incomplete"}
+        //  ]
      }
  },
  methods:{
@@ -97,16 +98,20 @@ export default {
                  }
              }
          )
-         this.completed = [];
+        //  this.completed = [];
 //          for (var i = this.completed.length -1; i >= 0; i--)
 //    completed.splice(completed[i],1);
      }
  },
  computed:{
      incompleteTasks(){
-         let curr_task = this.tasks.filter(task => task.status ==="incomplete")
-         return curr_task
-     }
+         return this.tasks.filter(task => (task.user_id === this.loggedUser.user_id)&&
+         (task => task.status ==="In Progress"))
+     },
+    //  incompleteTasks(){
+    //      let curr_task = this.tasks.filter(task => task.status ==="incomplete")
+    //      return curr_task
+    //  }
      
  }
 }
