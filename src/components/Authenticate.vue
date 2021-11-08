@@ -35,8 +35,8 @@
             
                 <form id = "loginForm">
                     <img src="../assets/projeck.png" id="form-logo">
-                    <h2>Welcome to Projeck</h2>
-                    <p id="sub-header"> Login with your Projeck account</p>
+                    <h3>Welcome to ProJeck</h3>
+                    <p id="sub-header"> Login with your ProJeck account</p>
                     <label class="my-2">Email:</label>
                     <input class = "form-control" type = "email" placeholder="Email" v-model="email"/>
                     <label class="my-2">Password:</label>
