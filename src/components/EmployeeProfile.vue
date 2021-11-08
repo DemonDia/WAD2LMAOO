@@ -27,10 +27,11 @@
                     <div class="tab-pane fade show active" id="about" role="tabpanel" aria-labelledby="about-tab">
                         <div class="container-fluid justify-content-center">
                             <div class="row">
-                                <div class="col-sm-3 mt-4 mb-4 imagepos">
-                                    <img src="../assets/john.png" id="image" class="img-fluid rounded float-start border-2 border-dark" alt="...">
+                                <div class="col-sm-3 mt-4 mb-4 imagepos mx-auto">
+                                    <img src="../assets/john.png" id="image" class="img-fluid rounded float-start border-2 border-dark rounded-circle" alt="...">
                                 </div>
-                                <div class="card col-sm-9 mx-2 mt-4">
+                                <div id = "space"></div>
+                                <div class="card col-sm-9 mx-2 mt-4 mx-auto">
                                     <ul class="list-group list-group-flush ">
                                         <li class="list-group-item">
                                             <div class="my-1 row mx-3">
@@ -313,6 +314,10 @@ label {
     font-size: 18px;
     margin-bottom: 2px;
     text-align: left;
+}
+
+#space{
+    height:30px;
 }
 
 </style>
