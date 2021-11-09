@@ -7,18 +7,18 @@
         <!-- {{projects}} -->
         <div class="col-xl-3 col-lg-4 col-md-6" v-for = "project in projects" :key = "project.project_id">
           <div
-            style = "text-decoration:none">
+            style = "text-decoration:none;">
             <EmployerProject :projectName ="project.project_name" :projectAssigned = "project.assigned_date"
             :projectDue = "project.due_date"  :projectStatus = "project.project_status" :projectId = "project.project_id"/>
           </div>
         </div>
           
-          
+        
         <div class="col-xl-3 col-lg-4 col-md-6">
           <AddItem :itemType="'project'"/>
         </div> 
-       
-      </div>
+       </div>
+      
     
     </div>
 
@@ -168,5 +168,4 @@ export default {
   padding-top:60px;
   padding-bottom:60px;
 }
-
 </style>
