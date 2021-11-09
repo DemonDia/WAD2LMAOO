@@ -20,7 +20,7 @@
                         <a class="nav-link" id="reviews-tab" data-bs-toggle="tab" href="#reviews" role="tab" aria-controls="reviews" aria-selected="false">Reviews</a>
                     </li>
                     <li class="nav-item mx-3" role="presentation">
-                        <a class="nav-link" id="settings-tab" data-bs-toggle="tab" href="#settings" role="tab" aria-controls="settings" aria-selected="false">Settings</a>
+                        <!-- <a class="nav-link" id="settings-tab" data-bs-toggle="tab" href="#settings" role="tab" aria-controls="settings" aria-selected="false">Settings</a> -->
                     </li>
                 </ul>
                 <div class="tab-content" id="myTabContent">
