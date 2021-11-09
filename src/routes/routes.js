@@ -77,7 +77,7 @@ const routes = [
 	},
 
 	{
-		path:"/projects/project",
+		path:"/projects/project/:id",
 		name:"Project",
 		component:Project
 	},

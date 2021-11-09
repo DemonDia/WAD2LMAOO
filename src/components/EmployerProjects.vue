@@ -4,55 +4,15 @@
     <h1 id = "projects-header"  class="mb-4">Projects</h1>
     <div class = "contentz container-fluid">
       <div class= "row">
-
-        <div class="col-xl-3 col-lg-4 col-md-6">
-          <router-link to ="/projects/project"
+        <!-- {{projects}} -->
+        <div class="col-xl-3 col-lg-4 col-md-6" v-for = "project in projects" :key = "project.project_id">
+          <div
             style = "text-decoration:none">
-            <EmployerProject :projectName ="'Proj2'" :projectAssignees = "'Karin'" :projectAssigned = "'11/6/2021'"
-            :projectDue ="'12/10/2021'" :projectStatus = "'incomplete'"  :projectReward = "'460'"/>
-          </router-link>
-        </div>
-        
-        <div class="col-xl-3 col-lg-4 col-md-6">
-          <router-link to ="/projects/project"
-            style = "text-decoration:none">
-            <EmployerProject :projectName ="'Proj2'" :projectAssignees = "'Karin'" :projectAssigned = "'11/6/2021'"
-            :projectDue ="'12/10/2021'" :projectStatus = "'incomplete'"  :projectReward = "'460'"/>
-          </router-link>
+            <EmployerProject :projectName ="project.project_name" :projectAssigned = "project.assigned_date"
+            :projectDue = "project.due_date"  :projectStatus = "project.project_status" :projectId = "project.project_id"/>
+          </div>
         </div>
           
-        <div class="col-xl-3 col-lg-4 col-md-6">
-          <router-link to ="/projects/project"
-            style = "text-decoration:none">
-            <EmployerProject :projectName ="'Proj2'" :projectAssignees = "'Karin'" :projectAssigned = "'11/6/2021'"
-            :projectDue ="'12/10/2021'" :projectStatus = "'incomplete'"  :projectReward = "'460'"/>
-          </router-link>
-        </div>
-          
-        <div class="col-xl-3 col-lg-4 col-md-6">
-          <router-link to ="/projects/project"
-            style = "text-decoration:none">
-            <EmployerProject :projectName ="'Proj2'" :projectAssignees = "'Karin'" :projectAssigned = "'11/6/2021'"
-            :projectDue ="'12/10/2021'" :projectStatus = "'incomplete'"  :projectReward = "'460'"/>
-          </router-link>
-        </div>
-        
-        <div class="col-xl-3 col-lg-4 col-md-6">
-          <router-link to ="/projects/project"
-            style = "text-decoration:none">
-            <EmployerProject :projectName ="'Proj2'" :projectAssignees = "'Karin'" :projectAssigned = "'11/6/2021'"
-            :projectDue ="'12/10/2021'" :projectStatus = "'incomplete'"  :projectReward = "'460'"/>
-          </router-link>
-        </div>
-        
-
-        <div class="col-xl-3 col-lg-4 col-md-6">
-          <router-link to ="/projects/project"
-            style = "text-decoration:none">
-            <EmployerProject :projectName ="'Proj2'" :projectAssignees = "'Karin'" :projectAssigned = "'11/6/2021'"
-            :projectDue ="'12/10/2021'" :projectStatus = "'incomplete'"  :projectReward = "'460'"/>
-          </router-link>
-        </div>   
           
         <div class="col-xl-3 col-lg-4 col-md-6">
           <AddItem :itemType="'project'"/>
@@ -74,22 +34,29 @@
             <table class="table">
               <tr>
                 <th scope = "row">Project Name</th>
-                <td><input type = "text" class = "form-control" /></td>
+                <td><input type = "text" class = "form-control" v-model = "projectName"/></td>
+                <!-- {{projectName}} -->
               </tr>
-              <tr>
+              <!-- <tr>
                 <th scope = "row">Rewarded points:</th>
                 <td><input type = "number" class = "form-control" /></td>
-              </tr>
+              </tr> -->
               <tr>
                 <th scope = "row">Project due:</th>
-                <td><input type = "date" class = "form-control" /></td>
+                <td><input type = "date" class = "form-control" v-model = "projectDate" /></td>
               </tr>
               <tr>
+                <td>
+                  <!-- {{projectDate}} -->
+                </td>
+                </tr>
+              <!-- <tr>
                 <th scope = "row">Add assignees:</th>
                 <td><input type = "text" class = "form-control" /></td>
-              </tr>
+              </tr> -->
             </table>
-            <button class = "btn new-project-btn" data-dismiss="modal">Assign project</button>
+            <button class = "btn new-project-btn" data-dismiss="modal"
+            v-on:click = "addProject">Assign project</button>
           </div>
         
         </div>
@@ -106,6 +73,13 @@ import mixin from "../mixin"
 export default {
     name:"Projects",
     components: {EmployerProject,AddItem,Navbar},
+    data(){
+      return{
+        projectName:"",
+        projectDate:null      
+      }
+
+    },
     mixins:[mixin],
           beforeMount(){
        this.getUserType()
@@ -116,6 +90,39 @@ export default {
         //     this.$router.push("/authenticate")
         // }
   },
+  methods:{
+    addProject(){
+      var date = new Date() 
+      var refinedDate = date.toLocaleString()
+      console.log(date)
+      console.log(Date(this.projectDate))
+      if(this.projectName === ""){
+        alert("Project name cannot be empty!")
+      }
+      else if(this.projectDate === null){
+        alert("Project due cannot be empty!")
+      }
+      else if(Date(this.projectDate)< date){
+        alert("Project due cannot be before today's date!")
+      }
+      else{
+        
+        refinedDate = refinedDate.split(",").join(" ")
+        // var dueDate = date.toLocaleString()
+        this.projects.push(
+          {
+"project_id": 1,
+ "project_name": this.projectName, 
+ "project_status": "New", 
+ "assigned_date": refinedDate, 
+ "due_date": this.projectDate
+ , "completion_date": null
+
+          }
+        )
+      }
+    }
+  }
 }
 </script>
 <style scoped>

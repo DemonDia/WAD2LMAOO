@@ -3,6 +3,7 @@
 <div class="card projectCard w-auto border border-secondary" style="width: 18rem;">
     <div class="card-header project-title">
         {{projectName}}
+       
     </div>
     <div class = "card-body">
       <!-- <AccountCheckIcon/> -->
@@ -12,11 +13,12 @@ build
 </span>
   Edit</div> -->
         <div class = "project-details">
+             {{projectId}}
             <table class="table">
-                <tr>
+                <!-- <tr>
                     <th scope = "row" align="end">Assigned to:</th>
                     <td>{{projectAssignees}} </td>
-                </tr>
+                </tr> -->
                 <tr>
                     <th scope = "row">Assigned date:</th>
                     <td>{{projectAssigned}} </td>
@@ -29,13 +31,13 @@ build
                     <th scope = "row">Status:</th>
                     <td>{{projectStatus}} </td>
                 </tr>
-                <tr>
+                <!-- <tr>
                     <th scope = "row">Reward:</th>
                     <td>{{projectReward}} </td>
-                </tr>
+                </tr> -->
 
             </table>
-            <button class = "btn project-btn">Project Details</button>
+            <button class = "btn project-btn" v-on:click = "viewProject(projectId)">Project Details</button>
         </div>
     </div>
   </div>
@@ -48,13 +50,18 @@ import mixin from "../mixin"
 export default {
     name:"EmployerProject",
     mixins:[mixin],
-    props:["projectName","projectAssignees","projectAssigned","projectDue","projectStatus",'projectReward'],
+    props:["projectName","projectAssigned","projectDue","projectStatus","projectId"],
       beforeMount(){
        this.getUserType()
         if(this.usertype !== "employer"){
             this.$router.push("/")
         }
   },
+    methods:{
+    viewProject(id){
+      this.$router.push("/projects/project/"+id)
+    }
+  }
 }
 </script>
 <style>
