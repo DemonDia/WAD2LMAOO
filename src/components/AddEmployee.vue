@@ -2,68 +2,72 @@
     <div class = "page">
         <Navbar/>
         <div class = "add-employee-container">
-            <h2>Add Employee</h2>
-            <div class = "card onboarding-form">
+            <h1 id = "add-emp-header"  class="mb-4">Add Employee</h1>
+            
+            <div class = "card onboarding-form mb-5">
                 <table class = "form-table">
                     <tr>
                         <td id = "impt-info">
                             <table class ="input-table">
                                 <tr>
                                     <th>Name:</th>
-                                    <td><input type  ="text" placeholder = "Employee Name" class = "form-control"/></td>
-
+                                    <td><input type  ="text" placeholder = "Employee Name" class = "form-control" v-model="name"/></td>
                                 </tr>
                                 <tr>
                                     <th>DOB:</th>
-                                    <td><input type ="date" class = "form-control"></td>
-
+                                    <td ><input type ="date" class = "form-control" v-model="dob"></td>
                                 </tr>
 
                                 <tr>
                                     <th>Contact no:</th>
-                                    <td><input type ="number" maxlength="8" placeholder = "+65 XXXX XXXX"
-                                    class = "form-control"></td>
-
+                                    <td><input type ="number" maxlength="8" placeholder = "+65 XXXX XXXX" class = "form-control" v-model="phone_no"></td>
                                 </tr>
                                 <tr>
-                                    <th>Home Address:</th>
-                                    <td><input type  ="text" placeholder = "Address" class = "form-control"/></td>
-
-
+                                    <!-- <th>Home Address:</th>
+                                    <td><input type  ="text" placeholder = "Address" class = "form-control"/></td> -->
+                                    <th>Department</th>
+                                    <td>
+                                        <select v-model="selected" >
+                                            <option disabled value="">Please select a department</option>
+                                            <option v-for="dept in departments" v-bind:key="dept.department_id">{{dept.department_name}}</option>
+                                        </select>
+                                    </td>
                                 </tr>
 
                                 <tr>
-                                    <th>Username:</th>
-                                    <td><input type  ="text" placeholder = "Username" class = "form-control"/></td>
-
+                                    <th>Email:</th>
+                                    <td><input type  ="text" placeholder = "Email" class = "form-control" v-model="email"/></td>
                                 </tr>
 
                                 <tr>
                                     <th>Password:</th>
-                                    <td><input type  ="password" placeholder = "Enter password" class = "form-control"/></td>
+                                    <td><input type  ="password" placeholder = "Enter password" class = "form-control" v-model="password"/></td>
                                 </tr>
+
                                 <tr>
-                                    <th>Comments:</th>
-                                    <td><textarea class="textarea" role="textbox"></textarea></td>
+                                    <th>Position:</th>
+                                    <td><textarea class="text" placeholder="Position" v-model="position"></textarea></td>
                                 </tr>
+
+                                <tr>
+                                    <th>Photo:</th>
+                                    <td id = "add-photo">
+                                        <div class = "card add-photo">
+                                            <!-- Employee Image -->
+                                        </div>
+                                        <input type="file" class="form-control-file" id="exampleFormControlFile1">
+                                    </td>
+                                </tr>
+
                             </table>
-
-
-                        </td>
-                        <td id = "add-photo">
-                            <div class = "card add-photo">
-                                <!-- Employee Image -->
-                                
-                            </div>
-                            <input type="file" class="form-control-file" id="exampleFormControlFile1">
                         </td>
                     </tr>
 
                 </table>
-                <div class = "button-container">
+                <div class = "button-container justify-content-center">
                     <router-link to = "/employees" class = "btn fire-btn">Cancel</router-link>
-                <!-- <button class = "btn fire-btn">Cancel</button> -->
-                <button class = "btn view-btn" v-on:click = "submit">Add</button>
+                    <!-- <button class = "btn fire-btn">Cancel</button> -->
+                    <button class = "btn view-btn" v-on:click ="submit()">Add</button>
                 </div>
             </div>
         </div>
@@ -72,28 +76,109 @@
 <script>
 import Navbar from "./Navbar.vue"
 import mixin from "../mixin"
+import firebase from "firebase/compat"
+import "firebase/compat/auth"
 export default {
     name:"AddEmployee",
     components:{
         Navbar
     },
     mixins:[mixin],
-
+    data() {
+        return {
+            name: '',
+            dob: '',
+            phone_no: null,
+            user_id: '',
+            email: '',
+            password: '',
+            // department: '',
+            position: '',
+            num: 0,
+            departments: [],
+            selected: ""
+        }
+    },
     methods:{
         submit(){
+            // firebase
+            // .auth()
+            // .createUserWithEmailAndPassword(this.email, this.password)
+            // .then(data => {
+            //     console.log(data)
+            // });
+            var myref = firebase.database().ref('/users').push()
+            var key = myref.key;
+            var newData = {
+                current_pts: 0,
+                department_id: this.selected,
+                email: this.email,
+                employment_type: "Full Time",
+                name: this.name,
+                password: this.password,
+                phone_no: this.phone_no,
+                position: this.position,
+                user_id: key,
+                user_type: "employee"
+            }
+
+            var updates = {};
+            updates['/users/' + key] = newData;
+
+            firebase.database().ref().update(updates)
+
+            // this.num++
             this.$router.push("/employees")
         }
     },
-      beforeMount(){
-       this.getUserType()
-        if(this.usertype !== "employer"){
-            this.$router.push("/")
-        }
-  },
+//       beforeMount(){
+//        this.getUserType()
+//         if(this.usertype !== "employer"){
+//             this.$router.push("/")
+//         }
+//   },
+    created() {
+        firebase.database().ref('department/').on('value', (snapshot) => {
+            this.departments = []
+            snapshot.forEach((childSnapshot) => {
+                var dept = childSnapshot.val();
+                this.departments.push(dept);
+            });
+        }); 
+    }
 
 }
 </script>
 <style scoped>
+
+table {
+  /* border: 1px solid black; */
+  table-layout: fixed;
+  width: 200px;
+}
+
+td {
+  /* border: 1px solid black; */
+  width: 100px;
+  overflow: hidden;
+}
+th{
+    /* border: 1px solid black; */
+    width: 20px;
+    overflow: hidden;
+}
+.card{
+    max-width: 100%;
+    height: auto;
+}
+
+
+#add-emp-header{
+    width: max-content;
+    margin: auto;
+    /* margin-top: 80px; */
+    box-shadow: 0px 5px 0px rgba(83, 90, 249, 0.81);
+}
 .page{
     min-height: 100vh;
     width:100%;
@@ -108,14 +193,13 @@ export default {
 .onboarding-form{
     background:#F8F8F8;
     margin: auto;
-    width:90%;
-    padding:10px;
+    width: 50%;
+    /* padding:10px; */
     align-items: center;
 }
 
 /* form */
 .form-table{
-    /* background:yellow; */
     width:90%;
 }
 #impt-info{
@@ -137,11 +221,14 @@ textarea{
 }
 .input-table tr th{
     text-align: right;
+    padding-right: 8px;
+    /* width: 40px; */
 }
+
 /* photo */
 .add-photo{
     background:white;
-    height: 400px;
+    height: 200px;
 }
 #add-photo{
     height:100%;
@@ -156,9 +243,11 @@ textarea{
     margin:10px;
 
 }
+/* #exampleFormControlFile1{
+    text-align: right;
+} */
 
-
-.view-btn{
+/* .view-btn{
     background: #6360FF;
 border-radius: 5px;
 width:200px;
@@ -173,6 +262,28 @@ padding:10px;
 color: white;
 background:  rgba(147, 7, 7, 1);
 margin: 5px;
+
+} */
+.view-btn{
+    /* background: #6360FF; */
+    background: rgb(253, 198, 97);
+    border-radius: 5px;
+    width:100px;
+    padding:10px;
+    color: black;
+    margin: 15px;
+    border: 1px solid black;
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.2), 0 2px 2px 0 rgba(0,0,0,0.19);
+}
+.fire-btn{
+    border-radius: 5px;
+    width:100px;
+    padding:10px;
+    color: black;
+    background:  rgb(255, 153, 153);
+    margin: 15px;
+    border: 1px solid black;
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.2), 0 2px 2px 0 rgba(0,0,0,0.19);
 
 }
 </style>

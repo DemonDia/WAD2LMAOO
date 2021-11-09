@@ -74,12 +74,12 @@ export default {
         EmployerTask,
         AddItem
     },
-      beforeMount(){
-       this.getUserType()
-        if(this.usertype !== "employer"){
-            this.$router.push("/")
-        }
-  },
+  //     beforeMount(){
+  //      this.getUserType()
+  //       if(this.usertype !== "employer"){
+  //           this.$router.push("/")
+  //       }
+  // },
 }
 </script>
 <style scoped>

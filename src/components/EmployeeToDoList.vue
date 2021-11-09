@@ -3,7 +3,7 @@
     <Navbar/>
     
     <div class=  "container">
-        <h3 style="color: black">To-do list</h3>
+        <h1 style="color: black" class="mb-4">To-do list</h1>
         <!-- {{completed}}
         <br>
         {{tasks}}
@@ -12,106 +12,109 @@
         <table class = "table table-bordered">
             <thead>
                 <tr>
-                    <th scope = "col">Task Name</th>
-                    <th scope = "col">Task Due</th>
-                    <th scope = "col">Complete</th>
+                    <th style="background: #b6cefb;" scope = "col">Task Name</th>
+                    <th style="background: #b6cefb;" scope = "col">Task Due</th>
+                    <th style="background: #b6cefb;" scope = "col">Completed</th>
 
                 </tr>
                 
             </thead>
 
             <tbody>
-
-            <!-- <tr>
-                <td class = "task-name">IRM Proposal</td>
-                <td class = "task-due-date">22/12/2021</td>
-                <td class = "status"><input type = "checkbox" value = "task1" v-model = "completed"/></td>
-            </tr>
-            <tr>
-                <td class = "task-name">IRM Proposal</td>
-                <td class = "task-due-date">22/12/2021</td>
-                <td class = "status"><input type = "checkbox" value = "task2" v-model = "completed"/></td>
-            </tr>
-            <tr>
-                <td class = "task-name">IRM Proposal</td>
-                <td class = "task-due-date">22/12/2021</td>
-                <td class = "status"><input type = "checkbox" value = "task3" v-model = "completed"/></td>
-            </tr>
-            <tr>
-                <td class = "task-name">IRM Proposal</td>
-                <td class = "task-due-date">22/12/2021</td>
-                <td class = "status"><input type = "checkbox" value = "task4" v-model = "completed"/></td>
-            </tr> -->
-            <tr v-for= "task in incompleteTasks" v-bind:key="task.id">
-                <td class = "task-name">{{task.name}} </td>
-                <td class = "task-due-date">{{task.due}}</td>
-                <!-- {{task.id}} -->
-                <td class = "status"><input type = "checkbox" v-bind:value = task.id  v-model = "completed"/></td>
-            </tr>
-
-
-            
+                <tr v-for="(row, index) in tasks" :key="`task-${index}`">
+                    <td class = "task-name">{{ row.task_name }}</td>
+                    <td class="task-due-date">{{ row.due_date }}</td>
+                    <td class = "status"><input type = "checkbox" v-bind:value = row.task_id  v-model = "completed"/></td>
+                </tr>
             </tbody>
         </table>
-          <button class = "btn btn-primary" v-if = "completed.length !== 0" @click="submit">Submit</button>
-          <button class = "btn btn-primary" disabled v-else>Submit</button>
+        <button class = "btn btn-primary" v-if="completed.length !== 0" @click="submit()">Submit</button>
+          <button class = "btn btn-primary" v-else disabled >Submit</button>
     </div>
-
 </div>
-    
+
 </template>
+
 <script>
-import mixin from "../mixin"
 import Navbar from "./Navbar.vue"
+import mixin from "../mixin"
+import firebase from "firebase/compat"
+import "firebase/compat/auth"
+
 export default {
- name:"EmployeeToDo",
- mixins:[mixin],
- components:{
-     Navbar
- },
-   beforeMount(){
-       this.getUserType()
-        if(this.usertype != "employee"){
-            this.$router.push("/")
+    name:"EmployeeToDo",
+    mixins:[mixin],
+    components:{
+        Navbar
+    },
+    data(){
+        return {
+            tasks: [],
+            completed: []
         }
+
+    },
+  beforeMount(){
+    //    console.log("why"+this.usertype)
   },
- data(){
-     return{
-         completed:[],
-         tasks:[
-             {"id":1,"name":"IRM Proposal", "due":"22/12/2021","status":"incomplete"},
-             {"id":2,"name":"IRM Proposal", "due":"22/12/2021","status":"incomplete"},
-             {"id":3,"name":"IRM Proposal", "due":"22/12/2021","status":"incomplete"}
-         ]
-     }
- },
- methods:{
+   methods:{
      submit(){
+         var num = 0;
+         
          this.tasks = this.tasks.map(
              task =>{
-                 if(this.completed.includes(task.id)){
-                     return {task,status:"review"}
+                 if(this.completed.includes(task.task_id)){
+                     var ele = (task.task_id)-1;
+                     this.tasks.splice(num,1);
+                     var updates = {};
+                     updates['tasks/' + ele + '/task_status'] = "Review"
+                     firebase.database().ref().update(updates);
+
                  }
                  else{
                      return task
                  }
-             }
+                 num++
+             },
          )
-         this.completed = [];
-//          for (var i = this.completed.length -1; i >= 0; i--)
-//    completed.splice(completed[i],1);
-     }
- },
- computed:{
-     incompleteTasks(){
-         let curr_task = this.tasks.filter(task => task.status ==="incomplete")
-         return curr_task
-     }
-     
- }
+             
+
+        
+        // .on('value', (snapshot) => {
+        // snapshot.forEach((childSnapshot) => {
+            // var task = childSnapshot.val();
+            // if (this.completed.includes(task.task_id)) {
+            //     task.task_status: "review"
+            // }
+        // });
+    // })
+    }
+
+},
+  created() {
+      firebase.auth().onAuthStateChanged((user) => {
+            if (user) {
+                firebase.database().ref('tasks/').on('value', (snapshot) => {
+                    this.tasks = []
+                    snapshot.forEach((childSnapshot) => {
+                        var task = childSnapshot.val();
+                        if (task.user_id === user.uid) {
+                            if (task.task_status != "Completed" && task.task_status != "Review") {
+                                this.tasks.push(task);
+                            }
+                        } 
+                    });
+                }); 
+
+            } else {
+                this.user = null;
+            }
+        });  
+  }
+    
 }
 </script>
-<style>
+<style scoped>
 .task-name{
     width:60%;
 }
@@ -127,7 +130,7 @@ export default {
 .container{
     margin-top: 80px;
 }
-.container h3{
+.container h1{
         box-shadow: 0px 5px 0px rgba(83, 90, 249, 0.81);
         width:max-content;
         margin: 20px auto;

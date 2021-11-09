@@ -1,25 +1,25 @@
 // import Axios from "axios";
-
+import firebase from "firebase/compat";
 export default{
     methods:{
         getLoggedUser(){
             try{
                 this.loggedUser = JSON.parse(sessionStorage.loggedUser)
+                console.log("logged"+this.loggedUser)
             }
             catch{
                 this.loggedUser = "na";
                 this.usertype = "na"
             }
-            console.log(this.loggedUser)
         },
-        getUserType(){
-            try{
-                this.loggedUser = JSON.parse(sessionStorage.loggedUser)
-                this.usertype = this.loggedUser.user_type;
-            }
-            catch{
-                this.usertype = "na"
-            }
+        // getUserType(){
+        //     try{
+        //         this.loggedUser = JSON.parse(sessionStorage.loggedUser)
+        //         this.usertype = this.loggedUser.user_type;
+        //     }
+        //     catch{
+        //         this.usertype = "na"
+        //     }
 
             // console.log(this.loggedUser)
             // if (this.loggedUser!= null){
@@ -28,11 +28,35 @@ export default{
             // else{
             //     this.usertype = "na"
             // }
-            console.log(this.usertype)
-        },
-        logoutUser(){
-            sessionStorage.removeItem("loggedUser");
-            this.$router.push("/authenticate")
+            // console.log("user"+this.usertype)
+        // },
+        // logoutUser(){
+        //     sessionStorage.removeItem("loggedUser");
+        //     this.$router.push("/authenticate")
+        // },
+
+        // logout() {
+        //     firebase
+        //       .auth()
+        //       .signOut()
+        //       .then(() => {
+        //         // alert('Successfully logged out');
+        //         this.$router.push('/authenticate');
+        //       })
+        //       .catch(error => {
+        //         alert(error.message);
+        //         this.$router.push('/authenticate');
+        //       });
+        //   },
+
+        getUserType(uid) {
+            firebase.database().ref('users/' + uid + '/user_type').on('value', (snapshot) => {
+                // this.loggedUser = JSON.parse(sessionStorage.loggedUser)
+                return snapshot.val();
+                // console.log(this.usertype)
+              }, (errorObject) => {
+                console.log('The read failed: ' + errorObject.name);
+              }); 
         }
         
     },
@@ -40,6 +64,7 @@ export default{
 
         return{
             loggedUser:null,
+            user: null,
             usertype:"",
             accountList:[
                 {
@@ -192,5 +217,15 @@ export default{
             ]
 
         }
+    },
+    created() {
+        firebase.auth().onAuthStateChanged((user) => {
+            if (user) {
+                // console.log(user)
+                this.usertype = this.getUserType(user.uid);
+            } else {
+                this.user = null;
+            }
+          });
     }
 }

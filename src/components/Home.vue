@@ -1,10 +1,12 @@
 <template>
-<div>
+<!-- <div> -->
 <div class = "page" v-if = "usertype !== 'na'">
-<Navbar/>
+
+        <Navbar/>
+
 <!-- <div class = "pageContent"> -->
     <!-- {{usertype}} -->
-    <div>
+    <div class="base container-fluid" style="background: white">
     <!-- <div v-if="usertype ==='employer'" class = "employer-projects"> -->
         <!-- <EmployerProject :projectName ="'Proj1'" :projectAssignees = "'Ruby Kurosawa'" :projectAssigned = "'14/7/2021'"
         :projectDue ="'14/11/2021'" :projectStatus = "'incomplete'"  :projectReward = "'500'"/>
@@ -52,126 +54,89 @@
     <h5>Click anywhere to cancel</h5>
   </div>
 </div> -->
-        <div id="bg">
-            <div class="container">
-                <div class="row justify-content-between">
-                    <h1 class="col-xl-4">{{currentMonth()}} Summary</h1>
-                    <div class="card task-info col-2">
-                        <div class="card-body">
-                            <h5 class="card-title">Total No. of Task(s)</h5>
-                            <h4 class="card-text pt-2">59</h4>
-                        </div>
-                    </div>   
-                    <div class="card task-info col-2">
-                        <div class="card-body">
-                            <h5 class="card-title">No. of Completed Task(s)</h5>
-                            <h4 class="card-text pt-2">25</h4>
-                        </div>
-                    </div>  
-                    <div class="card task-info col-2">
-                        <div class="card-body">
-                            <h5 class="card-title">No. of Incomplete Task(s)</h5>
-                            <h4 class="card-text pt-2">32</h4>
-                        </div>
-                    </div>  
-                </div>
-                <div class="row p-2 my-4 bg-white border border-dark">
-                    <div class="row mx-0 p-0 justify-content-between">
-                        <highcharts :options="taskStatus_employer" class="chart col border border-dark"></highcharts>
-                        <highcharts :options="revenue" class="chart col border border-dark"></highcharts>
+        <div id="bg" class="row m-4">
+            <div class="container-fluid">
+                <div class="row">
+                    <div>
+                        <h1 class="col-xl-4">{{currentMonth()}} Summary</h1>
                     </div>
-                    <div class="row mx-0 p-0 justify-content-between">
-                        <highcharts :options="taskDist_employer" class="chart col-5 border border-dark"></highcharts>
-                        <div class="task_list col border border-dark">
-                            <h5 class="border-bottom border-dark py-3">Project Task List</h5><input type="text" placeholder="Filter by task/status/person" class="w-100" v-model="filter" />
-                            <table class="table table-hover">
-                                <thead>
-                                    <tr>
-                                        <th scope="col">Task Status <button class="button" @click="sortTable('status', direction)"><img src="../assets/sort.png"></button></th>
-                                        <th scope="col">Task Name <button class="button" @click="sortTable('task', direction)"><img src="../assets/sort.png"></button></th>
-                                        <th scope="col">Project Name <button class="button" @click="sortTable('proj', direction)"><img src="../assets/sort.png"></button></th>
-                                        <th scope="col">Person In-charge <button class="button" @click="sortTable('person', direction)"><img src="../assets/sort.png"></button></th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr v-for="(row, index) in filteredRows" :key="`task-${index}`">
-                                        <td>{{ row.status }}</td>
-                                        <td>{{ row.task }}</td>
-                                        <td>{{ row.proj }}</td>
-                                        <td>{{ row.person }}</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
+                    <div class="row justify-content-between px-5">
+                        <div class="card task-info g-2 mx-3 col-4 col-xl-4 col-md-4">
+                            <div class="card-body">
+                                <h5 class="card-title">Total No. of Task(s)</h5>
+                                <h4 class="card-text pt-2">{{num_task}}</h4>
+                            </div>
+                        </div>   
+                        <div class="card task-info g-2 mx-3 col-4 col-xl-4 col-md-4">
+                            <div class="card-body">
+                                <h5 class="card-title">No. of Completed Task(s)</h5>
+                                <h4 class="card-text pt-2">{{completed_tasks}}</h4>
+                            </div>
+                        </div>  
+                        <div class="card task-info g-2 mx-3 col-4 col-xl-4 col-md-4">
+                            <div class="card-body">
+                                <h5 class="card-title">No. of Incomplete Task(s)</h5>
+                                <h4 class="card-text pt-2">{{incomplete_tasks}}</h4>
+                            </div>
+                        </div>  
                     </div>
                 </div>
+                <div class="container-fluid p-0">
+                    <div class="row p-2 my-4 border border-dark" id="bgcolor">
+                        <div class="container-fluid">
+                            <div class="row mx-0 p-0 justify-content-between">
+                                <div class="col-md-6" width="100%">
+                                    <b><highcharts :options="taskStatus_employer" class="chart col border border-dark"></highcharts></b>
+                                </div>
+                                <div class="col-md-6" width="100%">
+                                    <b><highcharts :options="revenue" class="chart col border border-dark"></highcharts></b>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="container-fluid">
+                            <div class="row mx-0 p-0 justify-content-between">
+                                <div class="col-md-6">
+                                    <b><highcharts :options="taskDist_employer" class="chart border border-dark" width="100%"></highcharts></b>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="task_list border border-dark bg-white">
+                                        <h6 class="pt-2 " style="font-size: 18px"><b>Project Task List</b></h6><input type="text" placeholder="Filter by task/status/person" class="w-100" v-model="filter" />
+                                        <table class="table table-hover mt-2 table-striped">
+                                            <thead>
+                                                <tr>
+                                                    <th style="background: #b6cefb" scope="col" class="text-center">Task Status <button class="button" @click="sortTable('task_status', direction)"><img src="../assets/sort.png"></button></th>
+                                                    <th style="background: #b6cefb" scope="col" class="text-center">Task Name <button class="button" @click="sortTable('task_name', direction)"><img src="../assets/sort.png"></button></th>
+                                                    <th style="background: #b6cefb" scope="col" class="text-center">Project Name <button class="button" @click="sortTable('project_id', direction)"><img src="../assets/sort.png"></button></th>
+                                                    <th style="background: #b6cefb" scope="col" class="text-start">Person In-charge <button class="button" @click="sortTable('user_id', direction)"><img src="../assets/sort.png"></button></th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr v-for="(row, index) in filteredRows" :key="`task-${index}`">
+                                                    <td class="text-center">{{ row.task_status }}</td>
+                                                    <td class="text-center">{{ row.task_name }}</td>
+                                                    <td class="text-center">{{ row.project_id }}</td>
+                                                    <td class="text-center">{{ row.user_name }}</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                                    
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+                
             </div>
         </div>
   </div>
-  <!-- <div v-else>
-        <div id="bg">
-            <div class="container">
-                <div class="row justify-content-between">
-                    <h1 class="col-xl-4">{{currentMonth()}} Summary</h1>
-                    <div class="card task-info col-2">
-                        <div class="card-body">
-                            <h5 class="card-title">Total No. of Task(s)</h5>
-                            <h4 class="card-text pt-2">10</h4>
-                        </div>
-                    </div>   
-                    <div class="card task-info col-2">
-                        <div class="card-body">
-                            <h5 class="card-title">No. of Completed Task(s)</h5>
-                            <h4 class="card-text pt-2">2</h4>
-                        </div>
-                    </div>  
-                    <div class="card task-info col-2">
-                        <div class="card-body">
-                            <h5 class="card-title">No. of Incomplete Task(s)</h5>
-                            <h4 class="card-text pt-2">8</h4>
-                        </div>
-                    </div>  
-                </div>
-                <div class="row p-2 my-4 bg-white border border-dark">
-                    <div class="row mx-0 p-0 justify-content-between">
-                        <highcharts :options="taskStatus" class="chart col border border-dark"></highcharts>
-                        <highcharts :options="rewardHist" class="chart col border border-dark"></highcharts>
-                    </div>
-                    <div class="row mx-0 p-0 justify-content-between">
-                        <highcharts :options="taskDist" class="chart col-5 border border-dark"></highcharts>
-                        <div class="task_list col border border-dark">
-                            <h5 class="border-bottom border-dark py-3">Project Task List</h5>
-                            <table class="table table-hover">
-                                <thead>
-                                    <tr>
-                                        <th scope="col">Task Status</th>
-                                        <th scope="col">Task Name</th>
-                                        <th scope="col">Project Name</th>
-                                        <th scope="col">Deadline</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr v-for="(row, index) in filteredRows" :key="`task-${index}`">
-                                        <td>{{ row.status }}</td>
-                                        <td>{{ row.task }}</td>
-                                        <td>{{ row.proj }}</td>
-                                        <td>{{ row.deadline }}</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
 
-  </div> -->
 </div>
+
 <div v-else>
 <h3>You are not logged in.</h3>
 </div>
-</div>
-
 <!-- </div> -->
     
 </template>
@@ -180,6 +145,7 @@
 import {Chart} from 'highcharts-vue'
 import Navbar from "./Navbar.vue"
 import mixin from "../mixin"
+import firebase from "firebase/compat"
 // import EmployerProject from "./EmployerProject.vue"
 // import AddItem from "./AddItem.vue"
 
@@ -194,7 +160,7 @@ export default {
   },
 //   props:["usertype"],
   beforeMount(){
-       this.getUserType()
+       this.usertype = this.getUserType();
         if(this.usertype === "na"){
             this.$router.push("/authenticate")
         }
@@ -209,18 +175,22 @@ export default {
         sortTable(key,direction) {
             this.sort = `${key} > ${direction}`
             if (direction === 'asc') {
-                this.rows.sort((a, b) => a[key] > b[key] ? 1: -1)
+                this.tasks.sort((a, b) => a[key] > b[key] ? 1: -1)
                 this.direction = 'desc';
             } else {
-                this.rows.sort((a, b) => a[key] < b[key] ? 1: -1)
+                this.tasks.sort((a, b) => a[key] < b[key] ? 1: -1)
                 this.direction = 'asc';
             }
-        }
+        },
+        
     },
-
-  
   data(){
     return{
+        tasks: [],
+        completed_tasks: 0,
+        incomplete_tasks: 0,
+        num_task: 0,
+        type: "",
       arr:[],
             taskStatus: {
                 chart: {
@@ -329,11 +299,11 @@ export default {
                     name: 'Count',
                     data: [{
                         name: 'Completed Task(s)',
-                        y: 25,
+                        y: 2,
                         color: "#1b3e6e"
                     }, {
                         name: 'Incomplete Task(s)',
-                        y: 32,
+                        y: 2,
                         color: "#6c9fe6"
                     }]
                 }]
@@ -396,32 +366,92 @@ export default {
             sort: '',
             direction: 'asc',
             columns: ['task','proj','status','person'],
-            rows: [
-                {task:'Complete UI', proj: 'Project 5', status: 'Completed', person: 'James', deadline: '28/11/2021'},
-                {task:'Prototype', proj: 'Project 1', status: 'New', person: 'James', deadline: '28/11/2021'},
-                {task:'Draft Proposal', proj: 'Project 2', status: 'In Progress', person: 'James', deadline: '28/11/2021'},
-                {task:'Setup Database', proj: 'Project 2', status: 'In Progress', person: 'John', deadline: '20/11/2021'},
-                {task:'Draft Proposal', proj: 'Project 1', status: 'New', person: 'Kelly', deadline: '2/11/2021'},
-                {task:'UI Testing', proj: 'Project 1',status: 'Completed', person: 'Den', deadline: '10/11/2021'}
-            ]
+            // rows: [
+            //     {task:'Complete UI', proj: 'Project 5', status: 'Completed', person: 'James', deadline: '28/11/2021'},
+            //     {task:'Prototype', proj: 'Project 1', status: 'New', person: 'James', deadline: '28/11/2021'},
+            //     {task:'Draft Proposal', proj: 'Project 2', status: 'In Progress', person: 'James', deadline: '28/11/2021'},
+            //     {task:'Setup Database', proj: 'Project 2', status: 'In Progress', person: 'John', deadline: '20/11/2021'},
+            //     {task:'Draft Proposal', proj: 'Project 1', status: 'New', person: 'Kelly', deadline: '2/11/2021'},
+            //     {task:'UI Testing', proj: 'Project 1',status: 'Completed', person: 'Den', deadline: '10/11/2021'}
+            // ]
     }
   },
   computed: {
         filteredRows() {
-                return this.rows.filter(row => {
-                const task = row.task.toString().toLowerCase();
-                const status = row.status.toLowerCase();
-                const person = row.person.toLowerCase();
+                return this.tasks.filter(row => {
+                const task_name = row.task_name.toString().toLowerCase();
+                const task_status = row.task_status.toLowerCase();
+                // const user_id = row.user_id;
                 const searchTerm = this.filter.toLowerCase();
 
-                return task.includes(searchTerm) || status.includes(searchTerm) || person.includes(searchTerm);
+                return task_name.includes(searchTerm) || task_status.includes(searchTerm);
             });
-        }
-  }
+        },
+  },
+  created() {
+      firebase.auth().onAuthStateChanged((user) => {
+            if (user) {
+                firebase.database().ref('users/' + user.uid + '/user_type' ).on('value', (snapshot) => {
+                    this.type = snapshot.val();  
+                }); 
+
+                firebase.database().ref('tasks/').on('value', (snapshot) => {
+                    console.log("type is " + this.type)
+                    if (this.type == "employer") {
+                        this.num_task = snapshot.val().length;
+                        snapshot.forEach((childSnapshot) => {
+                            var task = childSnapshot.val();
+                            this.tasks.push(task);
+                            if (task.task_status == "Completed") {
+                                this.completed_tasks += 1;
+                            } else {
+                                this.incomplete_tasks += 1;
+                            }
+                        })
+                    } else {
+                        snapshot.forEach((childSnapshot) => {
+                            var task = childSnapshot.val();
+                            if (task.user_id == user.uid) {
+                                this.tasks.push(task);
+                                this.num_task += 1;
+                                if (task.task_status == "Completed") {
+                                    this.completed_tasks += 1;
+                                } else {
+                                    this.incomplete_tasks += 1;
+                                }
+                            } 
+                        })
+                    }
+                })
+            }
+        })
+    }
 
 }
 </script>
 <style>
+.base {
+    margin-top: 80px;
+}
+
+.heading{
+    box-shadow: 0px 5px 0px rgba(83, 90, 249, 0.81);
+    width:max-content;
+    margin: 57px auto;
+}
+#bgcolor{
+    background: rgb(255, 220, 156);
+}
+.highcharts-title{
+    font-family: Arial, Helvetica, sans-serif
+}
+.table{
+    table-layout:fixed;
+    width:100%;
+}
+.task_list{
+    overflow-y:scroll;
+}
 .page{
     min-height: 100vh;
     width:100%;
@@ -441,8 +471,6 @@ export default {
       display: flex;
     flex-wrap: wrap;
 }
-
-
 .new-project-btn{
 background: linear-gradient(0deg, #504DFF, #504DFF), rgba(78, 74, 255, 0.61);
 border-radius: 5px;
@@ -454,45 +482,35 @@ color: white;
 .modal-dialog h5{
   color:white;
 }
-
 /* employee homepage aka dashboard */
-
     .container {
-        margin-top: 80px;
+        margin:auto;
     }
-
     h1 {
         text-align: left;
-        padding-top: 25px;
+        /* padding-top: 25px; */
     }
-
     .task-info {
         height: 100px;
         width: 270px;
         background: linear-gradient(57.11deg, #6D9DF8 -4.9%, #6461FF 101.23%, rgba(109, 157, 248, 0.64) 101.24%, rgba(109, 157, 248, 0) 101.24%);        color:white;
     }
-
     .card-body {
         padding: 10px 0px;
     }
-
     .chart {
         padding: 0px;
         margin: 5px;
     }
-
     .task_list {
         margin: 5px;
         height: 400px;
     }
-
     img {
         width: 20px;
     }
-
     .button {
         border: none;
         background-color: transparent;
     }
-
 </style>

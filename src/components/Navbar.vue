@@ -2,7 +2,8 @@
 <div >
 <nav class="navbar navbar-expand-sm navbar-dark fixed-top" id = "barz">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#" >ProJeck</a>
+    <router-link class = "nav-link" to="/"><img src="../assets/projeck.png" width="60" height="47" ></router-link>
+    <!-- <a class="navbar-brand" href="src\components\Home.vue" ></a> -->
     <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -14,56 +15,56 @@
         <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
       </div>
       <div class="offcanvas-body">
-        <ul class="navbar-nav justify-content-end flex-grow-1 pe-3" v-if="usertype === 'employer'">
-          <li class="nav-item">
+        <ul class="navbar-nav justify-content-end flex-grow-1 pe-3" v-if="this.type === 'employer'">
+
+          <!-- employer -->
+          <li class="nav-item px-2">
             <router-link class = "nav-link" to="/home">Home</router-link>
           </li>
-          <li class="nav-item">
+          <li class="nav-item px-2">
             <router-link class = "nav-link" to="/projects">Projects</router-link>
             <!-- <a class="nav-link" href="#">Projects</a> -->
           </li>
-         <li class="nav-item">
+         <li class="nav-item px-2">
             <router-link class = "nav-link" to="/calendar">Calendar</router-link>
           </li>
-         <li class="nav-item">
+         <li class="nav-item px-2">
            <router-link class = "nav-link" to="/employees">Employees</router-link>
             <!-- <a class="nav-link" href="#">Employees</a> -->
           </li>
-         <li class="nav-item">
+         <li class="nav-item px-2">
            <router-link class = "nav-link" to="/review">Review</router-link>
             <!-- <a class="nav-link" href="#">Review</a> -->
           </li>
-         <li class="nav-item">
+         <!-- <li class="nav-item px-2">
             <a class="nav-link" href="#">Settings</a>
-          </li>
-         <li class="nav-item">
+          </li> -->
+         <li class="nav-item px-2">
             <a class="nav-link" href="#" v-on:click = "logoutUser">Logout</a>
           </li>
         </ul>
 
+        <!-- employee -->
         <ul class="navbar-nav justify-content-end flex-grow-1 pe-3" v-else>
-          <li class="nav-item">
-            
-              <router-link class = "nav-link" to="/home">Home</router-link>
-          
+          <li class="nav-item px-3">
+            <router-link class = "nav-link" to="/home">Home</router-link>
           </li>
-          <li class="nav-item">
+          <li class="nav-item px-3">
             <router-link class = "nav-link" to="/emptasks">To-do</router-link>
             <!-- <a class="nav-link" href="#">To-do</a> -->
           </li>
-         <li class="nav-item">
+         <li class="nav-item px-3">
             <!-- <a class="nav-link" href="#">Calendar</a> -->
             <router-link class = "nav-link" to="/calendar">Calendar</router-link>
           </li>
-         <li class="nav-item">
+         <li class="nav-item px-3">
            <router-link class = "nav-link" to="/profile">Profile</router-link>
 
           </li>
-         <li class="nav-item">
-            <a class="nav-link" href="#" v-on:click = "logoutUser">Logout</a>
+         <li class="nav-item px-3">
+            <a class="nav-link" href="#" v-on:click ="logout()">Logout</a>
           </li>
         </ul>
-
         
       </div>
     </div>
@@ -73,17 +74,42 @@
 </template>
 <script>
 import mixin from "../mixin"
+import firebase from "firebase/compat"
+import "firebase/compat/auth"
 export default {
     name:"Navbar",
     // props: ["usertype"],
     mixins:[mixin],
     data(){
         return{
-
+          type: ""
         }
     },
+    methods: {
+      logout() {
+            firebase
+              .auth()
+              .signOut()
+              .then(() => {
+                alert('Successfully logged out');
+                this.$router.push('/authenticate');
+              })
+              .catch(error => {
+                alert(error.message);
+                this.$router.push('/authenticate');
+              });
+          },
+    },
     beforeMount(){
-      this.getUserType();
+      firebase.auth().onAuthStateChanged((user) => {
+            if (user) {
+                firebase.database().ref('users/' + user.uid + '/user_type' ).on('value', (snapshot) => {
+                    this.type = snapshot.val();  
+                    console.log(this.type)
+                }); 
+            }
+      })
+      // this.getUserType();
       this.getLoggedUser();
 
       // console.log(this.usertype)
@@ -93,10 +119,17 @@ export default {
 </script>
 <style scoped>
 #barz,#offcanvasNavbar{
-    background: linear-gradient(57.11deg, #86B0FF -4.9%, #6461FF 101.23%, rgba(133, 175, 255, 0.61) 101.24%, rgba(52, 97, 184, 0.64) 101.24%);    
+    background: linear-gradient(57.11deg, #86B0FF -4.9%, #5b59fd 101.23%, rgba(133, 175, 255, 0.61) 101.24%, rgba(52, 97, 184, 0.64) 101.24%);    
+    /* background: #6461FF; */
+    padding-top: 0%;
+    padding-bottom: 0%;
 }
 .active-page{
     background: rgb(3, 3, 117);
+}
+.navbar-nav{
+    display: flex;
+    flex-wrap: wrap;
 }
 
 </style>

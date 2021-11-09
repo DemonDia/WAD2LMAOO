@@ -9,7 +9,7 @@ export default {
     name:"redirect",
     mixins:[mixin],
     beforeMount(){
-        this.getUserType();
+        this.usertype = this.getUserType();
         if((this.usertype === "employer")||(this.usertype === "employee")){
             this.$router.push("/home")
         }

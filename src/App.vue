@@ -33,6 +33,7 @@
 // import AddEmployee from "./components/AddEmployee.vue"
 
 import mixin from "./mixin"
+// import firebase from "firebase/compat"
 export default {
   name: 'App',
   mixins:[mixin],
@@ -57,7 +58,7 @@ export default {
       // usertype:"employer"
       // usertype:"employee"
     }
-  }
+}
 }
 </script>
 

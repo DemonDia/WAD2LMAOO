@@ -1,7 +1,7 @@
 <template>
-    <div class="card addCard" style="width: 18rem;" data-toggle="modal" data-target="#exampleModal">
+    <div class="card addCard w-auto" style="width: 18rem;" data-toggle="modal" data-target="#exampleModal">
 
-  <div class = "card-body">
+  <div class = "card-body" @click="add()">
       <!-- <AccountCheckIcon/> -->
       <div class = "center">
           <div class = "circle">
@@ -30,7 +30,16 @@
 <script>
 export default {
     name:"AddItem",
-    props:["itemType"]
+    props:["itemType"],
+    methods: {
+        add() {
+            if (this.itemType == "employee") {
+                this.$router.push('/employees/add')
+            } else if (this.itemType == "project") {
+                this.$router.push('/projects/add')
+            }
+        }
+    }
 }
 </script>
 <style scoped>
@@ -39,6 +48,7 @@ export default {
     margin:10px;
     border: none;
     border: 5px rgba(113, 152, 255, 1) solid;
+    height: 360px;
 }
 
 .circle{
@@ -73,4 +83,5 @@ display: grid;
     align-items: center;
     justify-content: center;
 }
+
 </style>

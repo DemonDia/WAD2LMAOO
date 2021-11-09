@@ -16,12 +16,16 @@
     "bootstrap": "^5.1.2",
     "bootstrap-vue": "^2.21.2",
     "core-js": "^3.6.5",
+    "firebase": "^9.2.0",
+    "googleapis": "^39.2.0",
     "highcharts": "^9.2.2",
     "highcharts-vue": "^1.4.0",
+    "v-calendar": "^2.3.4",
     "v-rating": "^1.1.2",
     "vue": "^3.2.19",
     "vue-router": "^4.0.12",
-    "vue3-star-ratings": "^1.0.7"
+    "vue3-star-ratings": "^1.0.7",
+    "whatwg-fetch": "^3.6.2"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.5.0",

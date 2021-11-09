@@ -20,9 +20,11 @@ import MemberToReview from "../components/MemberToReview.vue"
 import ProfilePage from "../components/EmployeeProfile.vue"
 import EmployeeList from "../components/EmployeeList.vue"
 import AddEmployee from "../components/AddEmployee.vue"
+import AddProject from "../components/AddProject.vue"
 import ErrorPage from "../components/ErrorPage.vue"
 // import EmployerProject from "../components/EmployerProject.vue"
 import EmployerProjects from "../components/EmployerProjects"
+import firebase from 'firebase/compat';
 const routes = [
 	{
 		path: '/',
@@ -38,60 +40,103 @@ const routes = [
 	{
 		path: '/home',
 		name:"Home",
-		component: Home
+		component: Home,
+		meta: {
+			authRequired: true,
+		},
 	},
 	{
 		path: "/calendar",
-		nam:"Calendar",
-		component:Calendar
+		name:"Calendar",
+		component:Calendar,
+		meta: {
+			authRequired: true,
+		},
 	},
 	{
 		path: "/emptasks",
-		nam:"EmployeeTasks",
-		component:EmployeeToDo
+		name:"EmployeeToDo",
+		component:EmployeeToDo,
+		meta: {
+			authRequired: true,
+		},
 	},
 	{
 		path: "/profile",
-		name:"Profile",
-		component:ProfilePage
+		name:"ProfilePage",
+		component:ProfilePage,
+		meta: {
+			authRequired: true,
+		},
 	}
 	,{
 		path:"/:catchAll(.*)",
 		name:"Error",
-		component:ErrorPage
+		component:ErrorPage,
+		meta: {
+			authRequired: true,
+		},
 	}
 	,{
 		path:"/employees",
 		name:"EmployeeList",
-		component:EmployeeList
+		component:EmployeeList,
+		meta: {
+			authRequired: true,
+		},
 	}
 	,{
 		path:"/employees/add",
 		name:"AddEmployee",
-		component:AddEmployee
-	}
-	,{
+		component:AddEmployee,
+		meta: {
+			authRequired: true,
+		},
+	},
+	
+	{
 		path:"/projects",
 		name:"Projects",
-		component:EmployerProjects
+		component:EmployerProjects,
+		meta: {
+			authRequired: true,
+		},
+	},
+
+	{
+		path:"/projects/add",
+		name:"AddProject",
+		component:AddProject,
+		meta: {
+			authRequired: true,
+		},
 	},
 
 	{
 		path:"/projects/project",
 		name:"Project",
-		component:Project
+		component:Project,
+		meta: {
+			authRequired: true,
+		},
 	},
 
 	{
 		path:"/review",
 		name:"Review",
-		component:ProjectReview
+		component:ProjectReview,
+		meta: {
+			authRequired: true,
+		},
 
 	},
 	{
 		path:"/review/member",
 		name:"ReviewMember",
-		component:MemberToReview
+		component:MemberToReview,
+		meta: {
+			authRequired: true,
+		},
 
 	}
 ];
@@ -99,6 +144,21 @@ const routes = [
 const router = createRouter({
 	history: createWebHistory(),
 	routes,
+});
+
+router.beforeEach((to, from, next) => {
+    if (to.matched.some(record => record.meta.authRequired)) {
+        if (firebase.auth().currentUser) {
+            next();
+        } else {
+            // alert('You must be logged in to see this page');
+            next({
+                path: '/',
+            });
+        }
+    } else {
+        next();
+    }
 });
 
 export default router;

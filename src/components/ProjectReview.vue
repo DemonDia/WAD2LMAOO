@@ -4,9 +4,9 @@
         <div class = "projectsContainer">
             <ProjectToReview/>
             <ProjectToReview/>
+            <!-- <ProjectToReview/>
             <ProjectToReview/>
-            <ProjectToReview/>
-            <ProjectToReview/>
+            <ProjectToReview/> -->
 
         </div>
     </div>
@@ -22,15 +22,15 @@ export default {
         Navbar
     },
     mixins:[mixin],
-          beforeMount(){
-       this.getUserType()
-        if(this.usertype != "employer"){
-            this.$router.push("/")
-        }
+    //       beforeMount(){
+    //    this.getUserType()
+    //     if(this.usertype != "employer"){
+    //         this.$router.push("/")
+    //     }
         // else{
         //     this.$router.push("/authenticate")
         // }
-  },
+//   },
 }
 </script>
 <style>
