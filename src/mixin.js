@@ -51,6 +51,7 @@ export default{
 
         getUserType(uid) {
             firebase.database().ref('users/' + uid + '/user_type').on('value', (snapshot) => {
+                console.log("snapshotVal", snapshot.val())
                 // this.loggedUser = JSON.parse(sessionStorage.loggedUser)
                 return snapshot.val();
                 // console.log(this.usertype)
