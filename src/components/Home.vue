@@ -80,6 +80,7 @@
                             </div>
                         </div>  
                     </div>
+                    
                 </div>
                 <div class="container-fluid p-0">
                     <div class="row p-2 my-4 border border-dark" id="bgcolor">

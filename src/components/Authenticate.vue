@@ -15,10 +15,8 @@
                 <label>Password:</label>
                 <input class = "form-control" min = "8" type = "password" placeholder="Password" v-model="pass"/>
 
-
                 <label>Confirm Password:</label>
-                <input class = "form-control" type = "password" placeholder="Re-enter password"
-                v-model="cfmPass"/>
+                <input class = "form-control" type = "password" placeholder="Re-enter password" v-model="cfmPass"/>
                 <div class="alert alert-danger" role="alert" v-if="isError">
                     {{msgOutput}}
                 </div>
@@ -59,6 +57,7 @@
 </div>
 
 </template>
+
 <script>
 import mixin from "../mixin"
 import firebase from "firebase/compat/app"

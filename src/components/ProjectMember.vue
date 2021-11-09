@@ -1,7 +1,8 @@
 <template>
+
 <div class = "card project-member">
     <h3>Member Name</h3>
-    
+    <img src = "../assets/john.png">
     <button type = "button" class = "btn btn primary review-btn">Review </button>
 </div>
     

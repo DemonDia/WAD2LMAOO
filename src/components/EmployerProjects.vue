@@ -107,6 +107,13 @@ import firebase from "firebase/compat"
 export default {
     name:"Projects",
     components: {EmployerProject,AddItem,Navbar},
+    data(){
+      return{
+        projectName:"",
+        projectDate:null      
+      }
+
+    },
     mixins:[mixin],
       //     beforeMount(){
       //  this.getUserType()

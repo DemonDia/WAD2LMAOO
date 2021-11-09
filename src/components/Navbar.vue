@@ -72,6 +72,7 @@
 </nav>
 </div>
 </template>
+
 <script>
 import mixin from "../mixin"
 import firebase from "firebase/compat"
