@@ -36,9 +36,9 @@
            <router-link class = "nav-link" to="/review">Review</router-link>
             <!-- <a class="nav-link" href="#">Review</a> -->
           </li>
-         <li class="nav-item px-2">
+         <!-- <li class="nav-item px-2">
             <a class="nav-link" href="#">Settings</a>
-          </li>
+          </li> -->
          <li class="nav-item px-2">
             <a class="nav-link" href="#" v-on:click = "logoutUser">Logout</a>
           </li>
