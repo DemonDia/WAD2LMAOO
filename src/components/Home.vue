@@ -449,7 +449,7 @@ export default {
 .heading{
     box-shadow: 0px 5px 0px rgba(83, 90, 249, 0.81);
     width:max-content;
-    margin: auto auto 30px auto;
+    margin: 20px auto 30px auto;
 } 
 /* #bgcolor{
     background: rgb(255, 220, 156);
