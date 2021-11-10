@@ -6,7 +6,7 @@
         crossorigin="anonymous">
     <Navbar/>
     <div class="container" id="main-container">
-        <h1 style="color: black" class="mb-4">Profile Page</h1>
+        <h1 style="color: black" class="mb-4 header">Profile Page</h1>
          <div class="container-fluid justify-content-center">
             <div class="row">
                 <ul class="nav nav-tabs" id="myTab" role="tablist">
@@ -317,4 +317,11 @@ label {
     margin-bottom: 2px;
     text-align: left;
 }
+
+.header{
+    box-shadow: 0px 5px 0px rgba(83, 90, 249, 0.81);
+    width: max-content;
+    margin: 80px auto;
+} 
+
 </style>

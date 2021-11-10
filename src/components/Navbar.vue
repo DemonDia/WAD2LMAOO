@@ -1,11 +1,11 @@
 <template>
 <div >
-<nav class="navbar navbar-expand-sm fixed-top" id = "barz">
+<nav class="navbar navbar-expand-sm fixed-top navbar-light" id = "barz">
   <div class="container-fluid">
     <router-link class = "nav-link" to="/"><img src="../assets/projeck.png" width="60" height="47" ></router-link>
     <!-- <a class="navbar-brand" href="src\components\Home.vue" ></a> -->
-    <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
-      <span class="navbar-toggler-icon"></span>
+    <button class="navbar-toggler"  type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
+      <span class="navbar-toggler-icon" ></span>
     </button>
     <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
       <div class="offcanvas-header">
@@ -136,5 +136,4 @@ export default {
 .nav-link{
   color: black !important
 }
-
 </style>
