@@ -124,7 +124,7 @@
                                                 <tr v-for="(row, index) in filteredRows" :key="`task-${index}`">
                                                     <td class="text-center">{{ row.task_status }}</td>
                                                     <td class="text-center">{{ row.task_name }}</td>
-                                                    <td class="text-center">{{ row.project_id }}</td>
+                                                    <td class="text-center">{{ row.project_name }}</td>
                                                     <td class="text-center">{{ row.user_name }}</td>
                                                 </tr>
                                             </tbody>

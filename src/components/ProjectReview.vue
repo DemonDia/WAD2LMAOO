@@ -2,23 +2,50 @@
     <div class = "page">
         <Navbar/>
         <div class = "projectsContainer">
-            <ProjectToReview/>
-            <ProjectToReview/>
+            <!-- <ProjectToReview/>
+            <ProjectToReview/> -->
             <!-- <ProjectToReview/>
             <ProjectToReview/>
             <ProjectToReview/> -->
+            <div class = "projectReviewContainer" v-for="(proj,key) in proj_names" v-bind:key="key">
+                <div class = "projectName">
+                    <h3>{{key}}</h3>
+                </div>
+                <div class = "projectMembers">
+                    <router-link class = "nav-link" to="/review/member">
+                        <main role="main" class="d-inline-flex emp_card" v-for="(emp,index) in proj" v-bind:key="index">
+                            <div class="album bg-light">
+                            <div class="card shadow-sm">
+                                <img src="../assets/john.png" width="100%" height="225" background="#55595c" color="#eceeef" class="card-img-top" text="Thumbnail" >
+                                <div class="inline pt-3">
+                                    <h6>{{emp.name}}</h6>
+                                    <small>{{emp.position}}</small>
+                                </div>
 
+                                <div class="card-body">
+                                <p class="inline card-text">          
+                                    <!-- enter anything here -->
+                                </p>
+                                </div>
+                            </div>
+                            </div>
+
+                        </main>
+                    </router-link>
+                </div>
+            </div>
         </div>
     </div>
 </template>
 <script>
-import ProjectToReview from "./ProjectToReview.vue";
+// import ProjectToReview from "./ProjectToReview.vue";
 import mixin from "../mixin"
 import Navbar from "./Navbar.vue";
+import firebase from "firebase/compat"
 export default {
     name:"ProjectReview",
     components:{
-        ProjectToReview,
+        // ProjectToReview,
         Navbar
     },
     mixins:[mixin],
@@ -31,6 +58,38 @@ export default {
         //     this.$router.push("/authenticate")
         // }
 //   },
+data() {
+        return {
+            proj_names: {}
+        }
+    },
+    created() {
+        firebase.database().ref('projects/').on('value',(snapshot) => {
+            var names = []
+            this.project_name = {}
+            snapshot.forEach((childSnapshot) => {
+                var proj = childSnapshot.val();
+                this.proj_names[proj.project_name] = [];
+                firebase.database().ref('tasks/').on('value', (snapshot) => {
+                    snapshot.forEach((childSnapshot) => {
+                        var task = childSnapshot.val();
+                        if (task.project_name == proj.project_name && !names.includes(task.user_name)) {
+                            names.push(task.user_name);
+                            // console.log(names)
+                            console.log("printing",this.proj_names[proj.project_name],task.user_name)
+                            firebase.database().ref('users/' + task.user_id).on('value', (snapshot) => {
+                                var user = snapshot.val();
+                                this.proj_names[proj.project_name].push({name: task.user_name, position: user.position})
+                            })
+                        }
+                    })
+                })
+                names = []
+            })
+            
+        });
+        console.log(this.proj_names)
+    }
 }
 </script>
 <style>
@@ -46,5 +105,71 @@ export default {
     display: grid;
     align-items:flex-start;
     height:100%;
+}
+
+.projectReviewContainer{
+    display:block;
+    /* height:400px; */
+    margin-bottom: 50px;
+    width: 90vw;
+    margin: 10px auto;
+    align-items: center;
+}
+.projectName{
+    display: block;
+    max-width:20%;
+    background: black;
+    color: white;
+    /* background: linear-gradient(57.11deg, #6D9DF8 -4.9%, #6461FF 101.23%, rgba(109, 157, 248, 0.64) 101.24%, rgba(109, 157, 248, 0) 101.24%); */
+    /* margin:10px; */
+    margin-left: 15px;
+    margin-bottom: 30px;
+    padding: 10px;
+    border-radius:10px;
+    height:13%;
+}
+.projectMembers{
+    display: flex;
+    /* background:blue; */
+    /* max-width: 90%; */
+    /* margin: 10px; */
+    height: 50%;
+    overflow-x: scroll;
+}
+
+/* h3{
+    height: fit-content;
+    background: #6B8AFA;
+    padding:5px;
+    border-radius: 10px;
+    align-self: start;
+
+} */
+.project-member{
+    width:200px;
+    /* height: 100%; */
+    margin-left:10px;
+    flex-shrink: 0;
+    padding:5px;
+    display: grid;
+
+    
+    border-radius: 10px 10px 0px 0px;
+
+    /* position: fixed; */
+}
+.review-btn{
+padding:10px;
+height: fit-content;
+/* height: 60px; */
+border:none; 
+background: #6B8BFA;
+font-size:20px;
+color: white;
+align-self: end;
+}
+
+.emp_card {
+    margin-right: 20px;
 }
 </style>
