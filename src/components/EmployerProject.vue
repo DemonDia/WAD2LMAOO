@@ -2,7 +2,7 @@
 <template>
 <!-- <table class="table table-hover p-table"> -->
         <!-- <tbody class="projects"> -->
-        <tr>
+        <!-- <tr> -->
             <td class="p-name">
                 {{projectName}}
             </td>
@@ -25,7 +25,7 @@
                 <a href="#" class="btn btn-primary btn-xs"><i class="fa fa-folder"></i> View </a>
                 <a href="#" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> Delete </a>
             </td>
-        </tr> 
+        <!-- </tr>  -->
     <!-- </tbody>  -->
 <!-- </table> -->
 </template>

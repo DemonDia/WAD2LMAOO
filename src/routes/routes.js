@@ -113,7 +113,7 @@ const routes = [
 	},
 
 	{
-		path:"/projects/project/:id",
+		path:"/projects/project/",
 		name:"Project",
 		component:Project,
 		meta: {

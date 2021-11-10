@@ -408,6 +408,7 @@ export default {
                 firebase.database().ref('tasks/').on('value', (snapshot) => {
                     console.log("type is " + this.type)
                     if (this.type == "employer") {
+                        this.tasks = []
                         this.num_task = snapshot.val().length;
                         snapshot.forEach((childSnapshot) => {
                             var task = childSnapshot.val();
@@ -419,6 +420,7 @@ export default {
                             }
                         })
                     } else {
+                        this.tasks = []
                         snapshot.forEach((childSnapshot) => {
                             var task = childSnapshot.val();
                             if (task.user_id == user.uid) {
@@ -441,7 +443,7 @@ export default {
 </script>
 <style>
 .base {
-    margin-top: 80px;
+    margin-top: 60px;
 }
 
 .heading{

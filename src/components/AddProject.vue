@@ -59,7 +59,7 @@ export default {
             selected: "",
             todaydate: "",
             duedate: "",
-            len: 0,
+            // len: 0,
         }
     },
     methods:{
@@ -71,21 +71,29 @@ export default {
             return dateTime;
         },
         submit(){
-            firebase.database().ref('projects/').on('value', (snapshot) => {
-                var projs = snapshot.val()
-                this.len = projs +1;
-            }); 
+            // firebase.database().ref('projects/').on('value', (snapshot) => {
+            //     var projs = snapshot.val().length
+            //     this.len = projs +1;
+            // }); 
 
-            firebase.database().ref('/projects').push({
+            var myref = firebase.database().ref('/projects').push()
+            var key = myref.key;
+                
+            var input_data = {
                 assigned_date: this.currentDateTime(),
                 assignee: this.selected,
                 completion_date: "",
                 due_date: this.duedate,
-                project_id: this.len,
+                project_id: key,
                 project_name: this.proj_name,
                 project_status: "New",
                 reward: "TBC"
-            })
+            }
+
+            var updates = {};
+            updates['/projects/' + key] = input_data;
+
+            firebase.database().ref().update(updates)
 
 
             // this.num++

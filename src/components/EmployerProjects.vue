@@ -1,8 +1,8 @@
 <template>
   <div  class = "employer-projects page-bg mb-4"> 
     <Navbar/>
-    <section class="panel">
-    <a href="#" class=" btn btn-success btn-xs mb-3" style="float:right"> Create New Project</a>
+    <section class="panel mx-4">
+    <a href="#" class=" btn btn-success btn-xs mb-3" style="float:right" @click="create()"> Create New Project</a>
     <table class="table table-hover p-table">
         <thead>
         <tr>
@@ -12,20 +12,42 @@
             <th>Project Due</th>
             <th>Project Status</th>
             <th>Rewarded Points</th>
-            <th>Custom</th>
+            <th>Actions</th>
         </tr>
         </thead>
         <tbody style="width:100%">
           <!-- <div class = "contentz container-fluid"> -->
             <!-- <div class= "row"> -->
 
-              <div v-for="(proj, index) in projs" v-bind:key="index">
-                <router-link to ="/projects/project"
+              <tr v-for="(proj, index) in projs" v-bind:key="index">
+                <!-- <router-link to ="/projects/project" v-for="(proj, index) in projs" v-bind:key="index"
                   style = "text-decoration:none">
                   <EmployerProject :projectName="proj.project_name" :projectAssignees ="proj.assignee" :projectAssigned ="proj.assigned_date"
                   :projectDue ="proj.due_date" :projectStatus ="proj.project_status"  :projectReward ="proj.reward"/>
-                </router-link>
-              </div>
+                </router-link> -->
+                <td class="p-name">
+                    {{proj.project_name}}
+                </td>
+                <td class="p-team">
+                    {{proj.assignee}}
+                </td>
+                <td class="p-assignedDate">
+                    {{proj.assigned_date}}
+                </td>
+                <td class="p-Due">
+                    {{proj.due_date}}
+                </td>
+                <td class="p-status">
+                    {{proj.project_status}}
+                </td>
+                <td class="p-reward">
+                    {{proj.reward}}
+                </td>
+                <td>
+                    <a href="#" class="btn btn-primary btn-xs" @click="project()"><i class="fa fa-folder"></i> View </a>
+                    <a href="#" class="btn btn-danger btn-xs" @click="delete_proj(proj.project_id)"><i class="fa fa-trash-o"></i> Delete </a>
+                </td>
+              </tr>
 
             <!-- </div> -->
           
@@ -77,14 +99,16 @@
   </div>
 </template>
 <script>
-import EmployerProject from "./EmployerProject.vue"
+// import EmployerProject from "./EmployerProject.vue"
 import Navbar from  "./Navbar.vue"
 // import AddItem from "./AddItem.vue"
 import mixin from "../mixin"
 import firebase from "firebase/compat"
 export default {
     name:"Projects",
-    components: {EmployerProject,Navbar}, //AddItem,
+    components: {
+      // EmployerProject,
+      Navbar}, //AddItem,
     // data(){
     //   return{
     //     projectName:"",
@@ -105,6 +129,20 @@ export default {
     data () {
       return {
         projs: []
+      }
+    },
+    methods: {
+      project() {
+        this.$router.push('/projects/project')
+      },
+      create() {
+        this.$router.push('/projects/add')
+      },
+      delete_proj(projID) {
+        firebase.database().ref('projects/' + projID).remove()
+            .then(function() {
+                alert("Project Deleted")
+            })
       }
     },
     created() {
@@ -162,13 +200,17 @@ export default {
   padding-top:60px;
   padding-bottom:60px;
 } */
+.btn {
+  margin-right: 10px;
+}
+
 th{
     width:50%;
-    text-align: right;
+    text-align: center;
 }
 td{
     width:100%;
-    text-align: left;
+    text-align: center;
 }
 .projectCard{
    
