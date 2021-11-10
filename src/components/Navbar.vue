@@ -40,7 +40,7 @@
             <a class="nav-link" href="#">Settings</a>
           </li> -->
          <li class="nav-item px-2">
-            <a class="nav-link" href="#" v-on:click = "logoutUser">Logout</a>
+            <a class="nav-link" href="#" @click ="logout()">Logout</a>
           </li>
         </ul>
 
