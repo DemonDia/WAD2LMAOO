@@ -3,7 +3,7 @@
 <main role="main">
     <div class="album bg-light">
     <div class="card shadow-sm">
-        <img src="../assets/john.png" width="100%" height="225" background="#55595c" color="#eceeef" class="card-img-top" text="Thumbnail" >
+        <img src="../assets/john.png" width="100%" height="225" background="#55595c" color="#eceeef" class="card-img-top img-fluid" text="Thumbnail" >
         <div class="inline pt-3">
             <h6>John</h6>
             <small>Project Leader</small>

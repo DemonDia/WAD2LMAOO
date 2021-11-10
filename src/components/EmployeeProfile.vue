@@ -26,7 +26,7 @@
                 <div class="tab-content" id="myTabContent">
                     <div class="tab-pane fade show active" id="about" role="tabpanel" aria-labelledby="about-tab">
                         <div class="container-fluid justify-content-center">
-                            <div class="row">
+                            <div class="row justify-content-center">
                                 <div class="col-sm-3 mt-4 mb-4 imagepos">
                                     <img src="../assets/john.png" id="image" class="img-fluid rounded float-start border-2 border-dark" alt="...">
                                 </div>

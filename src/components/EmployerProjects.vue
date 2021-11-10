@@ -1,7 +1,9 @@
 <template>
   <div  class = "employer-projects page-bg mb-4"> 
     <Navbar/>
+    
     <section class="panel mx-4">
+      <div><h1 class="heading">Projects</h1></div>
     <a href="#" class=" btn btn-success btn-xs mb-3" style="float:right" @click="create()"> Create New Project</a>
     <table class="table table-hover p-table">
         <thead>
@@ -245,4 +247,14 @@ td{
 section{
   margin-top: 100px;
 }
+
+.panel{
+  margin-top: 80px;
+}
+
+.heading{
+    box-shadow: 0px 5px 0px rgba(83, 90, 249, 0.81);
+    width: max-content;
+    margin: auto;
+} 
 </style>

@@ -26,7 +26,7 @@
                 <div class="alert alert-success" role="alert" v-if="isSuccess">
                     Success!
                 </div>
-                <button class = "btn" @click = register>Sign up</button>
+                <button class = "btn" @click = register><span>Sign up</span></button>
             </form>
             <div id ="registerActionContainer">
             Already have an account? Click  <a style = "color:black" href = "#" @click = changePage>here</a> to login.
@@ -49,7 +49,7 @@
                 <div class="alert alert-success" role="alert" v-if="isSuccess">
                 Success!
                 </div>
-                <button class = "btn" @click="login()">Login</button>
+                <button class="btn" @click="login()"><span>Login</span></button>
             </form>
             <div id ="loginActionContainer">
                 Don't have an account? Click  <a style = "color:black" href = "#" @click = changePage>here</a> to join us today!
@@ -277,6 +277,8 @@ export default {
     width:180px;
     justify-self: center;
     box-shadow: 0 8px 8px 0 rgba(0,0,0,0.2), 0 6px 10px 0 rgba(0,0,0,0.19);
+    transition: all 0.5s;
+    cursor: pointer;
 }
 /* btn */
 .btn span {
@@ -285,6 +287,7 @@ export default {
   position: relative;
   transition: 0.5s;
 }
+
 .btn span:after {
   content: '\00bb';
   position: absolute;
@@ -293,9 +296,11 @@ export default {
   right: -20px;
   transition: 0.5s;
 }
+
 .btn:hover span {
   padding-right: 25px;
 }
+
 .btn:hover span:after {
   opacity: 1;
   right: 0;
