@@ -1,12 +1,13 @@
 <template>
 <!-- <div> -->
 <div class = "page" v-if = "usertype !== 'na'">
-
+    <div class="container">
         <Navbar/>
+    </div>
 
 <!-- <div class = "pageContent"> -->
     <!-- {{usertype}} -->
-    <div class="base container-fluid" style="background: white">
+    <div class="base container-fluid" style="background: #FFFAFA">
     <!-- <div v-if="usertype ==='employer'" class = "employer-projects"> -->
         <!-- <EmployerProject :projectName ="'Proj1'" :projectAssignees = "'Ruby Kurosawa'" :projectAssigned = "'14/7/2021'"
         :projectDue ="'14/11/2021'" :projectStatus = "'incomplete'"  :projectReward = "'500'"/>
@@ -58,34 +59,42 @@
             <div class="container-fluid">
                 <div class="row">
                     <div>
-                        <h1 class="col-xl-4">{{currentMonth()}} Summary</h1>
+                        <h1 class="heading">{{currentMonth()}} Summary</h1>
                     </div>
-                    <div class="row justify-content-between px-5">
-                        <div class="card task-info g-2 mx-3 col-4 col-xl-4 col-md-4">
-                            <div class="card-body">
-                                <h5 class="card-title">Total No. of Task(s)</h5>
-                                <h4 class="card-text pt-2">{{num_task}}</h4>
+                    <div class="row justify-content-between" id="taskno">
+                        <div class=" task-info g-2 col-12 col-xl-4 col-md-4 col-sm-12">
+                            <div class="card">   
+                                <div class="card-body">
+                                    <h5 class="card-title">Total No. of Task(s)</h5>
+                                    <h4 class="card-text pt-2">{{num_task}}</h4>
+                                </div>
                             </div>
                         </div>   
-                        <div class="card task-info g-2 mx-3 col-4 col-xl-4 col-md-4">
-                            <div class="card-body">
-                                <h5 class="card-title">No. of Completed Task(s)</h5>
-                                <h4 class="card-text pt-2">{{completed_tasks}}</h4>
+                        <div class=" task-info g-2 col-12 col-xl-4 col-md-4 col-sm-12">
+                            <div class="card">   
+                                <div class="card-body">
+                                    <h5 class="card-title">No. of Completed Task(s)</h5>
+                                    <h4 class="card-text pt-2">{{completed_tasks}}</h4>
+                                </div>
                             </div>
                         </div>  
-                        <div class="card task-info g-2 mx-3 col-4 col-xl-4 col-md-4">
-                            <div class="card-body">
-                                <h5 class="card-title">No. of Incomplete Task(s)</h5>
-                                <h4 class="card-text pt-2">{{incomplete_tasks}}</h4>
+                        <div class=" task-info g-2 col-12 col-xl-4 col-md-4 col-sm-12">
+                            <div class="card">   
+                                <div class="card-body">
+                                    <h5 class="card-title">No. of Incomplete Task(s)</h5>
+                                    <h4 class="card-text pt-2">{{incomplete_tasks}}</h4>
+                                </div>
                             </div>
                         </div>  
                     </div>
                     
                 </div>
-                <div class="container-fluid p-0">
-                    <div class="row p-2 my-4 border border-dark" id="bgcolor">
+                <br>
+
+                <div class="container-fluid">
+                    <!-- <div class="row p-2 my-4 border border-dark" id="bgcolor"> -->
                         <div class="container-fluid">
-                            <div class="row mx-0 p-0 justify-content-between">
+                            <div class="row justify-content-between">
                                 <div class="col-md-6" width="100%">
                                     <b><highcharts :options="taskStatus_employer" class="chart col border border-dark"></highcharts></b>
                                 </div>
@@ -95,11 +104,11 @@
                             </div>
                         </div>
                         <div class="container-fluid">
-                            <div class="row mx-0 p-0 justify-content-between">
-                                <div class="col-md-6">
+                            <div class="row justify-content-between">
+                                <div class="col-md-6 mt-3">
                                     <b><highcharts :options="taskDist_employer" class="chart border border-dark" width="100%"></highcharts></b>
                                 </div>
-                                <div class="col-md-6">
+                                <div class="col-md-6 mt-3">
                                     <div class="task_list border border-dark bg-white">
                                         <h6 class="pt-2 " style="font-size: 18px"><b>Project Task List</b></h6><input type="text" placeholder="Filter by task/status/person" class="w-100" v-model="filter" />
                                         <table class="table table-hover mt-2 table-striped">
@@ -126,7 +135,7 @@
                             </div>
                         </div>
                         
-                    </div>
+                    <!-- </div> -->
                 </div>
                 
             </div>
@@ -436,13 +445,14 @@ export default {
 }
 
 .heading{
-    box-shadow: 0px 5px 0px rgba(83, 90, 249, 0.81);
+    box-shadow: 0px 5px 0px black;
     width:max-content;
-    margin: 57px auto;
-}
-#bgcolor{
+    margin: 20px auto;
+} 
+/* #bgcolor{
     background: rgb(255, 220, 156);
-}
+} */
+
 .highcharts-title{
     font-family: Arial, Helvetica, sans-serif
 }
@@ -461,8 +471,7 @@ export default {
 .pageContent{
   min-height:100vh;
   /* margin-top:60px; */
-  background:rgba(248, 248, 248, 1)
-;
+  background:rgba(248, 248, 248, 1);
   padding-top:60px;
   padding-bottom:60px;
 }
@@ -491,18 +500,36 @@ color: white;
         text-align: left;
         /* padding-top: 25px; */
     }
+
+    #taskno{
+        /* width:100% */
+        margin-left:25px;
+        /* margin-right: auto; */
+    }
+
     .task-info {
-        height: 100px;
-        width: 270px;
-        background: linear-gradient(57.11deg, #6D9DF8 -4.9%, #6461FF 101.23%, rgba(109, 157, 248, 0.64) 101.24%, rgba(109, 157, 248, 0) 101.24%);        color:white;
+        height: 90px;
+        color: white
+        /* width: 270px;
+        background: linear-gradient(57.11deg, #6D9DF8 -4.9%, #6461FF 101.23%, rgba(109, 157, 248, 0.64) 101.24%, rgba(109, 157, 248, 0) 101.24%);        color:white; */
     }
+
+    .card{
+        width: 90%;
+        background: black;
+    }
+
     .card-body {
-        padding: 10px 0px;
+        padding: 10px 10px;
     }
+
     .chart {
         padding: 0px;
         margin: 5px;
+        border-radius: 2%;        
+
     }
+    
     .task_list {
         margin: 5px;
         height: 400px;

@@ -1,10 +1,23 @@
 <template>
 
-<div class = "card project-member">
-    <h3>Member Name</h3>
-    <img src = "../assets/john.png">
-    <button type = "button" class = "btn btn primary review-btn">Review </button>
-</div>
+<main role="main">
+    <div class="album bg-light">
+    <div class="card shadow-sm">
+        <img src="../assets/john.png" width="100%" height="225" background="#55595c" color="#eceeef" class="card-img-top" text="Thumbnail" >
+        <div class="inline pt-3">
+            <h6>John</h6>
+            <small>Project Leader</small>
+        </div>
+
+        <div class="card-body">
+        <p class="inline card-text">          
+            <!-- enter anything here -->
+        </p>
+        </div>
+    </div>
+    </div>
+
+</main>
     
 </template>
 <script>
@@ -38,7 +51,8 @@ h3{
 padding:10px;
 height: fit-content;
 /* height: 60px; */
-border:none; background: #6B8BFA;
+border:none; 
+background: #6B8BFA;
 font-size:20px;
 color: white;
 align-self: end;

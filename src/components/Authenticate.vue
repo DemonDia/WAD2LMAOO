@@ -5,18 +5,21 @@
             <!-- <h3>Register</h3> -->
         
             <form id = "registerForm">
-                <h3>Register</h3>
-                <label>Email:</label>
+                <img src="../assets/projeck.png" id="form-logo">
+                <h2>Welcome to Projeck</h2>
+                <p id="sub-header"> Create a Projeck account Now!</p>
+                <!-- <h3>Register</h3> -->
+                <label class="my-2">Email:</label>
                 <input class = "form-control" type = "email" placeholder="Email" v-model="email"/>
 
-                <label>Company:</label>
+                <label class="my-2">Company:</label>
                 <input class = "form-control" type = "text" placeholder="Company name" v-model="compName"/>
 
-                <label>Password:</label>
+                <label class="my-2">Password:</label>
                 <input class = "form-control" min = "8" type = "password" placeholder="Password" v-model="pass"/>
 
-                <label>Confirm Password:</label>
-                <input class = "form-control" type = "password" placeholder="Re-enter password" v-model="cfmPass"/>
+                <label class="my-2">Confirm Password:</label>
+                <input class = "form-control mb-3" type = "password" placeholder="Re-enter password" v-model="cfmPass"/>
                 <div class="alert alert-danger" role="alert" v-if="isError">
                     {{msgOutput}}
                 </div>
@@ -26,7 +29,7 @@
                 <button class = "btn" @click = register>Sign up</button>
             </form>
             <div id ="registerActionContainer">
-            Already have an account? Click  <a style = "color:blue" href = "#" @click = changePage>here</a> to login.
+            Already have an account? Click  <a style = "color:black" href = "#" @click = changePage>here</a> to login.
             </div>
         </div>
         <div id = "login" v-else >
@@ -39,7 +42,7 @@
                 <label class="my-2">Email:</label>
                 <input class = "form-control" type = "email" placeholder="Email" v-model="email"/>
                 <label class="my-2">Password:</label>
-                <input class = "form-control" type = "password" placeholder="Password" v-model="pass"/>
+                <input class = "form-control mb-3" type = "password" placeholder="Password" v-model="pass"/>
                 <div class="alert alert-danger" role="alert" v-if="isError">
                 {{msgOutput}}
                 </div>
@@ -236,20 +239,22 @@ export default {
     display: flex;
     align-items: center;
     margin: auto;
-    justify-content: center;
+    /* justify-content: center; */
 }
 .alert{
     margin-top:10px;
 }
 .authenticate-container{
     border-radius: 10px;
-    background: linear-gradient(57.11deg, #6D9DF8 -4.9%, #6461FF 101.23%, rgba(109, 157, 248, 0.64) 101.24%, rgba(109, 157, 248, 0) 101.24%);
+    background: #AED4FF;
+
+    /* background: linear-gradient(57.11deg, #6D9DF8 -4.9%, #6461FF 101.23%, rgba(109, 157, 248, 0.64) 101.24%, rgba(109, 157, 248, 0) 101.24%); */
     width:60vh;
     /* height:60vh; */
     /* align-self: center; */
     /* margin: auto; */
     /* justify-self: center; */
-    color:white;
+    color:black;
     box-shadow: 0px 4px 10px 10px rgba(0, 0, 0, 0.25);
 }
 #form-logo{
@@ -261,7 +266,7 @@ export default {
 }
 #sub-header{
     font-size: 13px;
-    color: rgb(240, 240, 240);
+    color: black;
 }
 .btn{
     /* background: #504DFF; */
@@ -307,14 +312,16 @@ form{
 }
 /* register */
 #registerForm{
-    background: white;
+    background: #AED4FF;
     /* background: linear-gradient(57.11deg, #6D9DF8 -4.9%, #6461FF 101.23%, rgba(109, 157, 248, 0.64) 101.24%, rgba(109, 157, 248, 0) 101.24%); */
     color: black;
 }
 #registerActionContainer{
     /* background: white; */
-    color:white;
+    background: rgb(255, 236, 185);
+    color:black;
     padding:10px;
+    font-size: 13px;
 }
 /* login */
 #loginForm h3{
@@ -322,7 +329,7 @@ form{
 }
 #loginForm label{
     
-    color: white;
+    color: black;
 }
 #loginActionContainer{
     background: rgb(255, 236, 185);

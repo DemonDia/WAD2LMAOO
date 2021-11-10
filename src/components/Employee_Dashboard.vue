@@ -190,6 +190,8 @@ export default {
 
     .container {
         margin-top: 80px;
+        margin-left:auto;
+        margin-right: auto;
     }
 
     h1 {

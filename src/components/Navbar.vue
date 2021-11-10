@@ -1,6 +1,6 @@
 <template>
 <div >
-<nav class="navbar navbar-expand-sm navbar-dark fixed-top" id = "barz">
+<nav class="navbar navbar-expand-sm fixed-top" id = "barz">
   <div class="container-fluid">
     <router-link class = "nav-link" to="/"><img src="../assets/projeck.png" width="60" height="47" ></router-link>
     <!-- <a class="navbar-brand" href="src\components\Home.vue" ></a> -->
@@ -120,8 +120,8 @@ export default {
 </script>
 <style scoped>
 #barz,#offcanvasNavbar{
-    background: linear-gradient(57.11deg, #86B0FF -4.9%, #5b59fd 101.23%, rgba(133, 175, 255, 0.61) 101.24%, rgba(52, 97, 184, 0.64) 101.24%);    
-    /* background: #6461FF; */
+    /* background: linear-gradient(57.11deg, #86B0FF -4.9%, #5b59fd 101.23%, rgba(133, 175, 255, 0.61) 101.24%, rgba(52, 97, 184, 0.64) 101.24%);     */
+    background: #AED4FF;
     padding-top: 0%;
     padding-bottom: 0%;
 }
@@ -131,6 +131,10 @@ export default {
 .navbar-nav{
     display: flex;
     flex-wrap: wrap;
+}
+
+.nav-link{
+  color: black !important
 }
 
 </style>

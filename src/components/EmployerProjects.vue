@@ -1,70 +1,48 @@
 <template>
   <div  class = "employer-projects page-bg mb-4"> 
     <Navbar/>
-    <h1 id = "projects-header"  class="mb-4">Projects</h1>
-    <div class = "contentz container-fluid">
-      <div class= "row">
+    <section class="panel">
+    <a href="#" class=" btn btn-success btn-xs mb-3" style="float:right"> Create New Project</a>
+    <table class="table table-hover p-table">
+        <thead>
+        <tr>
+            <th>Project Name</th>
+            <th>Team Member</th>
+            <th>Assigned Date</th>
+            <th>Project Due</th>
+            <th>Project Status</th>
+            <th>Rewarded Points</th>
+            <th>Custom</th>
+        </tr>
+        </thead>
+        <tbody style="width:100%">
+          <!-- <div class = "contentz container-fluid"> -->
+            <!-- <div class= "row"> -->
 
-        <div class="col-xl-3 col-lg-4 col-md-6 " v-for="(proj, index) in projs" v-bind:key="index">
-          <router-link to ="/projects/project"
-            style = "text-decoration:none">
-            <EmployerProject :projectName="proj.project_name" :projectAssignees ="proj.assignee" :projectAssigned ="proj.assigned_date"
-            :projectDue ="proj.due_date" :projectStatus ="proj.project_status"  :projectReward ="proj.reward"/>
-          </router-link>
-        </div>
-        
-        <!-- <div class="col-xl-3 col-lg-4 col-md-6">
-          <router-link to ="/projects/project"
-            style = "text-decoration:none">
-            <EmployerProject :projectName ="'Proj2'" :projectAssignees = "'Karin'" :projectAssigned = "'11/6/2021'"
-            :projectDue ="'12/10/2021'" :projectStatus = "'incomplete'"  :projectReward = "'460'"/>
-          </router-link>
-        </div> -->
-          
-        <!-- <div class="col-xl-3 col-lg-4 col-md-6">
-          <router-link to ="/projects/project"
-            style = "text-decoration:none">
-            <EmployerProject :projectName ="'Proj2'" :projectAssignees = "'Karin'" :projectAssigned = "'11/6/2021'"
-            :projectDue ="'12/10/2021'" :projectStatus = "'incomplete'"  :projectReward = "'460'"/>
-          </router-link>
-        </div> -->
-          
-        <!-- <div class="col-xl-3 col-lg-4 col-md-6">
-          <router-link to ="/projects/project"
-            style = "text-decoration:none">
-            <EmployerProject :projectName ="'Proj2'" :projectAssignees = "'Karin'" :projectAssigned = "'11/6/2021'"
-            :projectDue ="'12/10/2021'" :projectStatus = "'incomplete'"  :projectReward = "'460'"/>
-          </router-link>
-        </div> -->
-        
-        <!-- <div class="col-xl-3 col-lg-4 col-md-6">
-          <router-link to ="/projects/project"
-            style = "text-decoration:none">
-            <EmployerProject :projectName ="'Proj2'" :projectAssignees = "'Karin'" :projectAssigned = "'11/6/2021'"
-            :projectDue ="'12/10/2021'" :projectStatus = "'incomplete'"  :projectReward = "'460'"/>
-          </router-link>
-        </div> -->
-        
+              <div v-for="(proj, index) in projs" v-bind:key="index">
+                <router-link to ="/projects/project"
+                  style = "text-decoration:none">
+                  <EmployerProject :projectName="proj.project_name" :projectAssignees ="proj.assignee" :projectAssigned ="proj.assigned_date"
+                  :projectDue ="proj.due_date" :projectStatus ="proj.project_status"  :projectReward ="proj.reward"/>
+                </router-link>
+              </div>
 
-        <!-- <div class="col-xl-3 col-lg-4 col-md-6">
-          <router-link to ="/projects/project"
-            style = "text-decoration:none">
-            <EmployerProject :projectName ="'Proj2'" :projectAssignees = "'Karin'" :projectAssigned = "'11/6/2021'"
-            :projectDue ="'12/10/2021'" :projectStatus = "'incomplete'"  :projectReward = "'460'"/>
-          </router-link>
-        </div>    -->
+            <!-- </div> -->
           
-        <div class="col-xl-3 col-lg-4 col-md-6">
+          <!-- </div> -->
+        </tbody>
+    </table>
+</section>
+          
+        <!-- <div class="col-xl-3 col-lg-4 col-md-6">
           <AddItem :itemType="'project'"/>
-        </div> 
+        </div>  -->
        
-      </div>
-    
-    </div>
+
 
 
     <!-- Modal -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <!-- <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
@@ -95,18 +73,18 @@
         </div>
         <h5>Click anywhere to cancel</h5>
       </div>
-    </div>
+    </div> -->
   </div>
 </template>
 <script>
 import EmployerProject from "./EmployerProject.vue"
 import Navbar from  "./Navbar.vue"
-import AddItem from "./AddItem.vue"
+// import AddItem from "./AddItem.vue"
 import mixin from "../mixin"
 import firebase from "firebase/compat"
 export default {
     name:"Projects",
-    components: {EmployerProject,AddItem,Navbar},
+    components: {EmployerProject,Navbar}, //AddItem,
     // data(){
     //   return{
     //     projectName:"",
@@ -142,16 +120,16 @@ export default {
 }
 </script>
 <style scoped>
-.contentz{
+/* .contentz{
     margin-top:80px;
     padding: auto;
-}
+} */
 /* .employer-projects{
       display: flex;
     flex-wrap: wrap;
 } */
 
-#projects-header{
+/* #projects-header{
   width: max-content;
   margin: auto;
   margin-top: 80px;
@@ -173,16 +151,56 @@ export default {
 }
 .page{
     min-height: 100vh;
-    width:100%;
+    width:100%; */
     /* display: flex; */
-}
-.pageContent{
-  min-height:100vh;
+/* } */
+/* .pageContent{
+  min-height:100vh; */
   /* margin-top:60px; */
-  background:rgba(248, 248, 248, 1)
+  /* background:rgba(248, 248, 248, 1)
 ;
   padding-top:60px;
   padding-bottom:60px;
+} */
+th{
+    width:50%;
+    text-align: right;
+}
+td{
+    width:100%;
+    text-align: left;
+}
+.projectCard{
+   
+    margin:10px;
+    border: none;
+    height:360px;
+}
+.project-title{
+    background: linear-gradient(57.11deg, #6D9DF8 -4.9%, #6461FF 101.23%, rgba(109, 157, 248, 0.64) 101.24%, rgba(109, 157, 248, 0) 101.24%);
+    color: white;
+    max-width: 100%;
+}
+.project-btn{
+/* background: linear-gradient(0deg, #504DFF, #504DFF), rgba(78, 74, 255, 0.61); */
+    background: rgb(253, 198, 97);
+    border-radius: 5px;
+    color: black;
+    border: 1px solid black;
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.2), 0 2px 2px 0 rgba(0,0,0,0.19);
+}
+.iconContainer{
+    display: flex;
+    align-items: center;
+    justify-content:center;
 }
 
+.member{
+    height: 50px;
+    width: 50px;
+}
+
+section{
+  margin-top: 100px;
+}
 </style>

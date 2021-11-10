@@ -1,44 +1,33 @@
 
 <template>
-<div class="card projectCard w-auto border border-secondary" style="width: 18rem;">
-    <div class="card-header project-title">
-        {{projectName}}
-    </div>
-        <div class = "card-body">
-      <!-- <AccountCheckIcon/> -->
-  <!-- <div class = "iconContainer">
-        <span class="material-icons">
-build
-</span>
-  Edit</div> -->
-        <div class = "project-details">
-            <table class="table w-75">
-                <tr>
-                    <th scope = "row" class="text-start">Assigned to:</th>
-                    <td>{{projectAssignees}} </td>
-                </tr>
-                <tr>
-                    <th scope = "row" class="text-start">Assigned date:</th>
-                    <td>{{projectAssigned}} </td>
-                </tr>
-                <tr>
-                    <th scope = "row" class="text-start">Project due:</th>
-                    <td>{{projectDue}} </td>
-                </tr>
-                <tr>
-                    <th scope = "row" class="text-start">Status:</th>
-                    <td>{{projectStatus}} </td>
-                </tr>
-                <tr>
-                    <th scope = "row" class="text-start">Reward:</th>
-                    <td>{{projectReward}} </td>
-                </tr>
-
-            </table>
-            <button class = "mt-4 btn project-btn" @click="project()">Project Details</button>
-        </div>
-    </div>
-</div>
+<!-- <table class="table table-hover p-table"> -->
+        <!-- <tbody class="projects"> -->
+        <tr>
+            <td class="p-name">
+                {{projectName}}
+            </td>
+            <td class="p-team">
+                {{projectAssignees}}
+            </td>
+            <td class="p-assignedDate">
+                {{projectAssigned}}
+            </td>
+            <td class="p-Due">
+                {{projectDue}}
+            </td>
+            <td class="p-status">
+                {{projectStatus}}
+            </td>
+            <td class="p-reward">
+                {{projectReward}}
+            </td>
+            <td>
+                <a href="#" class="btn btn-primary btn-xs"><i class="fa fa-folder"></i> View </a>
+                <a href="#" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> Delete </a>
+            </td>
+        </tr> 
+    <!-- </tbody>  -->
+<!-- </table> -->
 </template>
 <script>
 // import EmployerProject from "./EmployerProject.vue"
@@ -74,7 +63,7 @@ th{
     text-align: right;
 }
 td{
-    width:50%;
+    width:100%;
     text-align: left;
 }
 .projectCard{
@@ -101,5 +90,4 @@ td{
     align-items: center;
     justify-content:center;
 }
-
 </style>
