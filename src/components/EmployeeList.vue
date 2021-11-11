@@ -199,7 +199,7 @@ export default {
 
 .card {
     width: 270px;
-    margin: 20px;
+    margin: 20px auto;
     height: 500px;
 }
 

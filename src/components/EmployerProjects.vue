@@ -2,7 +2,7 @@
   <!-- <div  class = "mb-4">  -->
     <Navbar/>
     
-    <section class="panel mx-4" >
+    <section class="panel mx-2" >
       <div><h1 class="heading">Projects</h1></div>
       <a href="#" class=" btn btn-success btn-xs mb-3" style="float:right" @click="create()"> Create New Project</a>
 
@@ -31,7 +31,7 @@
                   <EmployerProject :projectName="proj.project_name" :projectAssignees ="proj.assignee" :projectAssigned ="proj.assigned_date"
                   :projectDue ="proj.due_date" :projectStatus ="proj.project_status"  :projectReward ="proj.reward"/>
                 </router-link> -->
-                <td class="p-name">
+                <td class="p-name text-wrap">
                   {{proj.project_name}}
                     <!-- {{proj.project_name}} -->
                 </td>
@@ -131,7 +131,7 @@ export default {
 }
 
 table{
-  table-layout: auto;
+  /* table-layout: auto; */
   width: 100%;
   overflow-x: auto;
 }

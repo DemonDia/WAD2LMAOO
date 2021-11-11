@@ -10,10 +10,10 @@
             <ProjectToReview/> -->
             
             <div class = "projectReviewContainer" v-for="(proj,key) in proj_names" v-bind:key="key">
-                <div class = "projectName">
-                    <h4>{{key}}</h4>
+                <div class = " projectName mx-3">
+                    <h4 >{{key}}</h4>
                 </div>
-                <div class = "projectMembers">
+                <div class = "projectMembers ">
                      <router-link class = "nav-link" v-for="(emp,index) in proj" v-bind:key="index"  :to="`/review/${emp.name}`">
                         <main role="main" class="d-inline-flex emp_card">
                             <div class="album bg-light">
@@ -142,12 +142,12 @@ export default {
 }
 .projectName{
     display: block;
-    max-width:20%;
+    /* max-width:50%; */
     background: black;
     color: white;
     /* background: linear-gradient(57.11deg, #6D9DF8 -4.9%, #6461FF 101.23%, rgba(109, 157, 248, 0.64) 101.24%, rgba(109, 157, 248, 0) 101.24%); */
     /* margin:10px; */
-    margin-left: 15px;
+    /* margin-left: 15px; */
     margin-bottom: 30px;
     padding: 10px;
     border-radius:10px;
@@ -196,7 +196,8 @@ align-self: end;
 }
 
 .emp_card {
-    margin-right: 20px;
+    /* margin-right: 20px; */
+    margin: auto;
 }
 
 .card-img-top {

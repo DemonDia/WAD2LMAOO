@@ -1,11 +1,10 @@
 <template>
     <div class = "page">
         <Navbar/>
-
         <div class = "add-employee-container">
             <h1 id = "add-emp-header" class="mb-4">Add Employee</h1>
-
-            <div class = "card onboarding-form mb-5">
+            <div class="row">
+            <div class = "col-12 col-md-9 col-lg-7 card onboarding-form mb-5">
                 
                 <table class = "form-table">
                     <tr>
@@ -30,7 +29,7 @@
                                     
                                     <th>Department:</th>
 
-                                    <td>
+                                    <td class="text-start">
                                         <select v-model="selected" >
                                             <option disabled value="">Please select a department</option>
                                             <option v-for="dept in departments" v-bind:key="dept.department_id">{{dept.department_name}}</option>
@@ -60,11 +59,11 @@
 
                                 <tr>
                                     <th>Photo:</th>
-                                    <td id = "add-photo">
-                                        <div class = "card add-photo">
-                                            <img :src="image" width="80px">
+                                    <td id = "add-photo" class="text-start">
+                                        <!-- <div class = "card add-photo"> -->
+                                            <!-- <img :src="image" width="80px"> -->
                                             <!-- Employee Image -->
-                                        </div>
+                                        <!-- </div> -->
                                         <!-- <input type="file" class="form-control-file" id="exampleFormControlFile1"> -->
 
                                         <input type="file" @change="uploadImg">
@@ -83,6 +82,7 @@
                     <button class = "btn view-btn" v-on:click ="submit()">Add</button>
                 </div>
             </div>
+        </div>
         </div>
     </div>
    
@@ -256,7 +256,7 @@ th{
     overflow: hidden;
 }
 .card{
-    max-width: 100%;
+    /* max-width: 100%; */
     height: auto;
 }
 
@@ -281,7 +281,7 @@ th{
 .onboarding-form{
     background:#F8F8F8;
     margin: auto;
-    width: 50%;
+    /* width: 50%; */
     /* padding:10px; */
     align-items: center;
     

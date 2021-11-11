@@ -122,10 +122,10 @@
                                             </thead>
                                             <tbody>
                                                 <tr v-for="(row, index) in filteredRows" :key="`task-${index}`">
-                                                    <td class="text-center">{{ row.task_status }}</td>
-                                                    <td class="text-center">{{ row.task_name }}</td>
-                                                    <td class="text-center">{{ row.project_name }}</td>
-                                                    <td class="text-center">{{ row.user_name }}</td>
+                                                    <td class="text-center text-wrap">{{ row.task_status }}</td>
+                                                    <td class="text-center text-wrap">{{ row.task_name }}</td>
+                                                    <td class="text-center text-wrap">{{ row.project_name }}</td>
+                                                    <td class="text-center text-wrap">{{ row.user_name }}</td>
                                                 </tr>
                                             </tbody>
                                         </table>
@@ -377,6 +377,9 @@ export default {
             sort: '',
             direction: 'asc',
             columns: ['task','proj','status','person'],
+            categories: [],
+            completed: [],
+            incomplete: []
             // rows: [
             //     {task:'Complete UI', proj: 'Project 5', status: 'Completed', person: 'James', deadline: '28/11/2021'},
             //     {task:'Prototype', proj: 'Project 1', status: 'New', person: 'James', deadline: '28/11/2021'},
@@ -408,10 +411,10 @@ export default {
 
                 firebase.database().ref('tasks/').on('value', (snapshot) => {
                     console.log("type is " + this.type)
-                    this.incomplete_tasks = 0
-                    this.completed_tasks = 0
-                    this.num_task = 0
-                    this.tasks = []
+                    // this.incomplete_tasks = 0
+                    // this.completed_tasks = 0
+                    // this.num_task = 0
+                    // this.tasks = []
                     if (this.type == "employer") {
                         
                         // this.num_task = snapshot.val().length;
@@ -434,15 +437,53 @@ export default {
                         console.log(this.taskStatus_employer.series[0].data[0].y);
                         console.log(this.taskStatus_employer.series[0].data[1].y);
 
+                        firebase.database().ref('projects/').on('value', (snapshot) => {
+                            snapshot.forEach((childSnapshot) => {
+                                var name = childSnapshot.val().project_name
+                                this.categories.push(name)
+                            })
+                            this.taskDist_employer.xAxis = this.categories
+                            console.log(this.taskDist_employer.xAxis)
+                        });
+
+                        firebase.database().ref('tasks/').on('value', (snapshot) => {
+                            for (var proj of this.categories) {
+                                var num_c = 0;
+                                var num_inc = 0;
+                                snapshot.forEach((childSnapshot) => {
+                                    var task = childSnapshot.val()
+                                    console.log(proj, task.project_name)
+                                    if (proj == task.project_name) {
+                                        if(task.task_status == "Completed") {
+                                            num_c += 1
+                                        } else {
+                                            num_inc += 1;
+                                        }
+                                    }
+                                })
+                                console.log(num_c,num_inc)
+                                this.completed.push(num_c);
+                                this.incomplete.push(num_inc);
+                            }
+                            console.log(this.completed)
+                            this.taskDist_employer.series[0].data = this.completed;
+                            this.taskDist_employer.series[1].data = this.incomplete;
+                        });
+
                     } else {
                         // this.tasks = []
                         snapshot.forEach((childSnapshot) => {
                             var task = childSnapshot.val();
+                            
                             if (task.user_id == user.uid) {
+                                if (!this.categories.includes(task.project_name)) {
+                                    this.categories.push(task.project_name)
+                                }
                                 this.tasks.push(task);
                                 this.num_task += 1;
                                 if (task.task_status == "Completed") {
                                     this.completed_tasks += 1;
+                                    
                                 } else {
                                     this.incomplete_tasks += 1;
                                 }
@@ -455,8 +496,40 @@ export default {
                         console.log("OVER HERE");
                         console.log(this.taskStatus_employer.series[0].data[0].y);
                         console.log(this.taskStatus_employer.series[0].data[1].y);
+
+                        firebase.database().ref('tasks/').on('value', (snapshot) => {
+                            for (var proj of this.categories) {
+                                var num_c = 0;
+                                var num_inc = 0;
+                                snapshot.forEach((childSnapshot) => {
+                                    var task = childSnapshot.val()
+                                    if (proj == task.project_name) {
+                                        if(task.task_status == "Completed") {
+                                            num_c += 1
+                                        } else {
+                                            num_inc += 1;
+                                        }
+                                    }
+                                })
+                                console.log(num_c,num_inc)
+                                this.completed.push(num_c);
+                                this.incomplete.push(num_inc);
+                            }
+                            console.log(this.completed)
+                            this.taskDist_employer.series[0].data = this.completed;
+                            this.taskDist_employer.series[1].data = this.incomplete;
+                        });
                     }
-                })
+                });
+
+                // firebase.database().ref('projects/').on('value', (snapshot) => {
+                //     snapshot.forEach((childSnapshot) => {
+                //         var name = childSnapshot.val().project_name
+                //         this.categories.push(name)
+                //     })
+                //     this.taskDist_employer.xAxis = this.categories
+                //     console.log(this.taskDist_employer.xAxis)
+                // });   
             }
         })
     }
@@ -483,6 +556,11 @@ export default {
 .table{
     table-layout:fixed;
     width:100%;
+}
+
+td {
+    /* word-wrap:break-word; */
+    overflow: hidden;
 }
 .task_list{
     overflow-y:scroll;

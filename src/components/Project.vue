@@ -9,7 +9,7 @@
 
 
 
-<section class="panel mx-4" style = "margin-top:60px">
+<section class="panel mx-4" style = "margin-top:80px">
       <div><h1 class="heading">{{displayProjName}} </h1></div>
       <router-link to = "/projects" class=" btn btn-primary btn-xs mb-3" style="float:left">Back</router-link>
     <a href="#" class=" btn btn-success btn-xs mb-3" style="float:right" @click="create"> Create New Task</a>
@@ -267,6 +267,11 @@ color: white;
 }
 label{
   float: left;
+}
+
+th {
+  overflow: hidden;
+  /* word-wrap:break-word; */
 }
 </style>
 <style>

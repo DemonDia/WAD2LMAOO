@@ -3,8 +3,8 @@
         <Navbar/>
         <div class = "add-employee-container">
             <h1 id = "add-emp-header"  class="mb-4">Add Task</h1>
-            
-            <div class = "card onboarding-form mb-5">
+            <div class="row">
+            <div class = "col-12 col-md-9 col-lg-7 card onboarding-form mb-5">
                 <table class = "form-table">
                     <tr>
                         <td id = "impt-info">
@@ -16,7 +16,7 @@
 
                               <tr>
                                     <th>Assigned To:</th>
-                                    <td>
+                                    <td class="text-start">
                                         <select v-model="selected" >
                                             <option disabled value="">Please select an assignee</option>
                                             <option v-for="user in users" v-bind:key="user.user_id">{{user.name}}</option>
@@ -53,6 +53,7 @@
                     <button class = "btn view-btn" v-on:click ="add()">Add</button>
                 </div>
             </div>
+        </div>
         </div>
     </div>
 </template>
@@ -184,7 +185,7 @@ export default {
 
                 task_id: key,
                 task_name:this.taskName,
-                task_status:"New",
+                task_status:"Incomplete",
                 user_id:this.userID ,
                 user_name:this.selected
             }
@@ -226,7 +227,7 @@ th{
     overflow: hidden;
 }
 .card{
-    max-width: 100%;
+    /* max-width: 100%; */
     height: auto;
 }
 
@@ -251,7 +252,7 @@ th{
 .onboarding-form{
     background:#F8F8F8;
     margin: auto;
-    width: 50%;
+    /* width: 50%; */
     /* padding:10px; */
     align-items: center;
 }
