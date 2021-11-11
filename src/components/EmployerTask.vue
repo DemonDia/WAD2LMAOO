@@ -1,7 +1,7 @@
 <template>
 <div>
 
-<div class="card projectCard" style="width: 18rem;" v-if="taskStatus === 'incomplete'">
+<div class="card projectCard" style="width: 18rem;" v-if="taskStatus === 'New'">
   <div class="card-header task-title">
     Task Name
   </div>
@@ -33,7 +33,7 @@
   </div>
 
 
-<div class="card projectCard" style="width: 18rem;" v-if="taskStatus === 'review'">
+<div class="card projectCard" style="width: 18rem;" v-if="taskStatus === 'Review'">
   <div class="card-header review-title">
     Task Name
   </div>
