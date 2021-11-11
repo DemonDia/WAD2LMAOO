@@ -14,8 +14,8 @@
                     <h4>{{key}}</h4>
                 </div>
                 <div class = "projectMembers">
-                    <router-link class = "nav-link" to="/review/member">
-                        <main role="main" class="d-inline-flex emp_card" v-for="(emp,index) in proj" v-bind:key="index">
+                     <router-link class = "nav-link" v-for="(emp,index) in proj" v-bind:key="index"  :to="`/review/${emp.name}`">
+                        <main role="main" class="d-inline-flex emp_card">
                             <div class="album bg-light">
                             <div class="card shadow-sm">
                                 <img :src="require(`../assets/${emp.image}`)" width="100%" height="225" background="#55595c" color="#eceeef" class="card-img-top" text="Thumbnail" >
@@ -60,7 +60,7 @@ export default {
         //     this.$router.push("/authenticate")
         // }
 //   },
-data() {
+    data() {
         return {
             proj_names: {}
         }

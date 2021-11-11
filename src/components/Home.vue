@@ -201,6 +201,7 @@ export default {
         incomplete_tasks: 0,
         num_task: 0,
         type: "",
+        y:0,
       arr:[],
             taskStatus: {
                 chart: {

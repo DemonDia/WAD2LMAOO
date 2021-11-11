@@ -22,6 +22,7 @@ import EmployeeList from "../components/EmployeeList.vue"
 import AddEmployee from "../components/AddEmployee.vue"
 import AddProject from "../components/AddProject.vue"
 import ErrorPage from "../components/ErrorPage.vue"
+import AddItem from "../components/AddItem.vue"
 // import EmployerProject from "../components/EmployerProject.vue"
 import EmployerProjects from "../components/EmployerProjects"
 import firebase from 'firebase/compat';
@@ -122,6 +123,16 @@ const routes = [
 	},
 
 	{
+		path:"/projects/project/:id/addTask",
+		name:"AddTask",
+		component:AddItem,
+		meta: {
+			authRequired: true,
+		},
+	},
+
+
+	{
 		path:"/review",
 		name:"Review",
 		component:ProjectReview,
@@ -131,8 +142,9 @@ const routes = [
 
 	},
 	{
-		path:"/review/member",
-		name:"ReviewMember",
+		path:"/review/:id",
+		name:"MemberToReview",
+		props: true,
 		component:MemberToReview,
 		meta: {
 			authRequired: true,

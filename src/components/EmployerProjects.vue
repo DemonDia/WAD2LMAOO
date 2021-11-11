@@ -32,7 +32,7 @@
                   :projectDue ="proj.due_date" :projectStatus ="proj.project_status"  :projectReward ="proj.reward"/>
                 </router-link> -->
                 <td class="p-name">
-                  {{proj.project_id}}
+                  {{proj.project_name}}
                     <!-- {{proj.project_name}} -->
                 </td>
                 <td class="p-team">

@@ -118,8 +118,8 @@
                                     <h5 class="review-stat card-title">Anon</h5>
                                     <!-- {{review}} -->
                                     <div class="small-ratings card-subtitle"> 
-                                        <i v-for="index in review.ratings" :key="index" class="fa fa-star rating-color"></i> 
-                                        <i v-for="index in 5-review.ratings" :key="index"  class="fa fa-star"></i> 
+                                        <i v-for="index in review.rating" :key="index" class="fa fa-star rating-color"></i> 
+                                        <i v-for="index in 5-review.rating" :key="index"  class="fa fa-star"></i> 
                                     </div>
                                     <p class="card-text">{{review.comments}} </p>
                                 </div>
@@ -198,7 +198,7 @@ export default {
             var listedRatings = this.user_reviews;
             for(let i = 0; i < listedRatings.length; i++){
                 // console.log(listedRatings[i].ratings)
-                total+= listedRatings[i].ratings
+                total+= listedRatings[i].rating
             }
 
             return Math.round(total/listedRatings.length)
@@ -220,6 +220,7 @@ export default {
                     });
                 }); 
                 firebase.database().ref('reviews/').on('value', (snapshot) => {
+                    this.user_reviews = []
                     snapshot.forEach((childSnapshot) => {
                         var review = childSnapshot.val();
                         if (review.user_id === user.uid) {

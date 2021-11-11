@@ -1,10 +1,12 @@
 <template>
     <div class = "page">
         <Navbar/>
+
         <div class = "add-employee-container">
-            <h1 id = "add-emp-header"  class="mb-4">Add Employee</h1>
-            
+            <h1 id = "add-emp-header" class="mb-4">Add Employee</h1>
+
             <div class = "card onboarding-form mb-5">
+                
                 <table class = "form-table">
                     <tr>
                         <td id = "impt-info">
@@ -25,7 +27,9 @@
                                 <tr>
                                     <!-- <th>Home Address:</th>
                                     <td><input type  ="text" placeholder = "Address" class = "form-control"/></td> -->
-                                    <th>Department</th>
+                                    
+                                    <th>Department:</th>
+
                                     <td>
                                         <select v-model="selected" >
                                             <option disabled value="">Please select a department</option>
@@ -41,7 +45,11 @@
 
                                 <tr>
                                     <th>Password:</th>
-                                    <td><input type  ="password" placeholder = "Enter password" class = "form-control" v-model="password"/></td>
+                                    <td>
+                                        <input type ="password" placeholder = "Enter password" class = "form-control" v-model="password"/>
+                                        <!-- <input type="checkbox" @click="showPw()"> Show Password -->
+                                    </td>
+                                   
                                 </tr>
 
                                 <tr>
@@ -76,6 +84,7 @@
             </div>
         </div>
     </div>
+   
 </template>
 <script>
 import Navbar from "./Navbar.vue"
@@ -104,12 +113,26 @@ export default {
             num: 0,
             departments: [],
             selected: "",
+            btnText : "",
             // image:""
 
             selectedFile: null
         }
     },
     methods:{
+
+        // showPw(){
+        //     console.log(this.password)
+            // if(this.type === 'password') {
+            //     this.type = 'text'
+            //     this.btnText = 'Hide Password'
+            // } 
+            // else {
+            //     this.type = 'password'
+            //     this.btnText = 'Show Password'
+            // }
+        // },
+
         onFileSelected(event){
             console.log(event)
             this.selectedFile = event.target.files[0]
@@ -245,17 +268,20 @@ th{
     width: 50%;
     /* padding:10px; */
     align-items: center;
+    
 }
 
 /* form */
 .form-table{
-    width:90%;
+    width:100%;
+    
 }
 #impt-info{
     width:60%;
 }
 .form-table tr td{
     padding:10px;
+    width: 80%
 }
 /* impt data */
 .input-table{
@@ -269,7 +295,7 @@ textarea{
 
 }
 .input-table tr th{
-    text-align: right;
+    text-align: left;
     padding-right: 8px;
     /* width: 40px; */
 }
