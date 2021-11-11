@@ -77,7 +77,7 @@ export default {
                  num++
              },
          )
-             
+          window.location.reload();   
 
         
         // .on('value', (snapshot) => {

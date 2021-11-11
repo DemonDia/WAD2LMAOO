@@ -132,14 +132,6 @@ export default {
             // this.num++
             this.$router.push("/employees")
         },
-        onFileChange() {
-            const reader = new FileReader()
-            reader.readAsDataURL(this.file)
-            reader.onload = e => {
-                this.image = e.target.result
-                console.log(this.image)
-            }
-        },
     },
 //       beforeMount(){
 //        this.getUserType()
