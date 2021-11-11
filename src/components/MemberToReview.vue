@@ -5,7 +5,7 @@
             <h2>Reviewing for</h2>
             <div class = "card member-card">
                 <h3 class = "member-name">{{id}}</h3>
-                <div class = "person-image"><img src = "../assets/john.png"></div> 
+                <div class = "person-image"><img :src="userimg"></div> 
             </div>            
             <!-- <div class = "review-form">
                 <div class = "form-row">
@@ -77,7 +77,8 @@ export default {
     data(){
         return{
             rating:0,
-            comments: ""
+            comments: "",
+            userimg: null
         }
     },
 //       beforeMount(){
@@ -94,6 +95,7 @@ export default {
                 snapshot.forEach((childSnapshot) => {
                     var user = childSnapshot.val();
                     if (id == user.name) {
+                        console.log("details",this.userimg)
                         var userid = user.user_id
                         firebase.database().ref('reviews/').push({
                             comments: this.comments,
@@ -107,6 +109,18 @@ export default {
             alert("You have submitted review for" + this.id); // need get the name of user
             this.$router.push("/review")
         }
+    },
+    created() {
+        firebase.database().ref('users/').on('value', (snapshot) => {
+            snapshot.forEach((childSnapshot) => {
+                var user = childSnapshot.val();
+                if (this.id == user.name) {
+                    this.userimg = user.image
+                }
+                
+            })
+        })
+
     }
 
 }

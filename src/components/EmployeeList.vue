@@ -13,7 +13,7 @@
                 <div class="row">
                     <div class="col-xl-3 col-lg-4 col-md-6 " v-for="employee in filteredRows" v-bind:key="employee.user_id">
                         <div class=" card shadow-sm">
-                            <img src="../assets/john.png" width="100%" height="225" background="#55595c" color="#eceeef" class="card-img-top rounded" text="Thumbnail" >
+                            <img :src="employee.image" width="100%" height="225" background="#55595c" color="#eceeef" class="card-img-top rounded" text="Thumbnail" >
                             <div class="inline pt-3">
                                 <h6>{{employee.name}}</h6>
                             </div>

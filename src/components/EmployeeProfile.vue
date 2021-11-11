@@ -26,12 +26,12 @@
                 <div class="tab-content" id="myTabContent">
                     <div class="tab-pane fade show active" id="about" role="tabpanel" aria-labelledby="about-tab">
                         <div class="container-fluid justify-content-center">
-                            <div class="row justify-content-center">
+                            <div class="row justify-content-center" v-for="(details,index) in user_details" v-bind:key="index">
                                 <div class="col-sm-3 mt-4 mb-4 imagepos">
-                                    <img src="../assets/john.png" id="image" class="img-fluid rounded float-start border-2 border-dark" alt="...">
+                                    <img :src="details.image" id="image" class="img-fluid rounded float-start border-2 border-dark" alt="...">
                                 </div>
                                 <div class="card col-sm-9 mx-2 mt-4">
-                                    <ul class="list-group list-group-flush" v-for="(details,index) in user_details" v-bind:key="index">
+                                    <ul class="list-group list-group-flush" >
                                         <li class="list-group-item">
                                             <div class="my-1 row mx-3">
                                                 <label class="col-sm-4 col-form-label"><b>Name:</b></label>
@@ -208,7 +208,8 @@ export default {
         firebase.auth().onAuthStateChanged((user) => {
             if (user) {
                 firebase.database().ref('users/' + user.uid ).on('value', (snapshot) => {
-                    this.user_details.push(snapshot.val());  
+                    this.user_details.push(snapshot.val()); 
+                    console.log(this.user_details) 
                 }); 
                 firebase.database().ref('tasks/').on('value', (snapshot) => {
                     snapshot.forEach((childSnapshot) => {

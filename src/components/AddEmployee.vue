@@ -61,12 +61,13 @@
                                 <tr>
                                     <th>Photo:</th>
                                     <td id = "add-photo">
-                                        <!-- <div class = "card add-photo"> -->
+                                        <div class = "card add-photo">
+                                            <img :src="image" width="80px">
                                             <!-- Employee Image -->
-                                        <!-- </div> -->
+                                        </div>
                                         <!-- <input type="file" class="form-control-file" id="exampleFormControlFile1"> -->
 
-                                        <input type="file" @change="onFileSelected" accept="image/*">
+                                        <input type="file" @change="uploadImg">
                                         
                                     </td>
                                 </tr>
@@ -114,7 +115,7 @@ export default {
             departments: [],
             selected: "",
             btnText : "",
-            // image:""
+            image:null,
 
             selectedFile: null
         }
@@ -134,9 +135,23 @@ export default {
             // }
         // },
 
-        onFileSelected(event){
-            console.log(event)
-            this.selectedFile = event.target.files[0]
+        uploadImg(e){
+            console.log(e)
+            let file = e.target.files[0]
+            
+            var storageRef = firebase.storage().ref('employees/'+file.name)
+
+            let task = storageRef.put(file)
+
+            task.on('state_changed', snapshot => {
+                console.log(snapshot)
+            }, (error) => {
+                console.log(error)
+            },() =>{
+                task.snapshot.ref.getDownloadURL().then((downloadURL) => {
+                    this.image = downloadURL
+                })
+            })
         },
 
         // previewImage(event){
@@ -165,7 +180,7 @@ export default {
                 position: this.position,
                 user_id: key,
                 user_type: "employee",
-                image: this.selectedFile.name
+                image: this.image
             }
             
             // this.picture=null;
@@ -178,8 +193,8 @@ export default {
             //     this.picture=url;
             // })})
 
-            const fd = new FormData();
-            fd.append('image', this.selectedFile, this.selectedFile.name)
+            // const fd = new FormData();
+            // fd.append('image', this.selectedFile, this.selectedFile.name)
 
             // axios.post('https://projeck-aff0e-default-rtdb.asia-southeast1.firebasedatabase.app/users', fd)
             // .then(res => {
