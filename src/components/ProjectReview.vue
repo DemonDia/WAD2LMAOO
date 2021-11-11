@@ -11,7 +11,7 @@
             
             <div class = "projectReviewContainer" v-for="(proj,key) in proj_names" v-bind:key="key">
                 <div class = "projectName">
-                    <h3>{{key}}</h3>
+                    <h4>{{key}}</h4>
                 </div>
                 <div class = "projectMembers">
                     <router-link class = "nav-link" to="/review/member">

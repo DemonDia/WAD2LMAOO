@@ -33,7 +33,7 @@
 
                 </table>
                 <div class = "button-container justify-content-center">
-                    <router-link to = "/employees" class = "btn fire-btn">Cancel</router-link>
+                    <router-link to = "/projects" class = "btn fire-btn">Cancel</router-link>
                     <!-- <button class = "btn fire-btn">Cancel</button> -->
                     <button class = "btn view-btn" v-on:click ="submit()">Add</button>
                 </div>

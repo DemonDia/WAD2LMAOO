@@ -93,7 +93,7 @@
                             <tr v-for="(row, index) in filteredRows" :key="`task-${index}`">
                                 <td class="text-center">{{ row.task_status }}</td>
                                 <td class="text-center">{{ row.task_name }}</td>
-                                <td class="text-center">{{ row.project_id }}</td>
+                                <td class="text-center">{{ row.project_name }}</td>
                             </tr>
                         </tbody>
                     </table>
@@ -187,7 +187,7 @@ export default {
                 return this.user_tasks.filter(row => {
                 const task = row.task_name.toLowerCase();
                 const status = row.task_status.toLowerCase();
-                const project = row.project_id.toLowerCase();
+                const project = row.project_name.toLowerCase();
                 const searchTerm = this.filter.toLowerCase();
 
                 return task.includes(searchTerm) || status.includes(searchTerm) || project.includes(searchTerm);
