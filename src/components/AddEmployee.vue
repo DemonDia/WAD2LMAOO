@@ -178,6 +178,15 @@ export default {
             //     this.picture=url;
             // })})
 
+            // if(this.selectedFile == null)
+            // {
+            //     console.log('no file')
+            // }
+            // else
+            // {
+            //     const fd = new FormData();
+            //     fd.append('image', this.selectedFile, this.selectedFile.name)
+            // }
             const fd = new FormData();
             fd.append('image', this.selectedFile, this.selectedFile.name)
 
