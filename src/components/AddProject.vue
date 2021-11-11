@@ -25,7 +25,7 @@
 
                                 <tr>
                                     <th>Due Date:</th>
-                                    <td><input type ="text" maxlength="10" placeholder = "YYYY-MM-DD" class = "form-control" v-model="duedate"></td>
+                                    <td><input type ="date" maxlength="10" placeholder = "YYYY-MM-DD" class = "form-control" v-model="duedate"></td>
                                 </tr>
                             </table>
                         </td>
