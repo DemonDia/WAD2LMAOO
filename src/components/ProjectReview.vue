@@ -134,7 +134,8 @@ data() {
     /* max-width: 90%; */
     /* margin: 10px; */
     height: 50%;
-    overflow-x: scroll;
+    overflow-x: None;
+    
 }
 
 /* h3{

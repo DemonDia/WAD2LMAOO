@@ -1,7 +1,43 @@
 <template>
 <div class = "page">
     <Navbar/>
-    <div class = "employeeContainer">
+
+    <div class = "employeesPage">
+        <div class="search">
+            <input type = "text" class = "form-control" placeholder="Search by name" v-model="filter"/>
+        </div>
+        <div class = "employees">        
+            <div v-for="employee in filteredRows" v-bind:key="employee.user_id">
+            <div class="album">
+            <div class="card shadow-sm">
+                <img src="../assets/john.png" width="100%" height="225" background="#55595c" color="#eceeef" class="card-img-top rounded" text="Thumbnail" >
+                <div class="inline pt-3">
+                    <h6>{{employee.name}}</h6>
+                </div>
+
+                <div class="card-body details">
+                <p class="inline card-text inlineDetails"> 
+                    <small><b>User ID:</b></small> <br> <small> {{employee.user_id}}</small><br>
+                    <small><b>Department:</b></small> <br><small>{{employee.department_id}}</small><br>         
+                    <small><b>Points:</b></small> <br> <small>{{employee.current_pts}}</small>         
+                </p>
+                </div>
+            </div>
+            </div>
+            </div> 
+            <div class="card">               
+            <div class="card-body">
+                    <div>
+                        <router-link to ="/employees/add"
+                            style = "text-decoration: none;">
+                            <AddItem :itemType="'employee'" />
+                        </router-link>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </div>
+    <!-- <div class = "employeeContainer">
         <h1 id = "emplist-header"  class="mb-4">Employee List</h1>
         <div class = "filter-container-fluid">
             <div class="row w-100 m-0">
@@ -14,7 +50,6 @@
                     <select id="sortby" class = "form=control">
                         <option>Name</option>
                         <option>ID</option>
-                        <!-- <option>Date employed</option> -->
                     </select>           
                 </div>
 
@@ -30,97 +65,11 @@
         </div>
         <div class = "employee-container-fluid">
             <div class="row w-100 m-0">
-                <!-- <div class="col-xl-3 col-lg-4 col-md-6 w-auto m-0"> -->
-                <!-- <div class="col-xl-3 col-lg-3 col-md-6">
-                    <div class = "card employee-box">
-                        <h3>Thomas Tan</h3>
-                        <table class = "table employee-table">
-                            <tr>
-                                <th>Employee Name:</th>
-                                <td>Thomas Tan</td>
-                            </tr>
-                            <tr>
-                                <th>Employee ID:</th>
-                                <td>1</td>
-                            </tr>
-                            <tr>
-                                <th>Date onboarded:</th>
-                                <td>21/5/2021</td>
-                            </tr>
-                            <tr>
-                                <th>Points:</th>
-                                <td>21/5/2021</td>
-                            </tr>
-                        </table>
-                        <div class="row m-1">
-                            <button class = "btn view-btn col">Edit</button>
-                            <button class = "btn fire-btn col">Remove</button>
-                        </div>
-                    </div>
-                </div> -->
-                <!-- <div class="col-xl-3 col-lg-4 col-md-6 w-auto m-0"> -->
-                <!-- <div class="col-xl-3 col-lg-3 col-md-6">
-                    <div class = "card employee-box">
-                        <h3>Thomas Tan</h3>
-                        <table class = "table employee-table">
-                            <tr>
-                                <th>Employee Name:</th>
-                                <td>Thomas Tan</td>
-                            </tr>
-                            <tr>
-                                <th>Employee ID:</th>
-                                <td>1</td>
-                            </tr>
-                            <tr>
-                                <th>Date onboarded:</th>
-                                <td>21/5/2021</td>
-                            </tr>
-                            <tr>
-                                <th>Points:</th>
-                                <td>21/5/2021</td>
-                            </tr>
-                        </table>
-                        <div class="row m-1">
-                            <button class = "btn view-btn col">Edit</button>
-                            <button class = "btn fire-btn col">Remove</button>
-                        </div>
-                    </div>
-                </div> -->
-
-                <!-- <div class="col-xl-3 col-lg-4 col-md-6 w-auto m-0"> -->
-                <!-- <div class="col-xl-3 col-lg-3 col-md-6">
-                    <div class = "card employee-box">
-                        <h3>Thomas Tan</h3>
-                        <table class = "table employee-table">
-                            <tr>
-                                <th>Employee ID:</th>
-                                <td>1</td>
-                            </tr>
-                            <tr>
-                                <th>Date onboarded:</th>
-                                <td>21/5/2021</td>
-                            </tr>
-                            <tr>
-                                <th>Points:</th>
-                                <td>21/5/2021</td>
-                            </tr>
-                        </table>
-                        <div class="row m-1">
-                            <button class = "btn view-btn col">Edit</button>
-                            <button class = "btn fire-btn col">Remove</button>
-                        </div>
-                    </div>
-                </div> -->
-
-                <!-- <div class="col-xl-3 col-lg-4 col-md-6 w-auto m-0"> -->
+                
                 <div class="col-xl-3 col-lg-4 col-md-6 " v-for="employee in filteredRows" v-bind:key="employee.user_id">
                     <div class = "card employee-box" >
                         <h3>{{employee.name}}</h3>
                         <table class = "table employee-table">
-                            <!-- <tr>
-                                <th>Employee Name:</th>
-                                <td>Thomas Tan</td>
-                            </tr> -->
                             <tr>
                                 <th class="text-start">Employee ID:</th>
                                 <td id="id">{{employee.user_id}}</td>
@@ -133,11 +82,12 @@
                                 <th class="text-start">Points:</th>
                                 <td>{{employee.current_pts}}</td>
                             </tr>
-                        </table>
+                        </table>-->
                         
-                        <div class="row m-1">
-                             <!-- Modal -->
-                            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="row m-1"> 
+                             
+                         <!-- Modal-->    
+                         <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                 <div class="modal-dialog">
                                     <div class="modal-content">
                                         <div class="modal-header">
@@ -167,24 +117,11 @@
                                     </div>
                                 </div>
                             </div>
-                            <button class = "btn view-btn col" @click="edit(employee)" data-bs-toggle="modal" data-bs-target="#exampleModal">Edit</button>
-                            <button class = "btn fire-btn col" @click="delete_user(employee.user_id)">Remove</button>
+                            <!-- <button class = "btn view-btn col" @click="edit(employee)" data-bs-toggle="modal" data-bs-target="#exampleModal">Edit</button>
+                            <button class = "btn fire-btn col" @click="delete_user(employee.user_id)">Remove</button> -->
                         </div>
-                        
-                    </div>
-                </div>
-                <div class="add-emp col-xl-3 col-lg-4 col-md-6 m-0">
-                    <div>
-                        <router-link to ="/employees/add"
-                            style = "text-decoration: none;">
-                            <AddItem :itemType="'employee'" />
-                        </router-link>
-                    </div>
-                </div>
-            </div>
-        </div>
+                        <!-- add-emp col-xl-3 col-lg-4 col-md-6 m-0 -->
 
-    </div>
 
 </div>
     
@@ -287,7 +224,7 @@ export default {
 }
 </script>
 <style scoped>
-.add-emp{
+/* .add-emp{
     width: 330px;
 }
 #sortby{
@@ -308,10 +245,8 @@ export default {
     min-height: 100vh;
     width:100%;
     background:white
-    /* display: flex; */
 }
 
-/* filter */
 .filter-container{
     width:100%;
     display: flex;
@@ -320,14 +255,10 @@ export default {
 }
 .filter-container div{
     margin:5px;
-    /* padding:10px; */
 }
 
-/* employee container */
 .employeeContainer{
     margin-top:80px;
-    
-    
 }
 
 .employee-container{
@@ -337,29 +268,23 @@ export default {
     flex-wrap: wrap;
 }
 
-/* individual employee */
 .employee-box{
     width:288px;
     height:360px;
-    /* background:red; */
-    /* display: flex; */
     padding:10px;
     margin:10px;
     background: linear-gradient(57.11deg, #86B0FF -4.9%, #6461FF 101.23%, rgba(133, 175, 255, 0.61) 101.24%, rgba(52, 97, 184, 0.64) 101.24%);
     color: white;
-    /* align-items: center; */
     }
 .employee-table{
     width:100%;
     background:white;
-    /* align-self: center; */
 }
 tr th{
     width:40%;
     text-align: right;
 }
 .view-btn{
-    /* background: #6360FF; */
     background: rgb(253, 198, 97);
     border-radius: 5px;
     width:200px;
@@ -383,7 +308,36 @@ tr th{
 
 .table {
     margin: auto;
+} */
+
+
+.employeesPage{
+    margin-top: 100px;
 }
 
+.search{
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    /* justify-content: center; */
+}
+
+.employees {
+    display: flex;
+    margin-top: 40px;
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    /* background: none; */
+}
+
+.card {
+    width: 250px;
+    margin: 20px;
+}
+
+.details{
+    text-align: left;
+}
 
 </style>
