@@ -2,9 +2,9 @@
     <div class = "page">
         <Navbar/>
         <div class = "review-container">
-            <h2>[Project A] Reviewing for</h2>
+            <h2>Reviewing for</h2>
             <div class = "card member-card">
-                <h3 class = "member-name">Person name</h3>
+                <h3 class = "member-name">{{id}}</h3>
                 <div class = "person-image"><img src = "../assets/john.png"></div> 
             </div>            
             <!-- <div class = "review-form">
@@ -24,7 +24,7 @@
 
             </div> -->
             <table class = "review-form">
-                <tr>
+                <!-- <tr>
                     <th align="left"><label>Goals Accomplished: </label></th>
                     <td><textarea class="textarea" role="textbox"></textarea></td>
                 </tr>
@@ -32,11 +32,11 @@
                  <tr>
                     <th><label>Areas of improvement: </label></th>
                     <td><textarea class="textarea" role="textbox"></textarea></td>
-                </tr>
+                </tr> -->
 
                 <tr>
                     <th><label>Additional Comments: </label></th>
-                    <td><textarea class="textarea" role="textbox"></textarea></td>
+                    <td><textarea class="textarea" role="textbox" placeholder="Goals Accomplished/Areas of Improvement/Additional Comments" v-model="comments"></textarea></td>
                 </tr>      
 
                 <tr>
@@ -55,7 +55,7 @@
                  <!-- <button class=  'btn btn-danger'>Cancel</button> -->
                  <button class=  'btn btn-primary'
                  style = "background:#504DFF"
-                 v-on:click = "submit">Submit</button>
+                 @click="submit(id)">Submit</button>
              </div>
         </div>
     </div>
@@ -65,28 +65,46 @@
 import vue3StarRatings from "vue3-star-ratings";
 import mixin from "../mixin"
 import Navbar from "./Navbar.vue"
+import firebase from 'firebase/compat'
 export default {
     name:"MemberToReview",
     components:{
         Navbar,
         vue3StarRatings
     },
+    props: ['id'],
     mixins:[mixin],
     data(){
         return{
-            rating:0
+            rating:0,
+            comments: ""
         }
     },
-      beforeMount(){
-       this.getUserType()
-        if(this.usertype !== "employer"){
-            this.$router.push("/")
-        }
-  },
+//       beforeMount(){
+//        this.getUserType()
+//         if(this.usertype !== "employer"){
+//             this.$router.push("/")
+//         }
+//   },
 
     methods:{
-        submit(){
-            alert("You have submitted review for" + this.accountList.name); // need get the name of user
+        submit(id){
+            console.log(id)
+            firebase.database().ref('users/').on('value', (snapshot) => {
+                snapshot.forEach((childSnapshot) => {
+                    var user = childSnapshot.val();
+                    if (id == user.name) {
+                        var userid = user.user_id
+                        firebase.database().ref('reviews/').push({
+                            comments: this.comments,
+                            rating: this.rating,
+                            user_id: userid
+                        })
+                    }
+                    
+                })
+            })
+            alert("You have submitted review for" + this.id); // need get the name of user
             this.$router.push("/review")
         }
     }
