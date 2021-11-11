@@ -13,7 +13,7 @@
                             <table class ="input-table">
                                 <tr>
                                     <th>Name:</th>
-                                    <td><input type  ="text" placeholder = "Employee Name" class = "form-control" v-model="name"/></td>
+                                    <td><input type  ="text" placeholder = "Employee Name" class = "form-control" v-model="name" required/></td>
                                 </tr>
                                 <tr>
                                     <th>DOB:</th>
@@ -118,6 +118,7 @@ export default {
 
             selectedFile: null
         }
+    
     },
     methods:{
 
