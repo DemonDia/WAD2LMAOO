@@ -426,6 +426,14 @@ export default {
                                 this.num_task += 1
                             }
                         })
+                        console.log("OVER HERE");
+                        console.log(this.taskStatus_employer.series[0].data[0].y);
+                        this.taskStatus_employer.series[0].data[0].y = this.completed_tasks;
+                        this.taskStatus_employer.series[0].data[1].y = this.incomplete_tasks;
+                        console.log("OVER HERE");
+                        console.log(this.taskStatus_employer.series[0].data[0].y);
+                        console.log(this.taskStatus_employer.series[0].data[1].y);
+
                     } else {
                         // this.tasks = []
                         snapshot.forEach((childSnapshot) => {
@@ -440,6 +448,13 @@ export default {
                                 }
                             } 
                         })
+                        console.log("OVER HERE");
+                        console.log(this.taskStatus_employer.series[0].data[0].y);
+                        this.taskStatus_employer.series[0].data[0].y = this.completed_tasks;
+                        this.taskStatus_employer.series[0].data[1].y = this.incomplete_tasks;
+                        console.log("OVER HERE");
+                        console.log(this.taskStatus_employer.series[0].data[0].y);
+                        console.log(this.taskStatus_employer.series[0].data[1].y);
                     }
                 })
             }
