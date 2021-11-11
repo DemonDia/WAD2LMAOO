@@ -370,7 +370,7 @@ export default {
                 },
                 series: [{
                     name: "Profits Per Month",
-                    data: [20000, 40000, 50000, 70000, 100000, 160000, 100000, 99000, 110000]
+                    data: [20000, 40000, 50000, 70000, 100000, 160000, 120000, 99000, 110000]
                 }],
             },
             filter: '',
@@ -408,7 +408,7 @@ export default {
                 firebase.database().ref('users/' + user.uid + '/user_type' ).on('value', (snapshot) => {
                     this.type = snapshot.val();  
                 }); 
-
+                
                 firebase.database().ref('tasks/').on('value', (snapshot) => {
                     console.log("type is " + this.type)
                     // this.incomplete_tasks = 0
@@ -428,7 +428,7 @@ export default {
                                 this.incomplete_tasks += 1;
                                 this.num_task += 1
                             }
-                        })
+                        });
                         console.log("OVER HERE");
                         console.log(this.taskStatus_employer.series[0].data[0].y);
                         this.taskStatus_employer.series[0].data[0].y = this.completed_tasks;
@@ -444,32 +444,33 @@ export default {
                             })
                             this.taskDist_employer.xAxis = this.categories
                             console.log(this.taskDist_employer.xAxis)
-                        });
-
+                        
+                        console.log("DISTCHARTHERE2");
                         firebase.database().ref('tasks/').on('value', (snapshot) => {
                             for (var proj of this.categories) {
                                 var num_c = 0;
                                 var num_inc = 0;
                                 snapshot.forEach((childSnapshot) => {
-                                    var task = childSnapshot.val()
-                                    console.log(proj, task.project_name)
+                                    var task = childSnapshot.val();
+                                    console.log(proj, task.project_name);
                                     if (proj == task.project_name) {
                                         if(task.task_status == "Completed") {
-                                            num_c += 1
+                                            num_c += 1;
                                         } else {
                                             num_inc += 1;
                                         }
                                     }
-                                })
-                                console.log(num_c,num_inc)
+                                });
+                                console.log("DISTCHARTHERE1");
+                                console.log(num_c,num_inc);
                                 this.completed.push(num_c);
                                 this.incomplete.push(num_inc);
                             }
-                            console.log(this.completed)
+                            console.log(this.completed);
                             this.taskDist_employer.series[0].data = this.completed;
                             this.taskDist_employer.series[1].data = this.incomplete;
                         });
-
+                    });
                     } else {
                         // this.tasks = []
                         snapshot.forEach((childSnapshot) => {
@@ -477,13 +478,12 @@ export default {
                             
                             if (task.user_id == user.uid) {
                                 if (!this.categories.includes(task.project_name)) {
-                                    this.categories.push(task.project_name)
+                                    this.categories.push(task.project_name);
                                 }
                                 this.tasks.push(task);
                                 this.num_task += 1;
                                 if (task.task_status == "Completed") {
                                     this.completed_tasks += 1;
-                                    
                                 } else {
                                     this.incomplete_tasks += 1;
                                 }
