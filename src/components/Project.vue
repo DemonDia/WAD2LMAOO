@@ -53,7 +53,7 @@
 <section class="panel mx-4" style = "margin-top:60px">
       <div><h1 class="heading">{{projectName}} </h1></div>
       <router-link to = "/projects" class=" btn btn-primary btn-xs mb-3" style="float:left">Back</router-link>
-    <a href="#" class=" btn btn-success btn-xs mb-3" style="float:right" @click="create()"> Create New Task</a>
+    <a href="#" class=" btn btn-success btn-xs mb-3" style="float:right" @click="create"> Create New Task</a>
     <table class="table table-hover p-table">
         <thead>
         <tr>
@@ -109,6 +109,7 @@
                     <a v-if = "task.task_status === 'review'" href="#" class="btn btn-primary btn-xs" @click="project(task.task_id)"><i class="fa fa-folder"></i> Approve </a>
                     <a href="#" class="btn btn-danger btn-xs" @click="delete_task(task.task_id)"><i class="fa fa-trash-o"></i> Delete </a>
                 </td>
+                
               </tr>
 
             <!-- </div> -->
@@ -143,20 +144,13 @@ export default {
       }
     },
     components:{
-        // ProjectDetail,
+
         Navbar,
-        // EmployerTask,
-        // AddItem
     },
       beforeMount(){
         if(!sessionStorage.getItem("loggedUser")){
           this.$router.push("/")
         }
-        // this.created()
-      //  this.getUserType()
-      //   if(this.usertype !== "employer"){
-      //       this.$router.push("/")
-      //   }
   },
   methods:{
 
@@ -166,27 +160,12 @@ export default {
                 alert("Task Deleted")
             })
       },
-
-
     create(){
        this.$router.push("/projects/project/"+this.$route.params.id+"/addTask")
     },
 
-    // getProjectName() {
-    //   firebase.database().ref("projects/").on('value',(snapshot)=>{
-    //             snapshot.forEach((childSnapshot) => {
-    //       var project = childSnapshot.val();
-    //       console.log(project)
-    //       if(project.project_id ===  this.$route.params.id ){
-    //         this.projectName = project.project_name
-    //         // this.tasks.push(task);
-    //       }
-          
-    //     })
-    //   })
-    // }
   },
-         created() {
+  created() {
       firebase.database().ref('tasks/' ).on('value', (snapshot) => {
         // this.tasks = []
         snapshot.forEach((childSnapshot) => {

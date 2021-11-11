@@ -162,48 +162,7 @@ export default {
 }
 </script>
 <style scoped>
-/* .contentz{
-    margin-top:80px;
-    padding: auto;
-} */
-/* .employer-projects{
-      display: flex;
-    flex-wrap: wrap;
-} */
 
-/* #projects-header{
-  width: max-content;
-  margin: auto;
-  margin-top: 80px;
-  box-shadow: 0px 5px 0px rgba(83, 90, 249, 0.81);
-}
-.new-project-btn{
-  background: linear-gradient(0deg, #504DFF, #504DFF), rgba(78, 74, 255, 0.61);
-  border-radius: 5px;
-  color: white;
-}
-.contentz{
-  margin-top: 10px;
-}
-.modal-title{
-  margin: auto;
-}
-.modal-dialog h5{
-  color:white;
-}
-.page{
-    min-height: 100vh;
-    width:100%; */
-    /* display: flex; */
-/* } */
-/* .pageContent{
-  min-height:100vh; */
-  /* margin-top:60px; */
-  /* background:rgba(248, 248, 248, 1)
-;
-  padding-top:60px;
-  padding-bottom:60px;
-} */
 .btn {
   margin-right: 10px;
 }
