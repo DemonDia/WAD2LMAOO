@@ -38,15 +38,7 @@ export default {
     name:"EmployerProject",
     mixins:[mixin],
     props:["projectName","projectAssignees","projectAssigned","projectDue","projectStatus",'projectReward'],
-      //     beforeMount(){
-      //  this.getUserType()
-      //   if(this.usertype != "employer"){
-      //       this.$router.push("/")
-      //   }
-        // else{
-        //     this.$router.push("/authenticate")
-        // }
-  // },
+
     methods: {
         project() {
             this.$router.push('/projects/project')

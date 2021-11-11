@@ -1,48 +1,7 @@
 <template>
 <div class = "page">
     <Navbar :usertype="'employee'"/>
-    <!-- <h1 id = "project-name">Project Name</h1> -->
-    <!-- <div class = "task-container">
-        
-    <ProjectDetail/>
-    <AddItem :itemType = "'task'"/>
 
-    <div v-for = "(task,id) in tasks" :key="id">
-
-<EmployerTask :taskStatus ="task.task_status" :taskReward="'TBC'" :taskDue="task.due_date"/>
-    </div>    
-    </div>
-
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h2 class="modal-title" id="exampleModalLabel" align="center">Add new task</h2>
-      </div>
-      <div class="modal-body">
-        <table class="table">
-          <tr>
-            <th scope = "row">Project Name</th>
-            <td><input type = "text" class = "form-control" /></td>
-          </tr>
-          <tr>
-            <th scope = "row">Rewarded points:</th>
-            <td><input type = "number" class = "form-control" /></td>
-          </tr>
-          <tr>
-            <th scope = "row">Project due:</th>
-            <td><input type = "date" class = "form-control" /></td>
-          </tr>
-
-        </table>
-        <button class = "btn new-task-btn" data-dismiss="modal">Add task</button>
-      </div>
-    
-
-    </div>
-    <h5>Click anywhere to cancel</h5>
-  </div>
-</div> -->
 
 
 
@@ -51,9 +10,35 @@
 
 
 <section class="panel mx-4" style = "margin-top:60px">
-      <div><h1 class="heading">{{projectName}} </h1></div>
+      <div><h1 class="heading">{{displayProjName}} </h1></div>
       <router-link to = "/projects" class=" btn btn-primary btn-xs mb-3" style="float:left">Back</router-link>
     <a href="#" class=" btn btn-success btn-xs mb-3" style="float:right" @click="create"> Create New Task</a>
+    <div>
+      <!-- {{project}}
+
+  <div class="row">
+    <div class="col">
+      <label>Project Name:</label>
+      <input type = "text" class = "form-control" placeholder="Change Project Name" v-model = "projectName" />
+    </div>
+    <div class="col">
+        <label>Assigned To:</label>
+
+            <select v-model="selected" class = "form-control" value = "selected" >
+                <option disabled value="">Please select an assignee</option>
+                <option v-for="user in users" v-bind:key="user.user_id">{{user.name}}</option>
+            </select>
+    </div>
+<div class = "row">
+
+  
+</div>
+
+
+  </div> -->
+      
+
+    </div>
     <table class="table table-hover p-table">
         <thead>
         <tr>
@@ -105,8 +90,17 @@
                 <td class="p-reward">
                     {{task.reward}}
                 </td>
-                <td>
-                    <a v-if = "task.task_status === 'review'" href="#" class="btn btn-primary btn-xs" @click="project(task.task_id)"><i class="fa fa-folder"></i> Approve </a>
+                <td v-if = "task.task_status === 'review'">
+                    <a v-if = "task.task_status === 'review'" href="#" class="btn btn-info btn-xs" @click="approve(task.task_id)"><i class="fa fa-folder"></i> Approve </a>
+                    <a v-if = "task.task_status === 'review'" href="#" class="btn btn-danger btn-xs" @click="reject(task.task_id)"><i class="fa fa-folder"></i> Reject </a>
+                </td>
+
+                <td v-else-if = "task.task_status === 'complete'">
+                   <a href="#" class="btn btn-danger btn-xs disabled" @click="delete_task(task.task_id)"><i class="fa fa-trash-o"></i> Delete </a>
+                </td>
+
+                <td v-else>
+                    
                     <a href="#" class="btn btn-danger btn-xs" @click="delete_task(task.task_id)"><i class="fa fa-trash-o"></i> Delete </a>
                 </td>
                 
@@ -140,7 +134,11 @@ export default {
     data(){
       return{
         tasks:[],
-        projectName:""
+        displayProjName:"",
+        projectName:"",
+        project:null,
+        users: [],
+        selected:""
       }
     },
     components:{
@@ -163,9 +161,37 @@ export default {
     create(){
        this.$router.push("/projects/project/"+this.$route.params.id+"/addTask")
     },
+    approve(taskID){
+        firebase.database().ref('tasks/' + taskID).update(
+          {"task_status":"complete"}
+        )
+            .then(function() {
+                alert("Task completed")
+            })
+    },
+    reject(taskID){
+        firebase.database().ref('tasks/' + taskID).update(
+          {"task_status":"incomplete"}
+        )
+            .then(function() {
+                alert("Rejected")
+            })
+    },
+
 
   },
   created() {
+    // users
+
+      firebase.database().ref('users/').on('value', (snapshot) => {
+          this.users = []
+          snapshot.forEach((childSnapshot) => {
+              var user = childSnapshot.val();
+              this.users.push(user);
+          });
+      }); 
+
+
       firebase.database().ref('tasks/' ).on('value', (snapshot) => {
         this.tasks = []
         snapshot.forEach((childSnapshot) => {
@@ -186,7 +212,11 @@ export default {
           console.log(project.project_id)
           // console.log(this.projectName == project.project_name)
           if(project.project_id ==  this.$route.params.id ){
+            this.project = project
             this.projectName = project.project_name
+            this.displayProjName = project.project_name
+            this.selected = project.assignee
+            console.log(this.selected)
             // this.tasks.push(task);
           }
           
@@ -234,6 +264,9 @@ h1{
 background: linear-gradient(0deg, #504DFF, #504DFF), rgba(78, 74, 255, 0.61);
 border-radius: 5px;
 color: white;
+}
+label{
+  float: left;
 }
 </style>
 <style>
