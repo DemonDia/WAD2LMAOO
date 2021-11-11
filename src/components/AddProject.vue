@@ -24,6 +24,10 @@
                                 </tr>
 
                                 <tr>
+                                    <th>Points:</th>
+                                    <td><input type ="number" min="0" placeholder = "Number of points" class = "form-control" v-model="pointsAwarded"></td>
+                                </tr>
+                                <tr>
                                     <th>Due Date:</th>
                                     <td><input type ="date" maxlength="10" placeholder = "YYYY-MM-DD" class = "form-control" v-model="duedate"></td>
                                 </tr>
@@ -33,7 +37,7 @@
 
                 </table>
                 <div class = "button-container justify-content-center">
-                    <router-link to = "/employees" class = "btn fire-btn">Cancel</router-link>
+                    <router-link to = "/projects" class = "btn fire-btn">Cancel</router-link>
                     <!-- <button class = "btn fire-btn">Cancel</button> -->
                     <button class = "btn view-btn" v-on:click ="submit()">Add</button>
                 </div>
@@ -59,6 +63,7 @@ export default {
             selected: "",
             todaydate: "",
             duedate: "",
+            pointsAwarded:0
             // len: 0,
         }
     },
@@ -75,7 +80,20 @@ export default {
             //     var projs = snapshot.val().length
             //     this.len = projs +1;
             // }); 
+            if(this.proj_name ===""){
+                alert("Project Name cannot be empty")
+            }
+            else if(this.selected ===""){
+                alert("Please select")
+            }
+            else if(this.duedate ===""){
+                alert("Please select a due date.")
 
+            }
+            else if(this.pointsAwarded < 0){
+                alert("Points cannot be negative!")
+            }
+            else{
             var myref = firebase.database().ref('/projects').push()
             var key = myref.key;
                 
@@ -87,8 +105,9 @@ export default {
                 project_id: key,
                 project_name: this.proj_name,
                 project_status: "New",
-                reward: "TBC"
+                reward: this.pointsAwarded
             }
+            console.log(input_data)
 
             var updates = {};
             updates['/projects/' + key] = input_data;
@@ -98,14 +117,11 @@ export default {
 
             // this.num++
             this.$router.push("/projects")
+            }
+
         }
     },
-//       beforeMount(){
-//        this.getUserType()
-//         if(this.usertype !== "employer"){
-//             this.$router.push("/")
-//         }
-//   },
+
     created() {
         firebase.database().ref('users/').on('value', (snapshot) => {
             this.users = []

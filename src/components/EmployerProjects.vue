@@ -22,13 +22,15 @@
             <!-- <div class= "row"> -->
 
               <tr v-for="(proj, index) in projs" v-bind:key="index">
+                <!-- {{proj.project_id}} -->
                 <!-- <router-link to ="/projects/project" v-for="(proj, index) in projs" v-bind:key="index"
                   style = "text-decoration:none">
                   <EmployerProject :projectName="proj.project_name" :projectAssignees ="proj.assignee" :projectAssigned ="proj.assigned_date"
                   :projectDue ="proj.due_date" :projectStatus ="proj.project_status"  :projectReward ="proj.reward"/>
                 </router-link> -->
                 <td class="p-name">
-                    {{proj.project_name}}
+                  {{proj.project_name}}
+                    <!-- {{proj.project_name}} -->
                 </td>
                 <td class="p-team">
                     {{proj.assignee}}
@@ -46,7 +48,7 @@
                     {{proj.reward}}
                 </td>
                 <td>
-                    <a href="#" class="btn btn-primary btn-xs" @click="project()"><i class="fa fa-folder"></i> View </a>
+                    <a href="#" class="btn btn-primary btn-xs" @click="project(proj.project_id)"><i class="fa fa-folder"></i> View </a>
                     <a href="#" class="btn btn-danger btn-xs" @click="delete_proj(proj.project_id)"><i class="fa fa-trash-o"></i> Delete </a>
                 </td>
               </tr>
@@ -134,8 +136,8 @@ export default {
       }
     },
     methods: {
-      project() {
-        this.$router.push('/projects/project')
+      project(projId) {
+        this.$router.push('/projects/project/'+projId)
       },
       create() {
         this.$router.push('/projects/add')

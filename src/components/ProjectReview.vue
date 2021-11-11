@@ -78,11 +78,34 @@ data() {
                         if (task.project_name == proj.project_name && !names.includes(task.user_name)) {
                             names.push(task.user_name);
                             // console.log(names)
-                            console.log("printing",this.proj_names[proj.project_name],task.user_name)
+                            firebase.database().ref().child("users").orderByChild("user_id").equalTo(task.user_id).on("value", function(snapshot) {
+                                if (snapshot.exists()) {
+                                    console.log("exists");
+                                }
+                                else {
+                                    console.log("doesn't exist");
+                                    firebase.database().ref('tasks/').on('value', (snapshot) => {
+                                        snapshot.forEach((childSnapshot) => {
+                                            var user = childSnapshot.val();
+                                            if (user.user_id == task.user_id) {
+                                                var key = user.task_id
+                                                firebase.database().ref('tasks/' + key).remove()
+                                            }
+                                            
+                                        })
+                                    })
+                                }
+                            });
                             firebase.database().ref('users/' + task.user_id).on('value', (snapshot) => {
                                 var user = snapshot.val();
-                                this.proj_names[proj.project_name].push({name: task.user_name, position: user.position, image: user.image})
-                            })
+                                this.proj_names[proj.project_name].push(
+                                    {
+                                        name: task.user_name, 
+                                        position: user.position, 
+                                        image: user.image
+                                    }
+                                )
+                            });
                         }
                     })
                 })

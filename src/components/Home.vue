@@ -408,20 +408,26 @@ export default {
 
                 firebase.database().ref('tasks/').on('value', (snapshot) => {
                     console.log("type is " + this.type)
+                    this.incomplete_tasks = 0
+                    this.completed_tasks = 0
+                    this.num_task = 0
+                    this.tasks = []
                     if (this.type == "employer") {
-                        this.tasks = []
-                        this.num_task = snapshot.val().length;
+                        
+                        // this.num_task = snapshot.val().length;
                         snapshot.forEach((childSnapshot) => {
                             var task = childSnapshot.val();
                             this.tasks.push(task);
                             if (task.task_status == "Completed") {
                                 this.completed_tasks += 1;
+                                this.num_task += 1;
                             } else {
                                 this.incomplete_tasks += 1;
+                                this.num_task += 1
                             }
                         })
                     } else {
-                        this.tasks = []
+                        // this.tasks = []
                         snapshot.forEach((childSnapshot) => {
                             var task = childSnapshot.val();
                             if (task.user_id == user.uid) {

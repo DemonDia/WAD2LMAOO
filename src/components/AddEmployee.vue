@@ -46,16 +46,20 @@
 
                                 <tr>
                                     <th>Position:</th>
-                                    <td><textarea class="text" placeholder="Position" v-model="position"></textarea></td>
+                                    <td><input type="text" placeholder = "Position" class = "form-control" v-model="position"/></td>
+                                    <!-- <td><input type="text" placeholder="Position" v-model="position"/></td> -->
                                 </tr>
 
                                 <tr>
                                     <th>Photo:</th>
                                     <td id = "add-photo">
-                                        <div class = "card add-photo">
+                                        <!-- <div class = "card add-photo"> -->
                                             <!-- Employee Image -->
-                                        </div>
-                                        <input type="file"  class="form-control-file" id="exampleFormControlFile1">
+                                        <!-- </div> -->
+                                        <!-- <input type="file" class="form-control-file" id="exampleFormControlFile1"> -->
+
+                                        <input type="file" @change="onFileSelected" accept="image/*">
+                                        
                                     </td>
                                 </tr>
 
@@ -78,6 +82,9 @@ import Navbar from "./Navbar.vue"
 import mixin from "../mixin"
 import firebase from "firebase/compat"
 import "firebase/compat/auth"
+
+// import axios from 'axios'
+
 export default {
     name:"AddEmployee",
     components:{
@@ -97,10 +104,23 @@ export default {
             num: 0,
             departments: [],
             selected: "",
-            image:""
+            // image:""
+
+            selectedFile: null
         }
     },
     methods:{
+        onFileSelected(event){
+            console.log(event)
+            this.selectedFile = event.target.files[0]
+        },
+
+        // previewImage(event){
+        //     this.uploadValue=0;
+        //     this.picture=null;
+        //     this.imageData=event.target.files[0]
+        // },
+
         submit(){
             // firebase
             // .auth()
@@ -121,9 +141,27 @@ export default {
                 position: this.position,
                 user_id: key,
                 user_type: "employee",
-                image: "john.png"
+                image: this.selectedFile.name
             }
+            
+            // this.picture=null;
+            // const storageRef=firebase.storage().ref('${this.imageData.name}').put(this.imageData);
+            // storageRef.on('state_changed', snapshot => {
+            //     this.uploadValue=(snapshot.bytesTransferred/snapshot.totalBytes)*100
+            // }, error=>{console.log(error.message)},
+            // ()=>{this.uploadValue=100;
+            // storageRef.snapshot.ref.getDownloadURL().then((url)=>{
+            //     this.picture=url;
+            // })})
 
+            const fd = new FormData();
+            fd.append('image', this.selectedFile, this.selectedFile.name)
+
+            // axios.post('https://projeck-aff0e-default-rtdb.asia-southeast1.firebasedatabase.app/users', fd)
+            // .then(res => {
+            //     console.log(res)
+            // });
+            
             var updates = {};
             updates['/users/' + key] = newData;
 
@@ -131,6 +169,15 @@ export default {
 
             // this.num++
             this.$router.push("/employees")
+
+        },
+        onFileChange() {
+            const reader = new FileReader()
+            reader.readAsDataURL(this.file)
+            reader.onload = e => {
+                this.image = e.target.result
+                console.log(this.image)
+            }
         },
     },
 //       beforeMount(){
