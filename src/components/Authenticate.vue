@@ -7,7 +7,7 @@
             <form id = "registerForm">
                 <img src="../assets/projeck.png" id="form-logo">
                 <h2>Welcome to Projeck</h2>
-                <p id="sub-header"> Create a Projeck account Now!</p>
+                <p id="sub-header"> Create a Projeck Account Now!</p>
                 <!-- <h3>Register</h3> -->
                 <label class="my-2">Email:</label>
                 <input class = "form-control" type = "email" placeholder="Email" v-model="email"/>
@@ -29,7 +29,7 @@
                 <button class = "btn" @click = register><span>Sign up</span></button>
             </form>
             <div id ="registerActionContainer">
-            Already have an account? Click  <a style = "color:black" href = "#" @click = changePage>here</a> to login.
+            Already have an account? Click  <a style = "color:blue" href = "#" @click = changePage>HERE</a> to login
             </div>
         </div>
         <div id = "login" v-else >
@@ -52,7 +52,7 @@
                 <button class="btn" @click="login()"><span>Login</span></button>
             </form>
             <div id ="loginActionContainer">
-                Don't have an account? Click  <a style = "color:black" href = "#" @click = changePage>here</a> to join us today!
+                Don't have an account? Click  <a style = "color:blue" href = "#" @click = changePage>HERE</a> to join us today!
             </div>
             
         </div>
