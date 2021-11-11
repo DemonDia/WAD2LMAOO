@@ -55,7 +55,7 @@
                                         <div class = "card add-photo">
                                             <!-- Employee Image -->
                                         </div>
-                                        <input type="file" class="form-control-file" id="exampleFormControlFile1">
+                                        <input type="file"  class="form-control-file" id="exampleFormControlFile1">
                                     </td>
                                 </tr>
 
@@ -96,7 +96,8 @@ export default {
             position: '',
             num: 0,
             departments: [],
-            selected: ""
+            selected: "",
+            image:""
         }
     },
     methods:{
@@ -119,7 +120,8 @@ export default {
                 phone_no: this.phone_no,
                 position: this.position,
                 user_id: key,
-                user_type: "employee"
+                user_type: "employee",
+                image: "john.png"
             }
 
             var updates = {};
@@ -129,7 +131,15 @@ export default {
 
             // this.num++
             this.$router.push("/employees")
-        }
+        },
+        onFileChange() {
+            const reader = new FileReader()
+            reader.readAsDataURL(this.file)
+            reader.onload = e => {
+                this.image = e.target.result
+                console.log(this.image)
+            }
+        },
     },
 //       beforeMount(){
 //        this.getUserType()

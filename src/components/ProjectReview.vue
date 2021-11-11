@@ -16,7 +16,7 @@
                         <main role="main" class="d-inline-flex emp_card" v-for="(emp,index) in proj" v-bind:key="index">
                             <div class="album bg-light">
                             <div class="card shadow-sm">
-                                <img src="../assets/john.png" width="100%" height="225" background="#55595c" color="#eceeef" class="card-img-top" text="Thumbnail" >
+                                <img :src="require(`../assets/${emp.image}`)" width="100%" height="225" background="#55595c" color="#eceeef" class="card-img-top" text="Thumbnail" >
                                 <div class="inline pt-3">
                                     <h6>{{emp.name}}</h6>
                                     <small>{{emp.position}}</small>
@@ -79,7 +79,7 @@ data() {
                             console.log("printing",this.proj_names[proj.project_name],task.user_name)
                             firebase.database().ref('users/' + task.user_id).on('value', (snapshot) => {
                                 var user = snapshot.val();
-                                this.proj_names[proj.project_name].push({name: task.user_name, position: user.position})
+                                this.proj_names[proj.project_name].push({name: task.user_name, position: user.position, image: user.image})
                             })
                         }
                     })
@@ -172,5 +172,10 @@ align-self: end;
 
 .emp_card {
     margin-right: 20px;
+}
+
+.card-img-top {
+    width: 250px;
+    object-fit: cover;
 }
 </style>

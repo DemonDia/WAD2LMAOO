@@ -6,26 +6,31 @@
         <div class="search">
             <input type = "text" class = "form-control" placeholder="Search by name" v-model="filter"/>
         </div>
-        <div class = "employees">        
+        <a href="#" class=" btn btn-dark btn-xs mt-3" @click="create()">Add Employee</a>
+        <div class = "employees justify-content-between">        
             <div v-for="employee in filteredRows" v-bind:key="employee.user_id">
             <div class="album">
-            <div class="card shadow-sm">
-                <img src="../assets/john.png" width="100%" height="225" background="#55595c" color="#eceeef" class="card-img-top rounded" text="Thumbnail" >
+            <div class="emp_card card shadow-sm">
+                <img :src="require(`../assets/${employee.image}`)" width="100%" height="225" background="#55595c" color="#eceeef" class="card-img-top rounded" text="Thumbnail" >
                 <div class="inline pt-3">
                     <h6>{{employee.name}}</h6>
                 </div>
 
-                <div class="card-body details">
-                <p class="inline card-text inlineDetails"> 
+                <div class="card-body details d-block ">
+                <p class="card-text inlineDetails "> 
                     <small><b>User ID:</b></small> <br> <small> {{employee.user_id}}</small><br>
                     <small><b>Department:</b></small> <br><small>{{employee.department_id}}</small><br>         
                     <small><b>Points:</b></small> <br> <small>{{employee.current_pts}}</small>         
                 </p>
+                <div class="buttons">
+                <button class = "btn border border-dark view-btn col" @click="edit(employee)" data-bs-toggle="modal" data-bs-target="#exampleModal">Edit</button>
+                <button class = "btn border border-dark fire-btn col" @click="delete_user(employee.user_id)">Remove</button>
+                </div>
                 </div>
             </div>
             </div>
             </div> 
-            <div class="card">               
+            <!-- <div class="card">               
             <div class="card-body">
                     <div>
                         <router-link to ="/employees/add"
@@ -34,7 +39,7 @@
                         </router-link>
                     </div>
                 </div>
-            </div>
+            </div> -->
             </div>
         </div>
     <!-- <div class = "employeeContainer">
@@ -128,14 +133,14 @@
 </template>
 <script>
 import Navbar from "./Navbar.vue"
-import AddItem from "./AddItem.vue"
+// import AddItem from "./AddItem.vue"
 import mixin from "../mixin"
 import firebase from "firebase/compat"
 export default {
     name:"EmployeeList",
     components:{
         Navbar,
-        AddItem
+        // AddItem
     },
     mixins:[mixin],
     // beforeMount(){
@@ -159,6 +164,9 @@ export default {
         }
     },
     methods: {
+        create() {
+        this.$router.push('/employees/add')
+        },
         edit(employee) {
             console.log(employee)
             this.employee = employee;
@@ -324,7 +332,7 @@ tr th{
 
 .employees {
     display: flex;
-    margin-top: 40px;
+    margin-top: 10px;
     width: 90%;
     margin-left: auto;
     margin-right: auto;
@@ -332,12 +340,43 @@ tr th{
 }
 
 .card {
-    width: 250px;
+    width: 260px;
     margin: 20px;
 }
 
 .details{
     text-align: left;
+}
+
+.inlineDetails {
+    display: block;
+    width: 100%;
+}
+
+.emp_card {
+    height: 500px;
+    width: 260px;
+}
+
+.card-img-top {
+    width: 258px;
+    object-fit: cover;
+}
+
+.view-btn {
+    margin-right: 10px ;
+    margin-left: 5px;
+    width: 100px;
+}
+
+.fire-btn {
+    margin-right: 5px ;
+    margin-left: 5px;
+    width: 100px;
+}
+
+.buttons {
+    margin: 0 auto;
 }
 
 </style>
