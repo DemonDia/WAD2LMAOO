@@ -1,12 +1,14 @@
 <template>
     <div class = "page">
         <Navbar/>
+        <h1 id = "review">Review</h1>
         <div class = "projectsContainer">
             <!-- <ProjectToReview/>
             <ProjectToReview/> -->
             <!-- <ProjectToReview/>
             <ProjectToReview/>
             <ProjectToReview/> -->
+            
             <div class = "projectReviewContainer" v-for="(proj,key) in proj_names" v-bind:key="key">
                 <div class = "projectName">
                     <h3>{{key}}</h3>
@@ -177,5 +179,12 @@ align-self: end;
 .card-img-top {
     width: 250px;
     object-fit: cover;
+}
+
+#review{
+    width: max-content;
+    margin: auto;
+    margin-top: 80px;
+    box-shadow: 0px 5px 0px rgba(83, 90, 249, 0.81);
 }
 </style>
