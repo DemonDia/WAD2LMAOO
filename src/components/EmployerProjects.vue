@@ -1,11 +1,14 @@
 <template>
-  <div  class = "employer-projects page-bg mb-4"> 
+  <!-- <div  class = "mb-4">  -->
     <Navbar/>
     
-    <section class="panel mx-4">
+    <section class="panel mx-4" >
       <div><h1 class="heading">Projects</h1></div>
-    <a href="#" class=" btn btn-success btn-xs mb-3" style="float:right" @click="create()"> Create New Project</a>
-    <table class="table table-hover p-table">
+      <a href="#" class=" btn btn-success btn-xs mb-3" style="float:right" @click="create()"> Create New Project</a>
+
+      <div id="no-more-tables">
+      <table class="table table-hover p-table">
+
         <thead>
         <tr>
             <th>Project Name</th>
@@ -17,7 +20,7 @@
             <th>Actions</th>
         </tr>
         </thead>
-        <tbody style="width:100%">
+        <tbody>
           <!-- <div class = "contentz container-fluid"> -->
             <!-- <div class= "row"> -->
 
@@ -58,49 +61,9 @@
           <!-- </div> -->
         </tbody>
     </table>
+    </div>
 </section>
-          
-        <!-- <div class="col-xl-3 col-lg-4 col-md-6">
-          <AddItem :itemType="'project'"/>
-        </div>  -->
-       
-
-
-
-    <!-- Modal -->
-    <!-- <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h2 class="modal-title" id="exampleModalLabel" align="center">Add new project</h2>
-          </div>
-          <div class="modal-body">
-            <table class="table">
-              <tr>
-                <th scope = "row">Project Name</th>
-                <td><input type = "text" class = "form-control" /></td>
-              </tr>
-              <tr>
-                <th scope = "row">Rewarded points:</th>
-                <td><input type = "number" class = "form-control" /></td>
-              </tr>
-              <tr>
-                <th scope = "row">Project due:</th>
-                <td><input type = "date" class = "form-control" /></td>
-              </tr>
-              <tr>
-                <th scope = "row">Add assignees:</th>
-                <td><input type = "text" class = "form-control" /></td>
-              </tr>
-            </table>
-            <button class = "btn new-project-btn" data-dismiss="modal">Assign project</button>
-          </div>
-        
-        </div>
-        <h5>Click anywhere to cancel</h5>
-      </div>
-    </div> -->
-  </div>
+  <!-- </div> -->
 </template>
 <script>
 // import EmployerProject from "./EmployerProject.vue"
@@ -167,55 +130,35 @@ export default {
   margin-right: 10px;
 }
 
+table{
+  table-layout: auto;
+  width: 100%;
+  overflow-x: auto;
+}
+
 th{
     width:50%;
+    min-width: 250px;
     text-align: center;
 }
 td{
-    width:100%;
     text-align: center;
-}
-.projectCard{
-   
-    margin:10px;
-    border: none;
-    height:360px;
-}
-.project-title{
-    background: linear-gradient(57.11deg, #6D9DF8 -4.9%, #6461FF 101.23%, rgba(109, 157, 248, 0.64) 101.24%, rgba(109, 157, 248, 0) 101.24%);
-    color: white;
-    max-width: 100%;
-}
-.project-btn{
-/* background: linear-gradient(0deg, #504DFF, #504DFF), rgba(78, 74, 255, 0.61); */
-    background: rgb(253, 198, 97);
-    border-radius: 5px;
-    color: black;
-    border: 1px solid black;
-    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.2), 0 2px 2px 0 rgba(0,0,0,0.19);
-}
-.iconContainer{
-    display: flex;
-    align-items: center;
-    justify-content:center;
-}
-
-.member{
-    height: 50px;
-    width: 50px;
-}
-
-section{
-  margin-top: 100px;
+    min-width: 250px;
+    
 }
 
 .panel{
   margin-top: 80px;
+  width: 100%;
+  direction: flex;
+  justify-content: center;
 }
 
 .heading{
     box-shadow: 0px 5px 0px rgba(83, 90, 249, 0.81);
     width: max-content;
     margin: auto;
+    margin-bottom: 20px;
 } 
+
 </style>

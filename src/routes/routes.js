@@ -142,8 +142,9 @@ const routes = [
 
 	},
 	{
-		path:"/review/member",
-		name:"ReviewMember",
+		path:"/review/:id",
+		name:"MemberToReview",
+		props: true,
 		component:MemberToReview,
 		meta: {
 			authRequired: true,
