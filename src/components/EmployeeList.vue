@@ -1,6 +1,7 @@
 <template>
 <div class = "page">
     <Navbar/>
+      <h1 id = "emp">List of Employees</h1>
 
     <div class = "employeesPage">
         <div class="search">
@@ -11,7 +12,7 @@
             <div v-for="employee in filteredRows" v-bind:key="employee.user_id">
             <div class="album">
             <div class="emp_card card shadow-sm">
-                <img :src="require(`../assets/${employee.image}`)" width="100%" height="225" background="#55595c" color="#eceeef" class="card-img-top rounded" text="Thumbnail" >
+                <img src="../assets/john.png" width="100%" height="225" background="#55595c" color="#eceeef" class="card-img-top rounded" text="Thumbnail" >
                 <div class="inline pt-3">
                     <h6>{{employee.name}}</h6>
                 </div>
@@ -232,6 +233,14 @@ export default {
 }
 </script>
 <style scoped>
+
+#emp{
+    width: max-content;
+    margin: auto;
+    margin-top: 80px;
+    box-shadow: 0px 5px 0px rgba(83, 90, 249, 0.81);
+}
+
 /* .add-emp{
     width: 330px;
 }
