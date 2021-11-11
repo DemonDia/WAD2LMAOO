@@ -167,7 +167,7 @@ export default {
   },
   created() {
       firebase.database().ref('tasks/' ).on('value', (snapshot) => {
-        // this.tasks = []
+        this.tasks = []
         snapshot.forEach((childSnapshot) => {
           var task = childSnapshot.val();
           console.log(task)
