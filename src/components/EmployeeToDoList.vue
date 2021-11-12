@@ -1,6 +1,6 @@
 <template>
 <div class = "page">
-    <Navbar/>
+     <Navbar :usertype="'employee'" :pageType = "'To-do'"/>
     
     <div class=  "container">
         <h1 style="color: black" class="mb-4">To-do list</h1>

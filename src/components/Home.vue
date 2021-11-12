@@ -2,7 +2,7 @@
 <!-- <div> -->
 <div class = "page" v-if = "usertype !== 'na'">
     <div class="container">
-        <Navbar/>
+        <Navbar :pageType = "'Home'"/>
     </div>
 
 <!-- <div class = "pageContent"> -->

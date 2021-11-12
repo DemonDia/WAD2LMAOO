@@ -1,14 +1,14 @@
 <template>
 <div style = "width:100%;">
-    <Navbar/>
+    <Navbar :pageType = "'Calendar'"/>
     <h1 id = "calendar-name">Calendar</h1>
-    <div class='authentification mt-4'>
-      Authentification
-      <button v-if='!authorized' @click="handleAuthClick()">Sign In</button>
-      <button v-if='authorized' @click="handleSignoutClick">Sign Out</button>
+    <div class='Authentication mt-4'>
+      Authentication
+      <button v-if='!authorized' @click="handleAuthClick" class="btn btn-primary">Sign In</button>
+      <button v-if='authorized' @click="handleSignoutClick" class="btn btn-primary">Sign Out</button>
     </div>
     <hr>
-    <button v-if='authorized' @click="getData" :events="events">Get Data</button>
+    <button v-if='authorized' @click="getData" :events="events" class="btn btn-primary">Get Data</button>
     <div class="item-container" v-if="authorized && items">
       <pre v-html="items"></pre>
     </div>
@@ -49,7 +49,7 @@
                   <span v-for= "event in events" :key= "event">
                     <span v-if= "week.filter(day => day.day ===number-1)[0].fulldate == event.date">
                       <div class="container rounded mt-0 p-1 mb-1 bg-secondary text-white">
-                          <span class="pl-1 timing text-start text-wrap">{{event.start}}-{{event.end}}</span>
+                          <span class="pl-1 timing text-start text-wrap"  v-if="event.start != ''">{{event.start}}-{{event.end}}</span>
                           <span class="details text-start text-wrap">{{event.name}}</span>
                       </div>
                     </span>
@@ -62,7 +62,7 @@
                   <span v-for= "event in events" :key= "event">
                     <span v-if= "week.filter(day => day.day ===number-1)[0].fulldate == event.date">
                       <div class="container rounded mt-0 p-1 mb-1 bg-secondary text-white">
-                          <span class="pl-1 timing text-start text-wrap">{{event.start}}-{{event.end}}</span>
+                          <span class="pl-1 timing text-start text-wrap"  v-if="event.start != ''">{{event.start}}-{{event.end}}</span>
                           <span class="details text-start text-wrap">{{event.name}}</span>
                       </div>
                     </span>
@@ -76,7 +76,7 @@
                   <span v-for= "event in events" :key= "event">
                     <span v-if= "week.filter(day => day.day ===number-1)[0].fulldate == event.date">
                       <div class="container rounded mt-0 p-1 mb-1 bg-secondary text-white">
-                          <span class="pl-1 timing text-start text-wrap">{{event.start}}-{{event.end}}</span>
+                          <span class="pl-1 timing text-start text-wrap"  v-if="event.start != ''">{{event.start}}-{{event.end}}</span>
                           <span class="details text-start text-wrap">{{event.name}}</span>
                       </div>
                     </span>
@@ -89,7 +89,7 @@
                   <div v-for= "event in events" :key= "event">
                     <span v-if= "week.filter(day => day.day ===number-1)[0].fulldate == event.date">
                       <div class="container rounded mt-0 p-1 mb-1 bg-secondary text-white">
-                          <span class="pl-1 timing text-start text-wrap">{{event.start}}-{{event.end}}</span>
+                          <span class="pl-1 timing text-start text-wrap"  v-if="event.start != ''">{{event.start}}-{{event.end}}</span>
                           <span class="details text-start text-wrap">{{event.name}}</span>
                       </div>
                     </span>
@@ -219,15 +219,23 @@ export default {
         // vm.items = this.syntaxHighlight(response.result.items);
         // console.log(vm.items);
         for (var i=0;i<items.length;i++) {
-          console.log(items[i]);
-          var start = items[i].start.dateTime
-          var end = items[i].end.dateTime
-          events.push({
-            name: items[i].summary,
-            date: start.substr(0,start.indexOf('T')),
-            start: start.substr((start.indexOf('T'))+1,5),
-            end: end.substr((start.indexOf('T'))+1,5),
-          })
+          var both_start = Object.keys(items[i].start) 
+          if (both_start.length > 1) {
+            var start = items[i].start.dateTime
+            var end = items[i].end.dateTime
+            events.push({
+              name: items[i].summary,
+              date: start.substr(0,start.indexOf('T')),
+              start: start.substr((start.indexOf('T'))+1,5),
+              end: end.substr((start.indexOf('T'))+1,5),
+            })
+          } else {
+            events.push({
+              name: items[i].summary,
+              date: items[i].start.date,
+              start: ""
+            })
+          }
         }
         console.log(events)
         this.events = events

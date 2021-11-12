@@ -1,6 +1,6 @@
 <template>
     <div class = "page">
-        <Navbar/>
+        <Navbar :pageType = "'Review'"/>
         <div class = "review-container card">
             <h2>Reviewing for</h2>
             <div class="row justify-content-center">
