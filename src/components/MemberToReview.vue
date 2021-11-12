@@ -42,12 +42,12 @@
                 <tr>
                     <th><label>Overall Rating: </label></th>
                     <td>
-                        <vue3StarRatings v-model="rating" v-bind:showControl = null />
+                        <vue3StarRatings v-model="rating"  v-bind:step = "step" :disableClick = "true"/>
                         
                     </td>
                 </tr>            
             </table>
-             {{rating}}
+             <!-- {{rating}} -->
              <div class = "btn-container">
                  <router-link class = 'btn btn-danger' to="/review">
                  Cancel
@@ -78,7 +78,8 @@ export default {
         return{
             rating:0,
             comments: "",
-            userimg: null
+            userimg: null,
+            step:1
         }
     },
 //       beforeMount(){
@@ -141,6 +142,7 @@ export default {
     margin-top:80px;
     display:grid;
     justify-items: center;
+    width: min-content;
 }
 h2{
     margin:10px;
