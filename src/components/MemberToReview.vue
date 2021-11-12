@@ -91,6 +91,8 @@ export default {
     methods:{
         submit(id){
             console.log(id)
+            var myref = firebase.database().ref("reviews/").push()
+            var key = myref.key;
             firebase.database().ref('users/').on('value', (snapshot) => {
                 snapshot.forEach((childSnapshot) => {
                     var user = childSnapshot.val();
@@ -98,6 +100,7 @@ export default {
                         console.log("details",this.userimg)
                         var userid = user.user_id
                         firebase.database().ref('reviews/').push({
+                            review_id:key,
                             comments: this.comments,
                             rating: this.rating,
                             user_id: userid
