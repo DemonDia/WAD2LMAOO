@@ -19,7 +19,7 @@
                                     <td class="text-start">
                                         <select v-model="selected" >
                                             <option disabled value="">Please select an assignee</option>
-                                            <option v-for="user in users" v-bind:key="user.user_id">{{user.name}}</option>
+                                            <option v-for="user in users" v-bind:key="user.user_id">{{user.name}} ({{user.department_id}}) </option>
                                         </select>
                                     </td>
                                 </tr>
@@ -89,7 +89,7 @@ export default {
             this.users = []
             snapshot.forEach((childSnapshot) => {
                 var user = childSnapshot.val();
-                console.log(user)
+                // console.log(user)
                 this.users.push(user);
             });
         }); 

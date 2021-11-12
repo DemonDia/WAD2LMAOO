@@ -95,7 +95,8 @@ export default {
   // },
     data () {
       return {
-        projs: []
+        projs: [],
+        tasks:[]
       }
     },
     methods: {
@@ -106,10 +107,47 @@ export default {
         this.$router.push('/projects/add')
       },
       delete_proj(projID) {
+        console.log(projID)
+// find tasks
+      firebase.database().ref('tasks/').on('value', (snapshot) => {
+          this.tasks = []
+          snapshot.forEach((childSnapshot) => {
+              var task = childSnapshot.val();
+              if(task.project_id ==projID){
+                this.tasks.push(task.task_id)
+              }
+              // this.tasks.push(user);
+          });
+      }); 
+
+
+
+
+
+
+        // delete project
         firebase.database().ref('projects/' + projID).remove()
             .then(function() {
                 alert("Project Deleted")
             })
+
+            // delete tasks
+
+      console.log(this.tasks)
+            // console.log(this.tasks)
+      this.tasks.forEach((task)=>{
+        // console.log(task)
+
+        firebase.database().ref('tasks/' + task).remove()
+            .then(function() {
+                console.log("Task Deleted")
+            })
+
+
+      }
+      )
+
+
       }
     },
     created() {
