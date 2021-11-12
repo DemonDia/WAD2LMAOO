@@ -25,8 +25,8 @@
                                     <small><b>Points:</b></small> <br> <small>{{employee.current_pts}}</small>         
                                 </p>
                                 <div class="buttons">
-                                    <button class = "btn border border-dark view-btn col" @click="edit(employee)" data-bs-toggle="modal" data-bs-target="#exampleModal">Edit</button>
-                                    <button class = "btn border border-dark fire-btn col" @click="delete_user(employee.user_id)">Remove</button>
+                                    <button class = "btn btn-warning border border-dark view-btn col" @click="edit(employee)" data-bs-toggle="modal" data-bs-target="#exampleModal">Edit</button>
+                                    <button class = "btn btn-danger border border-dark fire-btn col" @click="delete_user(employee.user_id)">Remove</button>
                                 </div>
                             </div>
                         </div>
@@ -282,7 +282,7 @@ export default {
 }
 
 .search{
-    width: 90%;
+    width: 62.5%;
     margin-left: auto;
     margin-right: auto;
 }

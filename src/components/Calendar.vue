@@ -4,7 +4,7 @@
     <h1 id = "calendar-name">Calendar</h1>
     <div class='authentification mt-4'>
       Authentification
-      <button v-if='!authorized' @click="handleAuthClick(); getData()" :events="events">Sign In</button>
+      <button v-if='!authorized' @click="handleAuthClick()">Sign In</button>
       <button v-if='authorized' @click="handleSignoutClick">Sign Out</button>
     </div>
     <hr>
