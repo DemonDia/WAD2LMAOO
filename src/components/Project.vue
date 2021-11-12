@@ -25,11 +25,11 @@
     <div class="col">
         <label>Assigned To:</label>
         <!-- {{selected}} -->
-
+<!-- {{selected}} -->
             <select v-model="selected" class = "form-control" value = "selected" >
                 <option disabled value="">Please select an assignee</option>
                 <option v-for="user in users" v-bind:key="user.user_id" :value = user.name
-                :selected= 'user.name == selected '
+                :selected= 'user.name == selected'
                 >{{user.name}} ({{user.department_id}})</option>
             </select>
     </div>
