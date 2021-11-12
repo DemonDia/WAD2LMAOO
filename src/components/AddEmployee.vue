@@ -21,7 +21,19 @@
 
                                 <tr>
                                     <th>Contact no:</th>
-                                    <td><input type ="number" maxlength="8" placeholder = "+65 XXXX XXXX" class = "form-control" v-model="phone_no"></td>
+                                    <td>
+                                        
+<div class="input-group mb-3">
+  <span class="input-group-text" id="basic-addon1">+65</span>
+  <input type ="number" maxlength="8" placeholder = "XXXX XXXX" class = "form-control" v-model="phone_no">
+</div>
+                                        
+                                        
+                                        
+                                        
+                                        
+                                        
+                                        </td>
                                 </tr>
                                 <tr>
                                     <!-- <th>Home Address:</th>
@@ -39,7 +51,7 @@
 
                                 <tr>
                                     <th>Email:</th>
-                                    <td><input type  ="text" placeholder = "Email" class = "form-control" v-model="email"/></td>
+                                    <td><input type  ="email" placeholder = "Email" class = "form-control" v-model="email"/></td>
                                 </tr>
 
                                 <tr>
@@ -159,7 +171,10 @@ export default {
         //     this.picture=null;
         //     this.imageData=event.target.files[0]
         // },
-
+ validateEmail(email) {
+    const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(String(email).toLowerCase());
+},
         submit(){
             // firebase
             // .auth()
@@ -182,6 +197,67 @@ export default {
                 user_type: "employee",
                 image: this.image
             }
+
+// validation 
+
+
+
+
+           // dob
+            let date = this.dob.split("-");
+            console.log(this.dob)
+            date = new Date(date[0],date[1]-1,date[2])
+            console.log(date)
+
+            let currDate = new Date()
+            console.log(currDate)
+
+
+
+
+
+// department cannot be blank
+// email must b
+if(this.name === ""){
+    alert("Name cannot be empty")
+}
+else if(this.dob === ""){
+    alert("Date of birth cannot be empty")
+}
+else if(date > currDate){
+    alert("Invalid date!")
+}
+else if(!this.phone_no){
+    alert("Phone number cannot be empty")
+}
+else if(this.phone_no.toString().length !== 8){
+    alert("Phone number is invalid/Not a Singaporean number!")
+}
+else if(!this.selected){
+    alert("Department cannot be empty")
+}
+
+else if(this.email === ""){
+    alert("Email cannot be empty")
+}
+else if(this.validateEmail(this.email)=== false){
+    alert("Please use a valid email")
+}
+else if(this.password === ""){
+    alert("Password cannot be empty")
+}
+else if(this.position === ""){
+    alert("Position cannot be empty")
+}
+else{
+                var updates = {};
+            updates['/users/' + key] = newData;
+
+            firebase.database().ref().update(updates)
+
+            // this.num++
+            this.$router.push("/employees")
+}
             
             // this.picture=null;
             // const storageRef=firebase.storage().ref('${this.imageData.name}').put(this.imageData);
@@ -200,14 +276,7 @@ export default {
             // .then(res => {
             //     console.log(res)
             // });
-            
-            var updates = {};
-            updates['/users/' + key] = newData;
-
-            firebase.database().ref().update(updates)
-
-            // this.num++
-            this.$router.push("/employees")
+        
 
         },
         onFileChange() {
