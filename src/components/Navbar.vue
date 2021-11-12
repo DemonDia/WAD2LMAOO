@@ -143,18 +143,20 @@ export default {
     flex-wrap: wrap;
 }
 
-.nav-link{
-  color: black !important
-}
+/* .nav-link{
+  color: #424242 !important
+} */
+
 .active{
   border-bottom:2px solid #424242;
-}
-.nav-item:hover {
-  border-bottom:2px solid #424242;
-  /* width: 100px; */
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  color: black !important;
 }
 
-/* .nav-item .nav-link:active{
-  background:red;
-} */
+.nav-item:hover {
+  /* border-bottom:2px solid #424242; */
+  color: black !important;
+}
+
 </style>
