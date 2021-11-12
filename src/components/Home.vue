@@ -327,7 +327,7 @@ export default {
                     text: 'Task Distribution'
                 },
                 xAxis: {
-                    categories: ['Project 1', 'Project 2', 'Project 3', 'Project 4', 'Project 5', 'Project 6']
+                    categories: []
                 },
                 yAxis: {
                     min: 0,
@@ -350,11 +350,11 @@ export default {
                 },
                 series: [{
                     name: 'Completed',
-                    data: [10, 4, 2, 7, 2,0],
+                    data: [],
                     color: "#1b3e6e"
                 }, {
                     name: 'Incomplete',
-                    data: [3, 5, 10, 2, 2, 10],
+                    data: [],
                     color: "#6c9fe6"
                 }]
             },
@@ -429,8 +429,9 @@ export default {
                                 this.num_task += 1
                             }
                         });
-                        console.log("OVER HERE");
-                        console.log(this.taskStatus_employer.series[0].data[0].y);
+                        // console.log("OVER HERE");
+                        // console.log(this.taskStatus_employer.series[0].data[0].y);
+                        // console.log(this.taskStatus_employer.series[0].data[1].y);
                         this.taskStatus_employer.series[0].data[0].y = this.completed_tasks;
                         this.taskStatus_employer.series[0].data[1].y = this.incomplete_tasks;
                         console.log("OVER HERE");
@@ -440,10 +441,14 @@ export default {
                         firebase.database().ref('projects/').on('value', (snapshot) => {
                             snapshot.forEach((childSnapshot) => {
                                 var name = childSnapshot.val().project_name
+                                console.log(name)
                                 this.categories.push(name)
                             })
-                            this.taskDist_employer.xAxis = this.categories
-                            console.log(this.taskDist_employer.xAxis)
+                            console.log("CATEGORIES")
+                            console.log(this.categories)
+                            this.taskDist_employer.xAxis.categories = this.categories
+                            console.log("xAXIS")
+                            console.log(this.taskDist_employer.xAxis.categories)
                         
                         console.log("DISTCHARTHERE2");
                         firebase.database().ref('tasks/').on('value', (snapshot) => {

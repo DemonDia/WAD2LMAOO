@@ -75,10 +75,10 @@
                                             </div>
                                         </li>
                                     </ul>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
                 <div class="tab-pane fade" id="tasks" role="tabpanel" aria-labelledby="tasks-tab">
                     <input type="text" placeholder=" Filter by task/status" class="w-100 mt-3" v-model="filter" />
                     <table class="table table-hover mt-3">
