@@ -42,7 +42,7 @@
                 <tr>
                     <th><label>Overall Rating: </label></th>
                     <td>
-                        <vue3StarRatings v-model="rating" v-bind:showControl = null />
+                        <vue3StarRatings v-model="rating"  v-bind:step = "step" :disableClick = "true"/>
                         
                     </td>
                 </tr>            
@@ -78,7 +78,8 @@ export default {
         return{
             rating:0,
             comments: "",
-            userimg: null
+            userimg: null,
+            step:1
         }
     },
 //       beforeMount(){
