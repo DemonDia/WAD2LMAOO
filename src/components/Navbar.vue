@@ -19,21 +19,26 @@
 
           <!-- employer -->
           <li class="nav-item px-2">
-            <router-link class = "nav-link" to="/home">Home</router-link>
+            <router-link v-if = "pageType ==='Home'" class = "nav-link active" to="/home">Home</router-link>
+            <router-link v-else class = "nav-link" to="/home">Home</router-link>
           </li>
           <li class="nav-item px-2">
-            <router-link class = "nav-link" to="/projects">Projects</router-link>
+            <router-link v-if = "pageType ==='Projects'" class = "nav-link active" to="/projects">Projects</router-link>
+            <router-link  v-else class = "nav-link" to="/projects">Projects</router-link>
             <!-- <a class="nav-link" href="#">Projects</a> -->
           </li>
          <li class="nav-item px-2">
-            <router-link class = "nav-link" to="/calendar">Calendar</router-link>
+            <router-link v-if = "pageType ==='Calendar'" class = "nav-link active" to="/calendar">Calendar</router-link>
+            <router-link  v-else class = "nav-link" to="/calendar">Calendar</router-link>
           </li>
          <li class="nav-item px-2">
-           <router-link class = "nav-link" to="/employees">Employees</router-link>
+           <router-link  v-if = "pageType ==='Employees'" class = "nav-link active" to="/employees">Employees</router-link>
+           <router-link v-else class = "nav-link" to="/employees">Employees</router-link>
             <!-- <a class="nav-link" href="#">Employees</a> -->
           </li>
          <li class="nav-item px-2">
-           <router-link class = "nav-link" to="/review">Review</router-link>
+           <router-link v-if = "pageType ==='Review'" class = "nav-link active" to="/review">Review</router-link>
+           <router-link v-else class = "nav-link" to="/review">Review</router-link>
             <!-- <a class="nav-link" href="#">Review</a> -->
           </li>
          <!-- <li class="nav-item px-2">
@@ -47,18 +52,22 @@
         <!-- employee -->
         <ul class="navbar-nav justify-content-end flex-grow-1 pe-3" v-else>
           <li class="nav-item px-3">
-            <router-link class = "nav-link" to="/home">Home</router-link>
+            <router-link v-if = "pageType ==='Home'" class = "nav-link active" to="/home">Home</router-link>
+            <router-link v-else class = "nav-link" to="/home">Home</router-link>
           </li>
           <li class="nav-item px-3">
-            <router-link class = "nav-link" to="/emptasks">To-do</router-link>
+            <router-link v-if = "pageType ==='To-do'" class = "nav-link active" to="/emptasks">To-do</router-link>
+            <router-link v-else class = "nav-link" to="/emptasks">To-do</router-link>
             <!-- <a class="nav-link" href="#">To-do</a> -->
           </li>
          <li class="nav-item px-3">
             <!-- <a class="nav-link" href="#">Calendar</a> -->
-            <router-link class = "nav-link" to="/calendar">Calendar</router-link>
+            <router-link v-if = "pageType ==='Calendar'" class = "nav-link active" to="/calendar">Calendar</router-link>
+            <router-link  v-else class = "nav-link" to="/calendar">Calendar</router-link>
           </li>
          <li class="nav-item px-3">
-           <router-link class = "nav-link" to="/profile">Profile</router-link>
+           <router-link v-if = "pageType ==='Profile'" class = "nav-link active" to="/profile">Profile</router-link>
+           <router-link v-else class = "nav-link" to="/profile">Profile</router-link>
 
           </li>
          <li class="nav-item px-3">
@@ -81,6 +90,7 @@ export default {
     name:"Navbar",
     // props: ["usertype"],
     mixins:[mixin],
+    props:["pageType"],
     data(){
         return{
           type: ""
@@ -136,7 +146,9 @@ export default {
 .nav-link{
   color: black !important
 }
-
+.active{
+  border-bottom:2px solid #424242;
+}
 .nav-item:hover {
   border-bottom:2px solid #424242;
   /* width: 100px; */

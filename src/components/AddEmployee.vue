@@ -1,6 +1,6 @@
 <template>
     <div class = "page">
-        <Navbar/>
+        <Navbar :pageType = "'Employees'"/>
         <div class = "add-employee-container">
             <h1 id = "add-emp-header" class="mb-4">Add Employee</h1>
             <div class="row">

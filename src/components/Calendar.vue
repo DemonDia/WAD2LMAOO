@@ -1,6 +1,6 @@
 <template>
 <div style = "width:100%;">
-    <Navbar/>
+    <Navbar :pageType = "'Calendar'"/>
     <h1 id = "calendar-name">Calendar</h1>
     <div class='Authentication mt-4'>
       Authentication

@@ -1,6 +1,6 @@
 <template>
     <div class = "page">
-        <Navbar/>
+        <Navbar :pageType = "'Review'"/>
         <h1 id = "review">Review</h1>
         <div class = "projectsContainer">
             <!-- <ProjectToReview/>
