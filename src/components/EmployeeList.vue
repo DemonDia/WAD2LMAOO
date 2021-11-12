@@ -15,7 +15,7 @@
                         <div class=" card shadow-sm">
                             <img :src="employee.image" width="100%" height="225" background="#55595c" color="#eceeef" class="card-img-top rounded" text="Thumbnail" >
                             <div class="inline pt-3">
-                                <h6>{{employee.name}}</h6>
+                                <h6><b>{{employee.name}}</b></h6>
                             </div>
 
                             <div class="card-body details d-block ">
@@ -49,11 +49,11 @@
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title text-dark text-start" id="exampleModalLabel">Edit Details</h5>
+                        <h5 class="modal-title text-dark text-start edit_details_header" id="exampleModalLabel">Edit Details</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <table class ="table table-bordered w-75 align-center">
+                        <table class ="table borderless w-75 align-center details_table">
                             <tr>
                                 <th class="text-start">Name:</th>
                                 <td><input type  ="text" placeholder = "Employee Name" class = "form-control" v-model="this.employee.name"/></td>
@@ -274,6 +274,13 @@ export default {
 }
 </script>
 <style scoped>
+.modal-header{
+    background-color: #ffbb3279;
+}
+
+.details_table{
+    margin: auto;
+}
 
 #emp{
     width: max-content;
