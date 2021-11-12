@@ -114,10 +114,10 @@
                                         <table class="table table-hover mt-2 table-striped">
                                             <thead>
                                                 <tr>
-                                                    <th style="background: #b6cefb" scope="col" class="text-center">Task Status <button class="button" @click="sortTable('task_status', direction)"><img src="../assets/sort.png"></button></th>
-                                                    <th style="background: #b6cefb" scope="col" class="text-center">Task Name <button class="button" @click="sortTable('task_name', direction)"><img src="../assets/sort.png"></button></th>
-                                                    <th style="background: #b6cefb" scope="col" class="text-center">Project Name <button class="button" @click="sortTable('project_id', direction)"><img src="../assets/sort.png"></button></th>
-                                                    <th style="background: #b6cefb" scope="col" class="text-start">Person In-charge <button class="button" @click="sortTable('user_id', direction)"><img src="../assets/sort.png"></button></th>
+                                                    <th style="background: #cfd5ff" scope="col" class="text-center">Task Status <button class="button" @click="sortTable('task_status', direction)"><img src="../assets/sort.png"></button></th>
+                                                    <th style="background: #cfd5ff" scope="col" class="text-center">Task Name <button class="button" @click="sortTable('task_name', direction)"><img src="../assets/sort.png"></button></th>
+                                                    <th style="background: #cfd5ff" scope="col" class="text-center">Project Name <button class="button" @click="sortTable('project_id', direction)"><img src="../assets/sort.png"></button></th>
+                                                    <th style="background: #cfd5ff" scope="col" class="text-start">Person In-charge <button class="button" @click="sortTable('user_id', direction)"><img src="../assets/sort.png"></button></th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -315,7 +315,7 @@ export default {
                     }, {
                         name: 'Incomplete Task(s)',
                         y: 2,
-                        color: "#6c9fe6"
+                        color: "#ff9e9e"
                     }]
                 }]
             },
@@ -355,7 +355,7 @@ export default {
                 }, {
                     name: 'Incomplete',
                     data: [],
-                    color: "#6c9fe6"
+                    color: "#ff9e9e"
                 }]
             },
             revenue: {
@@ -452,6 +452,7 @@ export default {
                         
                         console.log("DISTCHARTHERE2");
                         firebase.database().ref('tasks/').on('value', (snapshot) => {
+
                             for (var proj of this.categories) {
                                 var num_c = 0;
                                 var num_inc = 0;
@@ -478,9 +479,10 @@ export default {
                     });
                     } else {
                         // this.tasks = []
+                        console.log("THISCATEGORIES")
+                        console.log(this.categories)
                         snapshot.forEach((childSnapshot) => {
                             var task = childSnapshot.val();
-                            
                             if (task.user_id == user.uid) {
                                 if (!this.categories.includes(task.project_name)) {
                                     this.categories.push(task.project_name);
@@ -494,13 +496,18 @@ export default {
                                 }
                             } 
                         })
-                        console.log("OVER HERE");
-                        console.log(this.taskStatus_employer.series[0].data[0].y);
+
+                        // console.log("OVER HERE");
+                        // console.log(this.taskStatus_employer.series[0].data[0].y);
                         this.taskStatus_employer.series[0].data[0].y = this.completed_tasks;
                         this.taskStatus_employer.series[0].data[1].y = this.incomplete_tasks;
                         console.log("OVER HERE");
                         console.log(this.taskStatus_employer.series[0].data[0].y);
                         console.log(this.taskStatus_employer.series[0].data[1].y);
+
+                        console.log("TASK DIST EMPLOYEE")
+                        console.log(this.taskDist_employer)
+                        this.taskDist_employer.xAxis.categories = this.categories
 
                         firebase.database().ref('tasks/').on('value', (snapshot) => {
                             for (var proj of this.categories) {
