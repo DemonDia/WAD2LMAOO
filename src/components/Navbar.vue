@@ -143,20 +143,21 @@ export default {
     flex-wrap: wrap;
 }
 
-/* .nav-link{
+.nav-link{
   color: #424242 !important
-} */
-
-.active{
-  border-bottom:2px solid #424242;
-  border-bottom-left-radius: 5px;
-  border-bottom-right-radius: 5px;
-  color: black !important;
 }
 
-.nav-item:hover {
+.active{
   /* border-bottom:2px solid #424242; */
-  color: black !important;
+  border-bottom:2px solid rgb(255,158,158);
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  color: rgb(255,128,128) !important;
+}
+
+.nav-item a:hover {
+  /* border-bottom:2px solid #424242; */
+  color:rgb(255,128,128) !important;
 }
 
 </style>
