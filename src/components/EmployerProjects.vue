@@ -4,7 +4,7 @@
     
     <section class="panel mx-2" >
       <div><h1 class="heading">Projects</h1></div>
-      <a href="#" class=" btn btn-success btn-xs mb-3 btn_create" style="float:right" @click="create()"> Create New Project</a>
+      <a href="#" class=" btn btn-success btn-xs mb-3 btn_create container-fluid" style="float:right" @click="create()"> Create New Project</a>
 
       <div id="no-more-tables">
       <table class="table table-hover p-table">
@@ -169,27 +169,31 @@ export default {
 }
 
 .btn_create{
-  margin-right: 67px;
+  width: 200px;
+  margin-right: 20px;
 }
 
 .btn_view{
-  width: 65px;
-  height: 40px;
+  width: 55px;
+  height: 35px;
   margin-bottom: 5px;
-  margin-right: 0;
-  text-align: center;
-  vertical-align: middle;
-  padding-top: 7px;
-}
-.btn_delete{
-  width: 65px;
-  height: 40px;
-  margin-bottom: 5px;
-  margin-right: 0;
+  margin-left: 3px;
+  margin-right: 3px;
   text-align: center;
   vertical-align: middle;
   padding: 0px;
-  padding-top: 7px;
+  padding-top: 5px;
+}
+.btn_delete{
+  width: 55px;
+  height: 35px;
+  margin-bottom: 5px;
+  margin-left: 3px;
+  margin-right: 3px;
+  text-align: center;
+  vertical-align: middle;
+  padding: 0px;
+  padding-top: 5px;
 }
 
 table{
@@ -222,10 +226,5 @@ td{
     margin: auto;
     margin-bottom: 20px;
 } 
-
-#no-more-tables{
-  margin-left: 10px;
-  margin-right: 10px;
-}
 
 </style>
