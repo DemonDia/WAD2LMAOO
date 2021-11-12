@@ -100,7 +100,7 @@
                 </div>
                 <div class="tab-pane fade" id="reviews" role="tabpanel" aria-labelledby="reviews-tab">
                     <div class="height-100 container mt-3">
-                        <div class="card p-3">
+                        <div class="card p-3 reviewCard">
                             <div class="d-flex justify-content-between align-items-center">
                                 <div class="ratings"> 
                                     <h2>{{averageReviews}}/5</h2>
@@ -115,7 +115,7 @@
                                 </div>
                                 <h5 class="review-count"> {{user_reviews.length}} Reviews</h5>
                             </div>
-                            <div class="mt-5 card">
+                            <div class="mt-5 reviewCard">
                                 <div class="card-body d-flex flex-column align-items-center" v-for ="(review, index) in user_reviews" v-bind:key="index">
                                     <h5 class="review-stat card-title">Anon</h5>
                                     <!-- {{review}} -->
@@ -244,13 +244,10 @@ export default {
 
 <style>
 .card{
-    /* width: auto; */
+    width:800px;
     height: auto;
 }
-#main-container{
-    width: auto;
-    height: auto;
-}
+
 .imagepos{
     width: 270px;
     height: 200px;
