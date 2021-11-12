@@ -41,9 +41,9 @@ See [Configuration Reference](https://cli.vuejs.org/config/). -->
 ```
 Projeck is created to serve the purpose of:
     a. Motivate the employees to work
-    b. Tracking of task progress
-    c. Better concentration and discipline 
-    d. Improve the interaction between the employers and employees
+    b. Tracking of task completion
+    c. Better concentration and discipline to complete work
+    d. Improve the interactions between the employers and employees
     e. To improve overall company productivity and work performances
 ```
 
@@ -60,8 +60,8 @@ Projeck is created to serve the purpose of:
 
 ## 3. Project Setup
 ```
-Open the terminal and install npm (type npm install) 
-To run the program, type npm run serve in the terminal
+Open the terminal and install npm by typing 'npm install'
+To run the program, type 'npm run serve' in the terminal
 ```
 
 ## 4. Login Details
@@ -76,7 +76,7 @@ For employer
     Email: amy_tan@gmail.com
     Password: 77jtdef0
 
-* Note: Please do not delete the 2 main characters, as known as John and Amy.
+* Note: Please do not delete the 2 main characters, as known as John Lim and Amy Tan.
 ```
 
 ### 4.1 Functions
@@ -94,12 +94,14 @@ For Employer (Amy):
     c. Calendar
     d. Employee
     e. Review
+
+Both employee and employer has a function where they can log out and will be brought back to login page.
 ```
 
 #### 4.1.1 Employee (John)
 ```
 1. Dynamic Dashboard
-This shows the number of completed and incompleted task the employee has with respective dashboards that is imported from highcharts-vue. 
+This shows the number of completed and incompleted tasks the employee has with respective dashboards that is imported from highcharts-vue. 
 
     a. Task Status 
     Shows the number of completed and incompleted task in a donut chart.
