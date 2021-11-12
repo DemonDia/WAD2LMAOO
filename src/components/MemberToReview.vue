@@ -47,7 +47,7 @@
                     </td>
                 </tr>            
             </table>
-             {{rating}}
+             <!-- {{rating}} -->
              <div class = "btn-container">
                  <router-link class = 'btn btn-danger' to="/review">
                  Cancel
@@ -142,6 +142,7 @@ export default {
     margin-top:80px;
     display:grid;
     justify-items: center;
+    width: min-content;
 }
 h2{
     margin:10px;
