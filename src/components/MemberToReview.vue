@@ -1,7 +1,7 @@
 <template>
     <div class = "page">
         <Navbar/>
-        <div class = "review-container">
+        <div class = "review-container card">
             <h2>Reviewing for</h2>
             <div class = "card member-card">
                 <h3 class = "member-name">{{id}}</h3>
@@ -91,6 +91,8 @@ export default {
     methods:{
         submit(id){
             console.log(id)
+            var myref = firebase.database().ref("reviews/").push()
+            var key = myref.key;
             firebase.database().ref('users/').on('value', (snapshot) => {
                 snapshot.forEach((childSnapshot) => {
                     var user = childSnapshot.val();
@@ -98,6 +100,7 @@ export default {
                         console.log("details",this.userimg)
                         var userid = user.user_id
                         firebase.database().ref('reviews/').push({
+                            review_id:key,
                             comments: this.comments,
                             rating: this.rating,
                             user_id: userid
@@ -105,8 +108,8 @@ export default {
                     }
                     
                 })
-            })
-            alert("You have submitted review for" + this.id); // need get the name of user
+            }) 
+            alert("You have submitted review for " + this.id); // need get the name of user
             this.$router.push("/review")
         }
     },
@@ -151,6 +154,9 @@ h2{
     width:100%;
     height:300px;
     background: #EFEFEF;
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
 
 }
 .member-name{

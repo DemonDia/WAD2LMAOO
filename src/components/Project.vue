@@ -14,7 +14,8 @@
       <router-link to = "/projects" class=" btn btn-primary btn-xs mb-3" style="float:left">Back</router-link>
     <a href="#" class=" btn btn-success btn-xs mb-3" style="float:right" @click="create"> Create New Task</a>
     <div>
-      <!-- {{project}}
+<br>
+<div class = "container card card-body">
 
   <div class="row">
     <div class="col">
@@ -23,20 +24,40 @@
     </div>
     <div class="col">
         <label>Assigned To:</label>
-
+        <!-- {{selected}} -->
+<!-- {{selected}} -->
             <select v-model="selected" class = "form-control" value = "selected" >
                 <option disabled value="">Please select an assignee</option>
-                <option v-for="user in users" v-bind:key="user.user_id">{{user.name}}</option>
+                <option v-for="user in users" v-bind:key="user.user_id" :value = user.name
+                :selected= 'user.name == selected'
+                >{{user.name}}</option>
             </select>
     </div>
+  </div>
 <div class = "row">
+  <div class = "col">
+      <label>Due Date:</label>
+      <input type = "date" class = "form-control" placeholder="Change due date" v-model = "dueDate" />
+  </div>
 
+ <div class = "col">
+      <label>Reward:</label>
+      <input type = "number" class = "form-control" placeholder="Change reward" v-model = "reward" />
+  </div>
+
+</div>  
+<br>
+<div class = "row justify-content-center">
+  <div class = "col-3">
+    <button class = "btn btn-primary  btn-xs mb-3"  v-on:click = "update">Update </button>    
+  </div>
   
+
+</div>
+
 </div>
 
 
-  </div> -->
-      
 
     </div>
     <table class="table table-hover p-table">
@@ -90,12 +111,12 @@
                 <td class="p-reward">
                     {{task.reward}}
                 </td>
-                <td v-if = "task.task_status === 'review'">
+                <td v-if = "task.task_status === 'Review'">
                     <a v-if = "task.task_status === 'review'" href="#" class="btn btn-info btn-xs" @click="approve(task.task_id)"><i class="fa fa-folder"></i> Approve </a>
                     <a v-if = "task.task_status === 'review'" href="#" class="btn btn-danger btn-xs" @click="reject(task.task_id)"><i class="fa fa-folder"></i> Reject </a>
                 </td>
 
-                <td v-else-if = "task.task_status === 'complete'">
+                <td v-else-if = "task.task_status === 'Completed'">
                    <a href="#" class="btn btn-danger btn-xs disabled" @click="delete_task(task.task_id)"><i class="fa fa-trash-o"></i> Delete </a>
                 </td>
 
@@ -138,7 +159,10 @@ export default {
         projectName:"",
         project:null,
         users: [],
-        selected:""
+        selected:"",
+        reward:0,
+        dueDate:"",
+        deleteTasks:[]
       }
     },
     components:{
@@ -177,6 +201,42 @@ export default {
                 alert("Rejected")
             })
     },
+    update(){
+      var toUpdate = this.$route.params.id;
+
+                  if(this.projectName ===""){
+                alert("Project Name cannot be empty")
+            }
+            else if(this.selected ===""){
+                alert("Please select")
+            }
+            else if(this.dueDate ===""){
+                alert("Please select a due date.")
+
+            }
+            else if(this.reward < 0){
+                alert("Points cannot be negative!")
+            }
+            else{
+
+        firebase.database().ref('projects/' + toUpdate).update(
+          {
+          "assignee":this.selected,
+          "due_date":this.dueDate,
+          "project_name":this.projectName,
+          "reward":this.reward
+          
+          }
+        )
+            .then(function() {
+                alert("Project Updated")
+            })
+    }
+
+
+
+
+    }
 
 
   },
@@ -216,6 +276,8 @@ export default {
             this.projectName = project.project_name
             this.displayProjName = project.project_name
             this.selected = project.assignee
+            this.dueDate = project.due_date
+            this.reward = project.reward
             console.log(this.selected)
             // this.tasks.push(task);
           }

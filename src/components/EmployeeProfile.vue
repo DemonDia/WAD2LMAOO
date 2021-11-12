@@ -103,6 +103,7 @@
                         <div class="card p-3">
                             <div class="d-flex justify-content-between align-items-center">
                                 <div class="ratings"> 
+                                    <h2>{{averageReviews}}/5</h2>
                                     <i class="fa fa-star rating-color" v-for="index in averageReviews" :key="index"  ></i> 
                                     <!-- <i class="fa fa-star rating-color"></i> 
                                     <i class="fa fa-star rating-color"></i> 
@@ -110,6 +111,7 @@
                                     <i class="fa fa-star rating-color"></i> 
                                     <i class="fa fa-star"></i>  -->
                                     <i class="fa fa-star" v-for="index in 5-averageReviews" :key="index" ></i> 
+                                    
                                 </div>
                                 <h5 class="review-count"> {{user_reviews.length}} Reviews</h5>
                             </div>

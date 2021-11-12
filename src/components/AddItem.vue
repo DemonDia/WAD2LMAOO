@@ -89,7 +89,7 @@ export default {
             this.users = []
             snapshot.forEach((childSnapshot) => {
                 var user = childSnapshot.val();
-                console.log(user)
+                // console.log(user)
                 this.users.push(user);
             });
         }); 
@@ -119,14 +119,10 @@ export default {
             this.projectName = project.project_name
             // this.tasks.push(task);
           }
-        //   console.log(this.projectName)
+          console.log(this.projectName)
         })
       }),
-
-
 // get user id
-
-
       firebase.database().ref("users/").on('value',(snapshot)=>{
                 snapshot.forEach((childSnapshot) => {
           var user = childSnapshot.val();
@@ -136,7 +132,7 @@ export default {
             this.userID = user.user_id
             // this.tasks.push(task);
           }
-        //   console.log(this.userID)
+          console.log(this.userID)
         })
       })
 
@@ -169,8 +165,17 @@ export default {
                 alert("Points cannot be negative!")
             }
             else{
-                alert("Done")
-            var myref = firebase.database().ref('/tasks').push()
+                
+
+
+
+
+
+    
+
+
+                
+            var myref = firebase.database().ref("tasks/").push()
             var key = myref.key;
             
             var input_data = {
@@ -180,9 +185,7 @@ export default {
                 due_date:this.dueDate,
                 project_id: this.$route.params.id,
                 project_name:this.projectName ,
-
                 reward:this.reward,
-
                 task_id: key,
                 task_name:this.taskName,
                 task_status:"Incomplete",
@@ -190,11 +193,12 @@ export default {
                 user_name:this.selected
             }
             console.log(input_data)
-            var updates = {};
-            updates['/tasks/' + key] = input_data;
-
-            firebase.database().ref().update(updates)
-
+            // var updates = {};
+            // updates['/tasks/' + key] = input_data;
+            // console.log(updates)
+            // firebase.database().ref().update(updates)
+            myref.set(input_data)
+            alert("Done")
 
             this.$router.push("/projects/project/"+this.$route.params.id)
 

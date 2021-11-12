@@ -102,6 +102,9 @@ export default {
             employees: [],
             filter: "",
             isOpen: false,
+            involved_reviews:[],
+            involved_projects:[],
+            involved_tasks:[],
             employee: {
                 user_id: null,
                 name: null,
@@ -117,14 +120,101 @@ export default {
         edit(employee) {
             console.log(employee)
             this.employee = employee;
-            console.log(this.employee)
+            // console.log(this.employee)
         },
         delete_user(userID) {
-            // console.log(userID)
+            // delete employee
             firebase.database().ref('users/' + userID).remove()
             .then(function() {
                 alert("Employee Deleted")
             })
+
+            // get reviews associated 
+
+      firebase.database().ref('reviews/' ).on('value', (snapshot) => {
+        this.involved_reviews = []
+        snapshot.forEach((childSnapshot) => {
+          var review = childSnapshot.val();
+        //   console.log(review)
+          if(review.user_id ==  userID){
+          
+            this.involved_reviews.push(review.review_id);
+          }
+          
+        })
+        // console.log(this.involved_reviews)
+      }); 
+
+            // delete reviews associated to employee
+            this.involved_reviews.forEach(review=>{
+                console.log(review)
+                firebase.database().ref('reviews/' + review).remove()
+                    .then(function() {
+                        console.log("Review Deleted")
+                    })
+            })
+            // get tasks associated
+
+      firebase.database().ref('tasks/' ).on('value', (snapshot) => {
+        this.involved_tasks = []
+        snapshot.forEach((childSnapshot) => {
+          var task = childSnapshot.val();
+        //   console.log(task)
+          if(task.user_id ==  userID){
+          
+            this.involved_tasks.push(task.task_id);
+          }
+          
+        })
+        // console.log(this.involved_tasks)
+      }); 
+
+
+
+            // delete tasks associated to employee
+            this.involved_tasks.forEach(task=>{
+                console.log(task)
+                firebase.database().ref('tasks/' + task).remove()
+                    .then(function() {
+                        console.log("Task Deleted")
+                    })
+
+
+
+            })
+            // get projects associated
+
+
+      firebase.database().ref('projects/' ).on('value', (snapshot) => {
+        this.involved_projects = []
+        snapshot.forEach((childSnapshot) => {
+          var project = childSnapshot.val();
+        //   console.log(project)
+          if(project.user_id ==  userID){
+          
+            this.involved_projects.push(project.project_id);
+
+            
+          }
+          
+        })
+        // console.log(this.involved_projects)
+      }); 
+
+
+            // delete projects associated to employee
+
+            this.involved_projects.forEach(project=>{
+                console.log(project)
+
+                firebase.database().ref('projects/' + project).remove()
+                    .then(function() {
+                        console.log("Project Deleted")
+                    })
+
+                
+            })
+
         },
         update(userID){
             // var newData = {
@@ -156,7 +246,7 @@ export default {
                     snapshot.forEach((childSnapshot) => {
                         var user = childSnapshot.val();
                         // if (user.user_type == "employee") {
-                            console.log(user)
+                            // console.log(user)
                             this.employees.push(user);
                         // }
                     })
