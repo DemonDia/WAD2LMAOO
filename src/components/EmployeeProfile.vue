@@ -272,6 +272,12 @@ h1{
   padding-top:60px;
   padding-bottom:60px;
 }
+
+.reviewCard{
+    margin-left: auto;
+    margin-right: auto;
+}
+
 </style>
 
 <style scoped>
