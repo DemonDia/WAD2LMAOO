@@ -155,6 +155,8 @@ export default {
     data(){
       return{
         tasks:[],
+        dates:[],
+        dateObjects:[],
         displayProjName:"",
         projectName:"",
         project:null,
@@ -203,6 +205,10 @@ export default {
     },
     update(){
       var toUpdate = this.$route.params.id;
+      let newDue = this.dueDate.split("-")
+
+      newDue =  new Date(newDue[0],newDue[1]-1,newDue[2])
+      console.log(newDue)
 
                   if(this.projectName ===""){
                 alert("Project Name cannot be empty")
@@ -213,6 +219,9 @@ export default {
             else if(this.dueDate ===""){
                 alert("Please select a due date.")
 
+            }
+            else if (newDue < this.dateObjects[this.dateObjects.length -1]){
+              alert("Due date cannot be too early")
             }
             else if(this.reward < 0){
                 alert("Points cannot be negative!")
@@ -258,12 +267,25 @@ export default {
           var task = childSnapshot.val();
           console.log(task)
           if(task.project_id ==  this.$route.params.id ){
-          
+            this.dates.push(task.due_date)
             this.tasks.push(task);
           }
           
         })
-        console.log(this.tasks)
+        this.dates = this.dates.sort()
+        this.dates.forEach(date=>{
+          date = date.split("-")
+          date = new Date(date[0],date[1]-1,date[2])
+          
+            console.log(date)
+            this.dateObjects.push(date)
+            // console.log(date.getTime()  > new Date().getTime() )
+
+
+
+        })
+        // this.dateObjects
+        // console.log(this.dateObjects)
       }); 
 // name
       firebase.database().ref("projects/").on('value',(snapshot)=>{

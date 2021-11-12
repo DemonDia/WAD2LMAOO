@@ -81,7 +81,9 @@ export default {
             reward:0,
             users:[],
             projectName:"",
-            userID:""
+            userID:"",
+            projDue:""
+            
         }
     },
     created() {
@@ -109,7 +111,7 @@ export default {
       },
         add() {
 // get project name
-
+        this.projDue = ""
       firebase.database().ref("projects/").on('value',(snapshot)=>{
                 snapshot.forEach((childSnapshot) => {
           var project = childSnapshot.val();
@@ -117,9 +119,11 @@ export default {
           // console.log(this.projectName == project.project_name)
           if(project.project_id ==  this.$route.params.id ){
             this.projectName = project.project_name
+            this.projDue = project.due_date
             // this.tasks.push(task);
           }
           console.log(this.projectName)
+          console.log(this.projDue)
         })
       }),
 // get user id
@@ -140,12 +144,18 @@ export default {
 
 
 
-            // add the task into the project
-
+            // add new date into the project
             let date = this.dueDate.split("-");
             console.log(this.dueDate)
             date = new Date(date[0],date[1]-1,date[2])
             console.log(date)
+
+            // current date
+            this.projDue = this.projDue.split("-")
+            this.projDue = new Date(this.projDue[0],this.projDue[1]-1,this.projDue[2])
+            console.log(this.projDue)
+
+
             console.log(date.getTime()  > new Date().getTime() )
             if(this.taskName ===""){
                 alert("Task name cannot be empty")
@@ -156,6 +166,9 @@ export default {
             else if(this.dueDate ===""){
                 alert("Please select a due date.")
 
+            }
+            else if(date > this.projDue){
+                alert("Cannot exceed project deadline")
             }
             else if(date.getTime()  < new Date().getTime() ){
                 alert("Due date cannot be earlier than today or due today!")
