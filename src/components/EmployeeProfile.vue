@@ -103,11 +103,15 @@
                         <div class="card p-3">
                             <div class="d-flex justify-content-between align-items-center">
                                 <div class="ratings"> 
-                                    {{averageReviews}}
-                                    <vue3StarRatings v-model="averageReviews" v-bind:showControl = null />
-                                    <!-- <i class="fa fa-star rating-color" v-for="index in averageReviews" :key="index"  ></i> 
-                                
-                                    <i class="fa fa-star" v-for="index in 5-averageReviews" :key="index" ></i>  -->
+                                    <h2>{{averageReviews}}/5</h2>
+                                    <i class="fa fa-star rating-color" v-for="index in averageReviews" :key="index"  ></i> 
+                                    <!-- <i class="fa fa-star rating-color"></i> 
+                                    <i class="fa fa-star rating-color"></i> 
+                                    <i class="fa fa-star rating-color"></i> 
+                                    <i class="fa fa-star rating-color"></i> 
+                                    <i class="fa fa-star"></i>  -->
+                                    <i class="fa fa-star" v-for="index in 5-averageReviews" :key="index" ></i> 
+                                    
                                 </div>
                                 <h5 class="review-count"> {{user_reviews.length}} Reviews</h5>
                             </div>
@@ -116,7 +120,6 @@
                                     <h5 class="review-stat card-title">Anon</h5>
                                     <!-- {{review}} -->
                                     <div class="small-ratings card-subtitle"> 
-                                        <vue3StarRatings v-model="review.rating" v-bind:showControl = null v-bind:step ="0"/>
                                         <i v-for="index in review.rating" :key="index" class="fa fa-star rating-color"></i> 
                                         <i v-for="index in 5-review.rating" :key="index"  class="fa fa-star"></i> 
                                     </div>
@@ -136,7 +139,6 @@
 </template>
 
 <script>
-import vue3StarRatings from "vue3-star-ratings";
 import Navbar from "./Navbar.vue"
 import mixin from "../mixin"
 import firebase from "firebase/compat"
@@ -144,7 +146,6 @@ export default {
     name:"ProfilePage",
     components: {
         Navbar,
-        vue3StarRatings
     },
     mixins:[mixin],
     methods: {
@@ -202,7 +203,7 @@ export default {
                 total+= listedRatings[i].rating
             }
 
-            return total/listedRatings.length
+            return Math.round(total/listedRatings.length)
         }
     },
     created() {
