@@ -1,13 +1,13 @@
 <template>
 <div class = "page">
-    <Navbar/>
+    <Navbar :pageType = "'Employees'"/>
       <h1 id = "emp">List of Employees</h1>
 
     <div class = "employeesPage">
         <div class="search">
             <input type = "text" class = "form-control" placeholder="Search by Name" v-model="filter"/>
         </div>
-        <a href="#" class=" btn btn-dark btn-xs mt-3" @click="create()">Add Employee</a>
+        <a href="#" class=" btn btn-success btn-xs mt-3" @click="create()">Add Employee</a>
         <div class="album">                    
             <div class="container">
                 <div class="row">

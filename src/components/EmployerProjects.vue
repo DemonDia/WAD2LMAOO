@@ -1,6 +1,6 @@
 <template>
   <!-- <div  class = "mb-4">  -->
-    <Navbar/>
+    <Navbar :pageType = "'Projects'"/>
     
     <section class="panel mx-2" >
       <div><h1 class="heading">Projects</h1></div>

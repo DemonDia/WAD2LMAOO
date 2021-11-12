@@ -1,51 +1,34 @@
 <template>
     <div class = "page">
-        <Navbar/>
+        <Navbar :pageType = "'Review'"/>
         <h1 id = "review">Review</h1>
         <div class = "projectsContainer">
-            <!-- <ProjectToReview/>
-            <ProjectToReview/> -->
-            <!-- <ProjectToReview/>
-            <ProjectToReview/>
-            <ProjectToReview/> -->
             
             <div class = "projectReviewContainer" v-for="(proj,key) in proj_names" v-bind:key="key">
-                <div class = " projectName mx-3">
+                <div class = " projectName">
                     <h4 >{{key}}</h4>
                 </div>
-                <!-- <div class = "projectMembers "> -->
-                    <div class="album">
-                                <div class="container">
-                                 <div class="row">   
-                    
-                        <!-- <main role="main" class="d-inline-flex emp_card"> -->
-                                
-                                        <div class="col-xl-3 col-lg-4 col-md-6 "><router-link class = "nav-link" v-for="(emp,index) in proj" v-bind:key="index"  :to="`/review/${emp.name}`">
-                                            <div class="card shadow-sm">
-                                                <img :src="emp.image" width="100%" height="225" background="#55595c" color="#eceeef" class="card-img-top" text="Thumbnail" >
-                                                <div class="inline pt-3">
-                                                    <h6>{{emp.name}}</h6>
-                                                    <small>{{emp.position}}</small>
-                                                </div>
 
-                                                <div class="card-body">
-                                                <p class="inline card-text">          
-                                                    <!-- enter anything here -->
-                                                </p>
-                                                </div>
-                                            </div>
-                                        </router-link></div>
-                               
-
-                        <!-- </main> -->
-                    </div>
-                         </div>
-                                
+                <div class="album">                    
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-xl-3 col-lg-4 col-md-6 " v-for="(emp,index) in proj" v-bind:key="index">
+                                <router-link class="nav-link" :to="`/review/${emp.name}`">
+                                <div class="empCard shadow-sm">
+                                    <img :src="emp.image" width="100%" height="225" background="#55595c" color="#eceeef" class="card-img-top rounded" text="Thumbnail" >
+                                    <div class="inline pt-3">
+                                        <small>{{emp.name}}</small><br>
+                                        <small>{{emp.position}}</small>
+                                    </div>
+                                </div>
+                                </router-link>
                             </div>
+                        </div> 
+                    </div>
                 </div>
             </div>
         </div>
-    <!-- </div> -->
+    </div>
 </template>
 <script>
 // import ProjectToReview from "./ProjectToReview.vue";
@@ -133,6 +116,7 @@ export default {
         /* background:rgba(248, 248, 248, 1); */
         /* max-width:100vw; */
 }
+
 .projectsContainer{
     margin-top: 80px;
     display: grid;
@@ -142,71 +126,26 @@ export default {
 
 .projectReviewContainer{
     display:block;
-    /* height:400px; */
     margin-bottom: 50px;
     width: 90vw;
     margin: 10px auto;
     align-items: center;
 }
 .projectName{
-    display: block;
-    /* max-width:50%; */
     background: black;
     color: white;
-    /* background: linear-gradient(57.11deg, #6D9DF8 -4.9%, #6461FF 101.23%, rgba(109, 157, 248, 0.64) 101.24%, rgba(109, 157, 248, 0) 101.24%); */
-    /* margin:10px; */
-    /* margin-left: 15px; */
     margin-bottom: 30px;
     padding: 10px;
     border-radius:10px;
-    height:13%;
-}
-.projectMembers{
-    display: flex;
-    /* background:blue; */
-    /* max-width: 90%; */
-    /* margin: 10px; */
-    height: 50%;
-    overflow-x: None;
-    
+    width: 80%;
+    margin-right: auto;
+    margin-left: auto;
 }
 
-/* h3{
-    height: fit-content;
-    background: #6B8AFA;
-    padding:5px;
-    border-radius: 10px;
-    align-self: start;
-
-} */
-.project-member{
-    width:200px;
-    /* height: 100%; */
-    margin-left:10px;
-    flex-shrink: 0;
-    padding:5px;
-    display: grid;
-
-    
-    border-radius: 10px 10px 0px 0px;
-
-    /* position: fixed; */
-}
-.review-btn{
-padding:10px;
-height: fit-content;
-/* height: 60px; */
-border:none; 
-background: #6B8BFA;
-font-size:20px;
-color: white;
-align-self: end;
-}
-
-.card {
+.empCard {
     width: 270px;
     margin: 20px auto;
-    height: 500px;
+    height: 320px
 }
 
 .card-img-top {

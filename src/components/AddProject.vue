@@ -1,6 +1,6 @@
 <template>
     <div class = "page">
-        <Navbar/>
+        <Navbar :pageType = "'Projects'"/>
         <div class = "add-employee-container">
             <h1 id = "add-emp-header"  class="mb-4">Add Project</h1>
             <div class="row">
@@ -78,10 +78,11 @@ export default {
             return dateTime;
         },
         submit(){
-            // firebase.database().ref('projects/').on('value', (snapshot) => {
-            //     var projs = snapshot.val().length
-            //     this.len = projs +1;
-            // }); 
+            let date = this.duedate.split("-");
+            console.log(this.duedate)
+            date = new Date(date[0],date[1]-1,date[2])
+            console.log(date)
+            console.log(date.getTime()  > new Date().getTime() )
             if(this.proj_name ===""){
                 alert("Project Name cannot be empty")
             }
@@ -92,6 +93,10 @@ export default {
                 alert("Please select a due date.")
 
             }
+            else if(date.getTime()  < new Date().getTime() ){
+                alert("Due date cannot be earlier than today or due today!")
+            }
+
             else if(this.pointsAwarded <= 0){
                 alert("Points cannot be negative!")
             }

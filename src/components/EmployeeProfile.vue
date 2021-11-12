@@ -4,7 +4,7 @@
         href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" 
         integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" 
         crossorigin="anonymous">
-    <Navbar/>
+    <Navbar :pageType = "'Profile'"/>
     <div class="container" id="main-container">
         <h1 style="color: black" class="mb-4 header">Profile Page</h1>
          <div class="container-fluid justify-content-center">
@@ -272,6 +272,12 @@ h1{
   padding-top:60px;
   padding-bottom:60px;
 }
+
+.reviewCard{
+    margin-left: auto;
+    margin-right: auto;
+}
+
 </style>
 
 <style scoped>
