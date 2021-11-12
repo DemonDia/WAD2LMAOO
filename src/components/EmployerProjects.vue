@@ -4,17 +4,17 @@
     
     <section class="panel mx-2" >
       <div><h1 class="heading">Projects</h1></div>
-      <a href="#" class=" btn btn-success btn-xs mb-3 btn_create" style="float:right" @click="create()"> Create New Project</a>
+      <a href="#" class=" btn btn-success btn-xs mb-3" style="float:right" @click="create()"> Create New Project</a>
 
       <div id="no-more-tables">
       <table class="table table-hover p-table">
 
         <thead>
-        <tr class="text-break">
+        <tr>
             <th>Project Name</th>
             <th>Team Member</th>
             <th>Assigned Date</th>
-            <th>Due Date</th>
+            <th>Project Due</th>
             <th>Project Status</th>
             <th>Rewarded Points</th>
             <th>Actions</th>
@@ -31,28 +31,28 @@
                   <EmployerProject :projectName="proj.project_name" :projectAssignees ="proj.assignee" :projectAssigned ="proj.assigned_date"
                   :projectDue ="proj.due_date" :projectStatus ="proj.project_status"  :projectReward ="proj.reward"/>
                 </router-link> -->
-                <td class="p-name text-break">
+                <td class="p-name text-wrap">
                   {{proj.project_name}}
                     <!-- {{proj.project_name}} -->
                 </td>
-                <td class="p-team text-break">
+                <td class="p-team">
                     {{proj.assignee}}
                 </td>
-                <td class="p-assignedDate text-break">
+                <td class="p-assignedDate">
                     {{proj.assigned_date}}
                 </td>
-                <td class="p-Due text-break">
+                <td class="p-Due">
                     {{proj.due_date}}
                 </td>
-                <td class="p-status mw-100 text-break">
+                <td class="p-status">
                     {{proj.project_status}}
                 </td>
-                <td class="p-reward text-break">
+                <td class="p-reward">
                     {{proj.reward}}
                 </td>
                 <td>
-                    <a href="#" class="btn btn-primary btn-xs btn_view" @click="project(proj.project_id)"><i class="fa fa-folder"></i> View </a>
-                    <a href="#" class="btn btn-danger btn-xs btn_delete" @click="delete_proj(proj.project_id)"><i class="fa fa-trash-o"></i> Delete </a>
+                    <a href="#" class="btn btn-primary btn-sm" @click="project(proj.project_id)"><i class="fa fa-folder"></i> View </a>
+                    <a href="#" class="btn btn-danger btn-sm" @click="delete_proj(proj.project_id)"><i class="fa fa-trash-o"></i> Delete </a>
                 </td>
               </tr>
 
@@ -168,30 +168,6 @@ export default {
   margin-right: 10px;
 }
 
-.btn_create{
-  margin-right: 67px;
-}
-
-.btn_view{
-  width: 65px;
-  height: 40px;
-  margin-bottom: 5px;
-  margin-right: 0;
-  text-align: center;
-  vertical-align: middle;
-  padding-top: 7px;
-}
-.btn_delete{
-  width: 65px;
-  height: 40px;
-  margin-bottom: 5px;
-  margin-right: 0;
-  text-align: center;
-  vertical-align: middle;
-  padding: 0px;
-  padding-top: 7px;
-}
-
 table{
   /* table-layout: auto; */
   width: 100%;
@@ -222,10 +198,5 @@ td{
     margin: auto;
     margin-bottom: 20px;
 } 
-
-#no-more-tables{
-  margin-left: 10px;
-  margin-right: 10px;
-}
 
 </style>
