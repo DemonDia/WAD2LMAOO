@@ -19,7 +19,7 @@
                                     <td class="text-start">
                                         <select v-model="selected" >
                                             <option disabled value="">Please select an assignee</option>
-                                            <option v-for="user in users" v-bind:key="user.user_id">{{user.name}} ({{user.department_id}}) </option>
+                                            <option v-for="user in users" v-bind:key="user.user_id">{{user.name}}</option>
                                         </select>
                                     </td>
                                 </tr>

@@ -30,7 +30,7 @@
                 <option disabled value="">Please select an assignee</option>
                 <option v-for="user in users" v-bind:key="user.user_id" :value = user.name
                 :selected= 'user.name == selected'
-                >{{user.name}} ({{user.department_id}})</option>
+                >{{user.name}}</option>
             </select>
     </div>
   </div>
@@ -49,7 +49,7 @@
 <br>
 <div class = "row justify-content-center">
   <div class = "col-3">
-    <button class = "btn btn-primary  btn-xs mb-3">Update </button>    
+    <button class = "btn btn-primary  btn-xs mb-3"  v-on:click = "update">Update </button>    
   </div>
   
 
@@ -201,6 +201,42 @@ export default {
                 alert("Rejected")
             })
     },
+    update(){
+      var toUpdate = this.$route.params.id;
+
+                  if(this.projectName ===""){
+                alert("Project Name cannot be empty")
+            }
+            else if(this.selected ===""){
+                alert("Please select")
+            }
+            else if(this.dueDate ===""){
+                alert("Please select a due date.")
+
+            }
+            else if(this.reward < 0){
+                alert("Points cannot be negative!")
+            }
+            else{
+
+        firebase.database().ref('projects/' + toUpdate).update(
+          {
+          "assignee":this.selected,
+          "due_date":this.dueDate,
+          "project_name":this.projectName,
+          "reward":this.reward
+          
+          }
+        )
+            .then(function() {
+                alert("Project Updated")
+            })
+    }
+
+
+
+
+    }
 
 
   },
