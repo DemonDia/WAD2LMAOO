@@ -10,11 +10,11 @@
       <table class="table table-hover p-table">
 
         <thead>
-        <tr>
+        <tr class="text-break">
             <th>Project Name</th>
             <th>Team Member</th>
             <th>Assigned Date</th>
-            <th>Project Due</th>
+            <th>Due Date</th>
             <th>Project Status</th>
             <th>Rewarded Points</th>
             <th>Actions</th>
@@ -31,23 +31,23 @@
                   <EmployerProject :projectName="proj.project_name" :projectAssignees ="proj.assignee" :projectAssigned ="proj.assigned_date"
                   :projectDue ="proj.due_date" :projectStatus ="proj.project_status"  :projectReward ="proj.reward"/>
                 </router-link> -->
-                <td class="p-name text-wrap">
+                <td class="p-name text-break">
                   {{proj.project_name}}
                     <!-- {{proj.project_name}} -->
                 </td>
-                <td class="p-team">
+                <td class="p-team text-break">
                     {{proj.assignee}}
                 </td>
-                <td class="p-assignedDate">
+                <td class="p-assignedDate text-break">
                     {{proj.assigned_date}}
                 </td>
-                <td class="p-Due">
+                <td class="p-Due text-break">
                     {{proj.due_date}}
                 </td>
-                <td class="p-status mw-100">
+                <td class="p-status mw-100 text-break">
                     {{proj.project_status}}
                 </td>
-                <td class="p-reward">
+                <td class="p-reward text-break">
                     {{proj.reward}}
                 </td>
                 <td>
@@ -173,14 +173,23 @@ export default {
 }
 
 .btn_view{
-  width: 70px;
+  width: 65px;
   height: 40px;
   margin-bottom: 5px;
+  margin-right: 0;
+  text-align: center;
+  vertical-align: middle;
+  padding-top: 7px;
 }
 .btn_delete{
-  width: 70px;
+  width: 65px;
   height: 40px;
   margin-bottom: 5px;
+  margin-right: 0;
+  text-align: center;
+  vertical-align: middle;
+  padding: 0px;
+  padding-top: 7px;
 }
 
 table{
@@ -213,5 +222,10 @@ td{
     margin: auto;
     margin-bottom: 20px;
 } 
+
+#no-more-tables{
+  margin-left: 10px;
+  margin-right: 10px;
+}
 
 </style>

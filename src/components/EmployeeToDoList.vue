@@ -13,7 +13,7 @@
             <thead>
                 <tr>
                     <th style="background: #b6cefb;" scope = "col">Task Name</th>
-                    <th style="background: #b6cefb;" scope = "col">Task Due</th>
+                    <th style="background: #b6cefb;" scope = "col">Due Date</th>
                     <th style="background: #b6cefb;" scope = "col">Completed</th>
 
                 </tr>
