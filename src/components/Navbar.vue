@@ -119,15 +119,15 @@ export default {
 }
 </script>
 <style scoped>
-#barz,#offcanvasNavbar{
+#barz, #offcanvasNavbar{
     /* background: linear-gradient(57.11deg, #86B0FF -4.9%, #5b59fd 101.23%, rgba(133, 175, 255, 0.61) 101.24%, rgba(52, 97, 184, 0.64) 101.24%);     */
     background: #AED4FF;
     padding-top: 0%;
     padding-bottom: 0%;
 }
-.active-page{
+/* .active-page{
     background: rgb(3, 3, 117);
-}
+} */
 .navbar-nav{
     display: flex;
     flex-wrap: wrap;
@@ -136,4 +136,13 @@ export default {
 .nav-link{
   color: black !important
 }
+
+.nav-item:hover {
+  border-bottom:2px solid #424242;
+  /* width: 100px; */
+}
+
+/* .nav-item .nav-link:active{
+  background:red;
+} */
 </style>
