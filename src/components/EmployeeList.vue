@@ -5,7 +5,7 @@
 
     <div class = "employeesPage">
         <div class="search">
-            <input type = "text" class = "form-control" placeholder="Search by name" v-model="filter"/>
+            <input type = "text" class = "form-control" placeholder="Search by Name" v-model="filter"/>
         </div>
         <a href="#" class=" btn btn-dark btn-xs mt-3" @click="create()">Add Employee</a>
         <div class="album">                    
