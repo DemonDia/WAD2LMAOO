@@ -2,10 +2,10 @@
 <div style = "width:100%;">
     <Navbar/>
     <h1 id = "calendar-name">Calendar</h1>
-    <div class='authentification mt-4'>
-      Authentification
-      <button v-if='!authorized' @click="handleAuthClick()">Sign In</button>
-      <button v-if='authorized' @click="handleSignoutClick">Sign Out</button>
+    <div class='Authentication mt-4'>
+      Authentication
+      <button v-if='!authorized' @click="handleAuthClick()" class ="btn btn-primary">Sign In</button>
+      <button v-if='authorized' @click="handleSignoutClick" class ="btn btn-primary">Sign Out</button>
     </div>
     <hr>
     <button v-if='authorized' @click="getData" :events="events">Get Data</button>
