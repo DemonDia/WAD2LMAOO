@@ -24,7 +24,12 @@
                                     <small><b>Department:</b></small> <br><small>{{employee.department_id}}</small><br>         
                                     <small><b>Points:</b></small> <br> <small>{{employee.current_pts}}</small>         
                                 </p>
-                                <div class="buttons">
+                                <div class="buttons" v-if = "(employee.user_id == 'sruNoNcEi2QeXOT1SQ7lcuoEe8F2')||(employee.user_id == 'bNuM30aw5ZhrVPi8uWe583VlWf42')">
+                                    <button disabled class = "btn btn-warning border border-dark view-btn col" @click="edit(employee)" data-bs-toggle="modal" data-bs-target="#exampleModal">Edit</button>
+                                    <button disabled  class = "btn btn-danger border border-dark fire-btn col" @click="delete_user(employee.user_id)">Remove</button>
+                                </div>
+
+                                <div class="buttons" v-else>
                                     <button class = "btn btn-warning border border-dark view-btn col" @click="edit(employee)" data-bs-toggle="modal" data-bs-target="#exampleModal">Edit</button>
                                     <button class = "btn btn-danger border border-dark fire-btn col" @click="delete_user(employee.user_id)">Remove</button>
                                 </div>
