@@ -124,10 +124,10 @@ export default {
         },
         delete_user(userID) {
             // delete employee
-            // firebase.database().ref('users/' + userID).remove()
-            // .then(function() {
-            //     alert("Employee Deleted")
-            // })
+            firebase.database().ref('users/' + userID).remove()
+            .then(function() {
+                alert("Employee Deleted")
+            })
 
             // get reviews associated 
 
@@ -138,15 +138,21 @@ export default {
         //   console.log(review)
           if(review.user_id ==  userID){
           
-            this.involved_reviews.push(review);
+            this.involved_reviews.push(review.review_id);
           }
           
         })
-        console.log(this.involved_reviews)
+        // console.log(this.involved_reviews)
       }); 
 
             // delete reviews associated to employee
-
+            this.involved_reviews.forEach(review=>{
+                console.log(review)
+                firebase.database().ref('reviews/' + review).remove()
+                    .then(function() {
+                        console.log("Review Deleted")
+                    })
+            })
             // get tasks associated
 
       firebase.database().ref('tasks/' ).on('value', (snapshot) => {
@@ -160,13 +166,22 @@ export default {
           }
           
         })
-        console.log(this.involved_tasks)
+        // console.log(this.involved_tasks)
       }); 
 
 
 
             // delete tasks associated to employee
+            this.involved_tasks.forEach(task=>{
+                console.log(task)
+                firebase.database().ref('tasks/' + task).remove()
+                    .then(function() {
+                        console.log("Task Deleted")
+                    })
 
+
+
+            })
             // get projects associated
 
 
@@ -178,14 +193,28 @@ export default {
           if(project.user_id ==  userID){
           
             this.involved_projects.push(project.project_id);
+
+            
           }
           
         })
-        console.log(this.involved_projects)
+        // console.log(this.involved_projects)
       }); 
 
 
             // delete projects associated to employee
+
+            this.involved_projects.forEach(project=>{
+                console.log(project)
+
+                firebase.database().ref('projects/' + project).remove()
+                    .then(function() {
+                        console.log("Project Deleted")
+                    })
+
+                
+            })
+
         },
         update(userID){
             // var newData = {
