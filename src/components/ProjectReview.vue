@@ -13,6 +13,7 @@
                 <div class = " projectName mx-3">
                     <h4 >{{key}}</h4>
                 </div>
+                <!-- {{proj}} -->
                 <div class = "projectMembers ">
                      <router-link class = "nav-link" v-for="(emp,index) in proj" v-bind:key="index"  :to="`/review/${emp.name}`">
                         <main role="main" class="d-inline-flex emp_card">

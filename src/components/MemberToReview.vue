@@ -1,7 +1,7 @@
 <template>
     <div class = "page">
         <Navbar/>
-        <div class = "review-container">
+        <div class = "review-container card">
             <h2>Reviewing for</h2>
             <div class = "card member-card">
                 <h3 class = "member-name">{{id}}</h3>
@@ -151,6 +151,9 @@ h2{
     width:100%;
     height:300px;
     background: #EFEFEF;
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
 
 }
 .member-name{

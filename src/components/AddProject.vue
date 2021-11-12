@@ -64,7 +64,8 @@ export default {
             selected: "",
             todaydate: "",
             duedate: "",
-            pointsAwarded:0
+            pointsAwarded:0,
+            userID:""
             // len: 0,
         }
     },
@@ -91,14 +92,33 @@ export default {
                 alert("Please select a due date.")
 
             }
-            else if(this.pointsAwarded < 0){
+            else if(this.pointsAwarded <= 0){
                 alert("Points cannot be negative!")
             }
             else{
+// get user id
+            firebase.database().ref("users/").on('value',(snapshot)=>{
+                        snapshot.forEach((childSnapshot) => {
+                var user = childSnapshot.val();
+                //   console.log(project.project_id)
+                // console.log(this.projectName == project.project_name)
+                if(user.name ==  this.selected){
+                    this.userID = user.user_id
+                    // this.tasks.push(task);
+                }
+                console.log(this.userID)
+                })
+            })
+
+
+
+
+
             var myref = firebase.database().ref('/projects').push()
             var key = myref.key;
                 
             var input_data = {
+                user_id:this.userID,
                 assigned_date: this.currentDateTime(),
                 assignee: this.selected,
                 completion_date: "",
