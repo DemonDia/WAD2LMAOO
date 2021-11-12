@@ -103,21 +103,22 @@
                         <div class="card p-3">
                             <div class="d-flex justify-content-between align-items-center">
                                 <div class="ratings"> 
-                                    <i class="fa fa-star rating-color" v-for="index in averageReviews" :key="index"  ></i> 
+                                    <i class="fa fa-star rating-color" v-for="index in averageReviews" :key="index"></i> 
                                     <!-- <i class="fa fa-star rating-color"></i> 
                                     <i class="fa fa-star rating-color"></i> 
                                     <i class="fa fa-star rating-color"></i> 
                                     <i class="fa fa-star rating-color"></i> 
                                     <i class="fa fa-star"></i>  -->
-                                    <i class="fa fa-star" v-for="index in 5-averageReviews" :key="index" ></i> 
+                                    <i class="fa fa-star" v-for="index in 5-averageReviews" :key="index"></i><p>{{averageReviews}} / 5</p>
                                 </div>
+                                
                                 <h5 class="review-count"> {{user_reviews.length}} Reviews</h5>
                             </div>
                             <div class="mt-5 card">
                                 <div class="card-body d-flex flex-column align-items-center" v-for ="(review, index) in user_reviews" v-bind:key="index">
                                     <h5 class="review-stat card-title">Anon</h5>
                                     <!-- {{review}} -->
-                                    <div class="small-ratings card-subtitle"> 
+                                    <div class="small-ratings card-subtitle">
                                         <i v-for="index in review.rating" :key="index" class="fa fa-star rating-color"></i> 
                                         <i v-for="index in 5-review.rating" :key="index"  class="fa fa-star"></i> 
                                     </div>
@@ -197,8 +198,7 @@ export default {
             var total = 0
             var listedRatings = this.user_reviews;
             for(let i = 0; i < listedRatings.length; i++){
-                // console.log(listedRatings[i].ratings)
-                total+= listedRatings[i].rating
+                total+= listedRatings[i].rating;
             }
 
             return Math.round(total/listedRatings.length)

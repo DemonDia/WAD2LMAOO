@@ -105,8 +105,8 @@ export default {
                     }
                     
                 })
-            })
-            alert("You have submitted review for" + this.id); // need get the name of user
+            }) 
+            alert("You have submitted review for " + this.id); // need get the name of user
             this.$router.push("/review")
         }
     },
