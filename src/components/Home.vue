@@ -366,11 +366,11 @@ export default {
                     text: 'Revenue Growth'
                 },
                 xAxis: {
-                    categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep']
+                    categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct']
                 },
                 series: [{
                     name: "Profits Per Month",
-                    data: [20000, 40000, 50000, 70000, 100000, 160000, 120000, 99000, 110000]
+                    data: [30000, 60000, 50000, 70000, 100000, 160000, 120000, 99000, 110000, 115000]
                 }],
             },
             filter: '',
