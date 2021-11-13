@@ -7,7 +7,7 @@
 
 <!-- <div class = "pageContent"> -->
     <!-- {{usertype}} -->
-    <div class="base container-fluid">
+    <div class="base container-fluid " style="background:#FFFAFA">
     <!-- <div v-if="usertype ==='employer'" class = "employer-projects"> -->
         <!-- <EmployerProject :projectName ="'Proj1'" :projectAssignees = "'Ruby Kurosawa'" :projectAssigned = "'14/7/2021'"
         :projectDue ="'14/11/2021'" :projectStatus = "'incomplete'"  :projectReward = "'500'"/>
