@@ -5,14 +5,14 @@
         <div class = "projectsContainer">
             
             <div class = "projectReviewContainer" v-for="(proj,key) in proj_names" v-bind:key="key">
-                <div class = " projectName">
+                <div class = "w-100 projectName">
                     <h4 >{{key}}</h4>
                 </div>
 
                 <div class="album">                    
                     <div class="container">
                         <div class="row">
-                            <div class="col-xl-3 col-lg-4 col-md-6 " v-for="(emp,index) in proj" v-bind:key="index">
+                            <div class="col-xl-3 col-lg-4 col-md-6 px-0" v-for="(emp,index) in proj" v-bind:key="index">
                                 <router-link class="nav-link" :to="`/review/${emp.name}`">
                                 <div class="empCard shadow-sm">
                                     <img :src="emp.image" width="100%" height="225" background="#55595c" color="#eceeef" class="card-img-top rounded" text="Thumbnail" >
