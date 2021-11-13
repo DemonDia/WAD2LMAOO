@@ -56,6 +56,8 @@ Projeck is created to serve the purpose of:
     e. HTML
     f. CSS
     g. Firebase
+    h. Google Authentication
+    I. Google Calendar
 ```
 
 ## 3. Project Setup
