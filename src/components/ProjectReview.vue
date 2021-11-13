@@ -1,5 +1,5 @@
 <template>
-    <div class = "page">
+    <div class = "page" style="background:#FFFAFA">
         <Navbar :pageType = "'Review'"/>
         <h1 id = "review">Review</h1>
         <div class = "projectsContainer">
@@ -14,7 +14,7 @@
                         <div class="row">
                             <div class="col-xl-3 col-lg-4 col-md-6 " v-for="(emp,index) in proj" v-bind:key="index">
                                 <router-link class="nav-link" :to="`/review/${emp.name}`">
-                                <div class="empCard shadow-sm">
+                                <div class="empCard shadow-sm border">
                                     <img :src="emp.image" width="100%" height="225" background="#55595c" color="#eceeef" class="card-img-top rounded" text="Thumbnail" >
                                     <div class="inline pt-3">
                                         <small>{{emp.name}}</small><br>

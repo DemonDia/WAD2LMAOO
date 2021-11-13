@@ -2,7 +2,7 @@
   <!-- <div  class = "mb-4">  -->
     <Navbar :pageType = "'Projects'"/>
     
-    <section class="panel mx-2" >
+    <section class="panel mx-2" style="background:#FFFAFA" >
       <div><h1 class="heading">Projects</h1></div>
       <a href="#" class=" btn btn-success btn-xs mb-3 btn_create container-fluid" style="float:right" @click="create()"> Create New Project</a>
 

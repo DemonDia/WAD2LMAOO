@@ -1,5 +1,5 @@
 <template>
-<div class="page-container" >
+<div class="page-container">
     <div  class = "authenticate-container">
         <div id = "register" v-if="status === 'register'">
             <!-- <h3>Register</h3> -->

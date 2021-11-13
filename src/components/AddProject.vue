@@ -1,5 +1,5 @@
 <template>
-    <div class = "page">
+    <div class = "page" style="background:#FFFAFA">
         <Navbar :pageType = "'Projects'"/>
         <div class = "add-employee-container">
             <h1 id = "add-emp-header"  class="mb-4">Add Project</h1>

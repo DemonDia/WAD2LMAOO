@@ -1,5 +1,5 @@
 <template>
-    <div class="page">
+    <div class="page" style="background:#FFFAFA">
         <Navbar :usertype="'employee'"/>
         <div id="bg">
             <div class="container">

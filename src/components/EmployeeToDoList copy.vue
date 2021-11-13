@@ -3,7 +3,7 @@
     <Navbar/>
     
     <div class=  "container">
-        <h3 style="color: black">To-do list</h3>
+        <h3 style="color: black">To-do List</h3>
         <!-- {{completed}}
         <br>
         {{tasks}}
