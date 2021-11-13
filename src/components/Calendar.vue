@@ -119,8 +119,8 @@
 import Navbar from "./Navbar.vue"
 import mixin from "../mixin"
 
-const CLIENT_ID = '982308349419-7k83791ugki6rdmf76bjl9eifu4slgaa.apps.googleusercontent.com';
-const API_KEY = 'AIzaSyD6tq50J6q5MyUrhey-1se4vvWeoeUvjxc';
+const CLIENT_ID = '905605611755-k5ieumngarq9mhd8mdpikl9d2gp3a0id.apps.googleusercontent.com';
+const API_KEY = 'AIzaSyD_uv6xqW2KIQZTno3Be1pKysZ4ibX0pfw';
 // Array of API discovery doc URLs for APIs used by the quickstart
 const DISCOVERY_DOCS = ['https://www.googleapis.com/discovery/v1/apis/calendar/v3/rest'];
 // Authorization scopes required by the API; multiple scopes can be
@@ -194,7 +194,6 @@ export default {
     handleSignoutClick(event) {
       Promise.resolve(this.api.auth2.getAuthInstance().signOut())
         .then(response => {
-          this.events = []
           this.authorized = false;
           console.log(response,event)
         });
