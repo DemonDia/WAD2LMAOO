@@ -245,7 +245,7 @@ export default {
 
 <style>
 .card{
-    width:800px;
+    /* width:800px; */
     height: auto;
 }
 
