@@ -12,9 +12,9 @@
         <table class = "table table-bordered">
             <thead>
                 <tr>
-                    <th style="background: #cfd5ff;" scope = "col">Task Name</th>
-                    <th style="background: #cfd5ff;" scope = "col">Due Date</th>
-                    <th style="background: #cfd5ff;" scope = "col">Completed</th>
+                    <th style="background: #AED4FF;" scope = "col">Task Name</th>
+                    <th style="background: #AED4FF;" scope = "col">Due Date</th>
+                    <th style="background: #AED4FF;" scope = "col">Completed</th>
 
                 </tr>
                 

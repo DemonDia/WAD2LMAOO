@@ -112,12 +112,12 @@
                                     <div class="task_list border border-dark bg-white">
                                         <h6 class="pt-2 " style="font-size: 18px"><b>Project Task List</b></h6><input type="text" placeholder="Filter by task/status/person" class="w-100" v-model="filter" />
                                         <table class="table table-hover mt-2 table-striped">
-                                            <thead>
-                                                <tr>
-                                                    <th style="background: #cfd5ff" scope="col" class="text-center">Task Status <button class="button" @click="sortTable('task_status', direction)"><img src="../assets/sort.png"></button></th>
-                                                    <th style="background: #cfd5ff" scope="col" class="text-center">Task Name <button class="button" @click="sortTable('task_name', direction)"><img src="../assets/sort.png"></button></th>
-                                                    <th style="background: #cfd5ff" scope="col" class="text-center">Project Name <button class="button" @click="sortTable('project_id', direction)"><img src="../assets/sort.png"></button></th>
-                                                    <th style="background: #cfd5ff" scope="col" class="text-start">Person In-charge <button class="button" @click="sortTable('user_id', direction)"><img src="../assets/sort.png"></button></th>
+                                            <thead >
+                                                <tr style="background: #AED4FF">
+                                                    <th scope="col" class="text-center">Task Status <button class="button" @click="sortTable('task_status', direction)"><img src="../assets/sort.png"></button></th>
+                                                    <th scope="col" class="text-center">Task Name <button class="button" @click="sortTable('task_name', direction)"><img src="../assets/sort.png"></button></th>
+                                                    <th scope="col" class="text-center">Project Name <button class="button" @click="sortTable('project_name', direction)"><img src="../assets/sort.png"></button></th>
+                                                    <th scope="col" class="text-start">Person In-charge <button class="button" @click="sortTable('user_name', direction)"><img src="../assets/sort.png"></button></th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -393,12 +393,13 @@ export default {
   computed: {
         filteredRows() {
                 return this.tasks.filter(row => {
-                const task_name = row.task_name.toString().toLowerCase();
+                const task_name = row.task_name.toLowerCase();
                 const task_status = row.task_status.toLowerCase();
-                // const user_id = row.user_id;
+                const user_name = row.user_name.toLowerCase();
+                const project_name = row.project_name.toLowerCase();
                 const searchTerm = this.filter.toLowerCase();
 
-                return task_name.includes(searchTerm) || task_status.includes(searchTerm);
+                return task_name.includes(searchTerm) || task_status.includes(searchTerm) || user_name.includes(searchTerm) || project_name.includes(searchTerm);
             });
         },
   },
@@ -411,12 +412,11 @@ export default {
                 
                 firebase.database().ref('tasks/').on('value', (snapshot) => {
                     console.log("type is " + this.type)
-                    // this.incomplete_tasks = 0
-                    // this.completed_tasks = 0
-                    // this.num_task = 0
-                    // this.tasks = []
+                    this.incomplete_tasks = 0
+                    this.completed_tasks = 0
+                    this.num_task = 0
+                    this.tasks = []
                     if (this.type == "employer") {
-                        
                         // this.num_task = snapshot.val().length;
                         snapshot.forEach((childSnapshot) => {
                             var task = childSnapshot.val();
@@ -439,6 +439,7 @@ export default {
                         console.log(this.taskStatus_employer.series[0].data[1].y);
 
                         firebase.database().ref('projects/').on('value', (snapshot) => {
+                            this.categories = []
                             snapshot.forEach((childSnapshot) => {
                                 var name = childSnapshot.val().project_name
                                 console.log(name)
@@ -452,7 +453,8 @@ export default {
                         
                         console.log("DISTCHARTHERE2");
                         firebase.database().ref('tasks/').on('value', (snapshot) => {
-
+                            this.completed = []
+                            this.incomplete = []
                             for (var proj of this.categories) {
                                 var num_c = 0;
                                 var num_inc = 0;
@@ -481,6 +483,7 @@ export default {
                         // this.tasks = []
                         console.log("THISCATEGORIES")
                         console.log(this.categories)
+                        this.categories = []
                         snapshot.forEach((childSnapshot) => {
                             var task = childSnapshot.val();
                             if (task.user_id == user.uid) {
@@ -510,6 +513,8 @@ export default {
                         this.taskDist_employer.xAxis.categories = this.categories
 
                         firebase.database().ref('tasks/').on('value', (snapshot) => {
+                            this.completed = []
+                            this.incomplete = []
                             for (var proj of this.categories) {
                                 var num_c = 0;
                                 var num_inc = 0;

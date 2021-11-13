@@ -49,7 +49,7 @@
 <br>
 <div class = "row justify-content-center">
   <div class = "col-3">
-    <button class = "btn btn-primary  btn-xs mb-3"  v-on:click = "update">Update </button>    
+    <button class = "btn update_btn btn-xs mb-3" style = "background:#504DFF" v-on:click = "update">Update </button>    
   </div>
   
 
@@ -313,6 +313,10 @@ export default {
 }
 </script>
 <style scoped>
+.update_btn{
+  color: white;
+}
+
 h1{
     align-self: middle;
 }

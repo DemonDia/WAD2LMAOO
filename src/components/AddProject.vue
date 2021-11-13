@@ -37,7 +37,7 @@
 
                 </table>
                 <div class = "button-container justify-content-center">
-                    <router-link to = "/projects" class = "btn fire-btn">Cancel</router-link>
+                    <router-link to = "/projects" class = "btn fire-btn btn-danger">Cancel</router-link>
                     <!-- <button class = "btn fire-btn">Cancel</button> -->
                     <button class = "btn view-btn" v-on:click ="submit()">Add</button>
                 </div>
@@ -277,11 +277,11 @@ margin: 5px;
 } */
 .view-btn{
     /* background: #6360FF; */
-    background: rgb(253, 198, 97);
+    background:#504DFF;
     border-radius: 5px;
     width:100px;
     padding:10px;
-    color: black;
+    color: white;
     margin: 15px;
     border: 1px solid black;
     box-shadow: 0 2px 2px 0 rgba(0,0,0,0.2), 0 2px 2px 0 rgba(0,0,0,0.19);
@@ -290,8 +290,7 @@ margin: 5px;
     border-radius: 5px;
     width:100px;
     padding:10px;
-    color: black;
-    background:  rgb(255, 153, 153);
+    color: white;
     margin: 15px;
     border: 1px solid black;
     box-shadow: 0 2px 2px 0 rgba(0,0,0,0.2), 0 2px 2px 0 rgba(0,0,0,0.19);
