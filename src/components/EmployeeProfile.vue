@@ -148,18 +148,6 @@ export default {
         Navbar,
     },
     mixins:[mixin],
-    methods: {
-        sortTable(key,direction) {
-            this.sort = `${key} > ${direction}`
-            if (direction === 'asc') {
-                this.rows.sort((a, b) => a[key] > b[key] ? 1: -1)
-                this.direction = 'desc';
-            } else {
-                this.rows.sort((a, b) => a[key] < b[key] ? 1: -1)
-                this.direction = 'asc';
-            }
-        }
-    },
       beforeMount(){
     //    this.usertype = this.getUserType()
     //    console.log(this.usertype)
@@ -182,6 +170,18 @@ export default {
             //     {task:'UI Testing', proj: 'Project 1',status: 'Completed', person: 'John', deadline: '10/11/2021'}
             // ],
             // details: {name:"John", password:"IT123john", email:"john_IT.gmail.com", department:"IT", position:"Team Lead", current_points:"10", employment_type: "Full Time"}
+        }
+    },
+    methods: {
+        sortTable(key,direction) {
+            this.sort = `${key} > ${direction}`
+            if (direction === 'asc') {
+                this.user_tasks.sort((a, b) => a[key] > b[key] ? 1: -1)
+                this.direction = 'desc';
+            } else {
+                this.user_tasks.sort((a, b) => a[key] < b[key] ? 1: -1)
+                this.direction = 'asc';
+            }
         }
     },
     computed: {
@@ -214,6 +214,7 @@ export default {
                     console.log(this.user_details) 
                 }); 
                 firebase.database().ref('tasks/').on('value', (snapshot) => {
+                    this.user_tasks = []
                     snapshot.forEach((childSnapshot) => {
                         var task = childSnapshot.val();
                         if (task.user_id === user.uid) {
