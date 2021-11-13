@@ -250,6 +250,12 @@ else if(this.position === ""){
     alert("Position cannot be empty")
 }
 else{
+    firebase.auth().createUserWithEmailAndPassword(this.email,this.password).then(
+        console.log("Done")
+    ).catch((error)=>{
+        console.log(error.code)
+        console.log(error.message)
+    })
                 var updates = {};
             updates['/users/' + key] = newData;
 
@@ -288,12 +294,9 @@ else{
             }
         },
     },
-//       beforeMount(){
-//        this.getUserType()
-//         if(this.usertype !== "employer"){
-//             this.$router.push("/")
-//         }
-//   },
+      beforeMount(){
+          console.log(firebase.auth())
+  },
     created() {
         firebase.database().ref('department/').on('value', (snapshot) => {
             this.departments = []

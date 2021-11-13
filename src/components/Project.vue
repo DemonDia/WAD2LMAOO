@@ -112,11 +112,11 @@
                     {{task.reward}}
                 </td>
                 <td v-if = "task.task_status === 'Review'">
-                    <a v-if = "task.task_status === 'review'" href="#" class="btn btn-info btn-xs" @click="approve(task.task_id)"><i class="fa fa-folder"></i> Approve </a>
-                    <a v-if = "task.task_status === 'review'" href="#" class="btn btn-danger btn-xs" @click="reject(task.task_id)"><i class="fa fa-folder"></i> Reject </a>
+                    <a href="#" class="btn btn-info btn-xs" @click="approve(task.task_id)"><i class="fa fa-folder"></i> Approve </a>
+                    <a href="#" class="btn btn-danger btn-xs" @click="reject(task.task_id)"><i class="fa fa-folder"></i> Reject </a>
                 </td>
 
-                <td v-else-if = "task.task_status === 'Completed'">
+                <td v-else-if = "task.task_status === 'Complete'">
                    <a href="#" class="btn btn-danger btn-xs disabled" @click="delete_task(task.task_id)"><i class="fa fa-trash-o"></i> Delete </a>
                 </td>
 
@@ -189,7 +189,7 @@ export default {
     },
     approve(taskID){
         firebase.database().ref('tasks/' + taskID).update(
-          {"task_status":"complete"}
+          {"task_status":"Complete"}
         )
             .then(function() {
                 alert("Task completed")
@@ -197,7 +197,7 @@ export default {
     },
     reject(taskID){
         firebase.database().ref('tasks/' + taskID).update(
-          {"task_status":"incomplete"}
+          {"task_status":"Incomplete"}
         )
             .then(function() {
                 alert("Rejected")

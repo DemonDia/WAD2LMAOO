@@ -117,7 +117,7 @@
                             </div>
                             <div class="mt-5 reviewCard">
                                 <div class="card-body d-flex flex-column align-items-center" v-for ="(review, index) in user_reviews" v-bind:key="index">
-                                    <h5 class="review-stat card-title">Anon</h5>
+                                    <!-- <h5 class="review-stat card-title">Anon</h5> -->
                                     <!-- {{review}} -->
                                     <div class="small-ratings card-subtitle"> 
                                         <i v-for="index in review.rating" :key="index" class="fa fa-star rating-color"></i> 
