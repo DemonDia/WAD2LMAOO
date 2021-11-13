@@ -190,35 +190,35 @@ export default {
             // get projects associated
 
 
-      firebase.database().ref('projects/' ).on('value', (snapshot) => {
-        this.involved_projects = []
-        snapshot.forEach((childSnapshot) => {
-          var project = childSnapshot.val();
-        //   console.log(project)
-          if(project.user_id ==  userID){
+    //   firebase.database().ref('projects/' ).on('value', (snapshot) => {
+    //     this.involved_projects = []
+    //     snapshot.forEach((childSnapshot) => {
+    //       var project = childSnapshot.val();
+        
+    //       if(project.user_id ==  userID){
           
-            this.involved_projects.push(project.project_id);
+    //         this.involved_projects.push(project.project_id);
 
             
-          }
+    //       }
           
-        })
-        // console.log(this.involved_projects)
-      }); 
+    //     })
+         
+    //   }); 
 
 
             // delete projects associated to employee
 
-            this.involved_projects.forEach(project=>{
-                console.log(project)
+            // this.involved_projects.forEach(project=>{
+            //     console.log(project)
 
-                firebase.database().ref('projects/' + project).remove()
-                    .then(function() {
-                        console.log("Project Deleted")
-                    })
+            //     firebase.database().ref('projects/' + project).remove()
+            //         .then(function() {
+            //             console.log("Project Deleted")
+            //         })
 
                 
-            })
+            // })
 
         },
         update(userID){
