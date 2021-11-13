@@ -271,7 +271,7 @@ else{
 
             // this.num++
             firebase.auth().signInWithEmailAndPassword("amy_tan@gmail.com", "77jtdef0")
-
+            alert("Employee Added")
             this.$router.push("/employees")
 
 
