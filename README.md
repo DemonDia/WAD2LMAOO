@@ -139,7 +139,7 @@ It shows the profile of John Lim - About Me, My Tasks and Reviews.
 #### 4.1.2 Employer (Amy Tan)
 ```
 1. Dynamic Dashboard
-This shows the number of total, completed and incompleted tasks the employer has. The respective dashboards is imported from highcharts-vue. The difference between John and Amy is that John is only able to see his task assigned to him whereas Amy sees her employees and her own tasks.
+This shows the number of total, completed and incompleted tasks the employer and employees has. The respective dashboards are imported from highcharts-vue. The difference between John and Amy is that John is only able to see his task assigned to him whereas Amy sees her employees and her own tasks.
 
     a. Task Status 
     Shows the number of completed and incompleted tasks in a donut chart.
