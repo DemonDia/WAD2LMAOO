@@ -1,9 +1,9 @@
 <template>
-<div class = "page">
+<div class = "page" style="background:#FFFAFA">
      <Navbar :usertype="'employee'" :pageType = "'To-do'"/>
     
     <div class=  "container">
-        <h1 style="color: black" class="mb-4">To-do list</h1>
+        <h1 style="color: black" class="mb-4">To-do List</h1>
         <!-- {{completed}}
         <br>
         {{tasks}}

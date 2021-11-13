@@ -162,7 +162,8 @@ export default {
  .page{
         min-height: 100vh;
         width:100%;
-        background:rgba(248, 248, 248, 1);
+        /* background:rgba(248, 248, 248, 1); */
+        background: #FFFAFA;
         /* display: flex; */
     }
 .review-container{

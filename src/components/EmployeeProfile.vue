@@ -1,5 +1,5 @@
 <template>
-<div class = "page">
+<div class = "page" style="background:#FFFAFA">
     <link rel="stylesheet" 
         href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" 
         integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" 
@@ -246,7 +246,7 @@ export default {
 
 <style>
 .card{
-    width:800px;
+    /* width:800px; */
     height: auto;
 }
 

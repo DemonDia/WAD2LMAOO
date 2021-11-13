@@ -7,7 +7,7 @@
 
 <!-- <div class = "pageContent"> -->
     <!-- {{usertype}} -->
-    <div class="base container-fluid" style="background: #FFFAFA">
+    <div class="base container-fluid">
     <!-- <div v-if="usertype ==='employer'" class = "employer-projects"> -->
         <!-- <EmployerProject :projectName ="'Proj1'" :projectAssignees = "'Ruby Kurosawa'" :projectAssigned = "'14/7/2021'"
         :projectDue ="'14/11/2021'" :projectStatus = "'incomplete'"  :projectReward = "'500'"/>
@@ -591,7 +591,7 @@ td {
 .pageContent{
   min-height:100vh;
   /* margin-top:60px; */
-  background:rgba(248, 248, 248, 1);
+  /* background:rgba(248, 248, 248, 1); */
   padding-top:60px;
   padding-bottom:60px;
 }

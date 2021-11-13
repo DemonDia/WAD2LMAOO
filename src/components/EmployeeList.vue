@@ -1,5 +1,5 @@
 <template>
-<div class = "page">
+<div class = "page" style="background:#FFFAFA">
     <Navbar :pageType = "'Employees'"/>
       <h1 id = "emp">List of Employees</h1>
 
