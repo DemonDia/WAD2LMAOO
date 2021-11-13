@@ -520,8 +520,9 @@ export default {
                                 var num_inc = 0;
                                 snapshot.forEach((childSnapshot) => {
                                     var task = childSnapshot.val()
-                                    if (proj == task.project_name) {
-                                        if(task.task_status == "Complete") {
+                                    if (proj == task.project_name && task.user_id == user.uid) {
+                                        console.log("proj "+ task.task_status)
+                                        if(task.task_status.toLowerCase() == "completed") {
                                             num_c += 1
                                         } else {
                                             num_inc += 1;
