@@ -194,6 +194,7 @@ export default {
     handleSignoutClick(event) {
       Promise.resolve(this.api.auth2.getAuthInstance().signOut())
         .then(response => {
+          this.events = []
           this.authorized = false;
           console.log(response,event)
         });
