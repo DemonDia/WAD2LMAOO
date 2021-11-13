@@ -353,6 +353,7 @@ th{
     min-height: 100vh;
     width:100%;
     background:rgba(248, 248, 248, 1);
+    overflow: hidden;
     /* display: flex; */
 }
 .add-employee-container{
