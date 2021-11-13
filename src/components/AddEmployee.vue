@@ -225,7 +225,9 @@ else if(this.phone_no.toString().length !== 8){
 else if(!this.selected){
     alert("Department cannot be empty")
 }
-
+else if(this.selected === "Management"){
+    alert("Department cannot be management")
+}
 else if(this.email === ""){
     alert("Email cannot be empty")
 }
@@ -237,6 +239,9 @@ else if(this.password === ""){
 }
 else if(this.position === ""){
     alert("Position cannot be empty")
+}
+else if(this.position === "Project Manager"){
+    alert("Position cannot be Project Manager")
 }
 else{
 
