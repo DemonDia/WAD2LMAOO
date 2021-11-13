@@ -110,7 +110,7 @@
                                 </div>
                                 <div class="col-md-6 mt-3">
                                     <div class="task_list border border-dark bg-white">
-                                        <h6 class="pt-2 " style="font-size: 18px"><b>Project Task List</b></h6><input type="text" placeholder="Filter by task/status/person" class="w-100" v-model="filter" />
+                                        <h6 class="pt-2 " style="font-size: 18px"><b>Project Task List</b></h6><input type="text" placeholder="Filter by task/status/project/person" class="w-100" v-model="filter" />
                                         <table class="table table-hover mt-2 table-striped">
                                             <thead >
                                                 <tr style="background: #AED4FF">

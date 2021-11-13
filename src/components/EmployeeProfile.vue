@@ -80,7 +80,7 @@
                         </div>
                     </div>
                 <div class="tab-pane fade" id="tasks" role="tabpanel" aria-labelledby="tasks-tab">
-                    <input type="text" placeholder=" Filter by task/status" class="w-100 mt-3" v-model="filter" />
+                    <input type="text" placeholder=" Filter by task/status/project" class="w-100 mt-3" v-model="filter" />
                     <table class="table table-hover mt-3">
                         <thead>
                             <tr>
@@ -176,6 +176,7 @@ export default {
         sortTable(key,direction) {
             this.sort = `${key} > ${direction}`
             if (direction === 'asc') {
+                console.log(this.user_tasks)
                 this.user_tasks.sort((a, b) => a[key] > b[key] ? 1: -1)
                 this.direction = 'desc';
             } else {

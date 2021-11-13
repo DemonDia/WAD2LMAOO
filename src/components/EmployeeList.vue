@@ -275,7 +275,7 @@ export default {
 </script>
 <style scoped>
 .modal-header{
-    background-color: #ffbb3279;
+    background: #95c3ff;
 }
 
 .details_table{
