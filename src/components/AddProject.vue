@@ -179,7 +179,7 @@ th{
     overflow: hidden;
 }
 .card{
-    /* max-width: 100%; */
+    max-width: 100%;
     height: auto;
 }
 
@@ -208,11 +208,19 @@ th{
     /* width: 50%; */
     /* padding:10px; */
     align-items: center;
+    /* max-width: 100%; */
+}
+
+@media (max-width: 800px) {
+    .onboarding-form{
+        width: auto;
+    }
 }
 
 /* form */
 .form-table{
     width:90%;
+    /* max-width: 100%; */
 }
 #impt-info{
     width:60%;

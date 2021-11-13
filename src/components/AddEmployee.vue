@@ -344,6 +344,7 @@ th{
 .card{
     /* max-width: 100%; */
     height: auto;
+    /* width: auto; */
 }
 
 
@@ -358,6 +359,7 @@ th{
     width:100%;
     background:rgba(248, 248, 248, 1);
     overflow: hidden;
+    
     /* display: flex; */
 }
 .add-employee-container{
@@ -371,7 +373,15 @@ th{
     /* width: 50%; */
     /* padding:10px; */
     align-items: center;
+    /* max-width: 100%; */
+    /* width: auto; */
     
+}
+
+@media (max-width: 800px) {
+    .onboarding-form{
+        width: auto;
+    }
 }
 
 /* form */

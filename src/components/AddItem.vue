@@ -275,6 +275,12 @@ th{
     align-items: center;
 }
 
+@media (max-width: 800px) {
+    .onboarding-form{
+        width: auto;
+    }
+}
+
 /* form */
 .form-table{
     width:90%;
