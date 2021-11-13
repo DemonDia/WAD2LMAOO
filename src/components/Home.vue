@@ -117,7 +117,7 @@
                                                     <th scope="col" class="text-center">Task Status <button class="button" @click="sortTable('task_status', direction)"><img src="../assets/sort.png"></button></th>
                                                     <th scope="col" class="text-center">Task Name <button class="button" @click="sortTable('task_name', direction)"><img src="../assets/sort.png"></button></th>
                                                     <th scope="col" class="text-center">Project Name <button class="button" @click="sortTable('project_name', direction)"><img src="../assets/sort.png"></button></th>
-                                                    <th scope="col" class="text-start">Person In-charge <button class="button" @click="sortTable('user_name', direction)"><img src="../assets/sort.png"></button></th>
+                                                    <th scope="col" class="text-start" v-if="this.type =='employer'">Person In-charge <button class="button" @click="sortTable('user_name', direction)"><img src="../assets/sort.png"></button></th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -125,7 +125,7 @@
                                                     <td class="text-center text-wrap">{{ row.task_status }}</td>
                                                     <td class="text-center text-wrap">{{ row.task_name }}</td>
                                                     <td class="text-center text-wrap">{{ row.project_name }}</td>
-                                                    <td class="text-center text-wrap">{{ row.user_name }}</td>
+                                                    <td class="text-center text-wrap" v-if="this.type =='employer'">{{ row.user_name }}</td>
                                                 </tr>
                                             </tbody>
                                         </table>
@@ -462,7 +462,7 @@ export default {
                                     var task = childSnapshot.val();
                                     console.log(proj, task.project_name);
                                     if (proj == task.project_name) {
-                                        if(task.task_status == "Complete") {
+                                        if(task.task_status.toLowerCase() == "completed") {
                                             num_c += 1;
                                         } else {
                                             num_inc += 1;
@@ -492,7 +492,7 @@ export default {
                                 }
                                 this.tasks.push(task);
                                 this.num_task += 1;
-                                if (task.task_status == "Complete") {
+                                if (task.task_status.toLowerCase() == "completed") {
                                     this.completed_tasks += 1;
                                 } else {
                                     this.incomplete_tasks += 1;
@@ -520,8 +520,9 @@ export default {
                                 var num_inc = 0;
                                 snapshot.forEach((childSnapshot) => {
                                     var task = childSnapshot.val()
-                                    if (proj == task.project_name) {
-                                        if(task.task_status == "Complete") {
+                                    if (proj == task.project_name && task.user_id == user.uid) {
+                                        console.log("proj "+ task.task_status)
+                                        if(task.task_status.toLowerCase() == "completed") {
                                             num_c += 1
                                         } else {
                                             num_inc += 1;

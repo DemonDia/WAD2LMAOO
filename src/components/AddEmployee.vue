@@ -265,7 +265,11 @@ else{
             firebase.database().ref().update(updates)
 
             // this.num++
+            firebase.auth().signInWithEmailAndPassword("amy_tan@gmail.com", "77jtdef0")
+
             this.$router.push("/employees")
+
+
 
     }
     ).catch((error)=>{
