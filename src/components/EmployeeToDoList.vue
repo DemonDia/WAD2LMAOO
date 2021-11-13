@@ -59,22 +59,32 @@ export default {
   },
    methods:{
      submit(){
-         var num = 0;
+        //  var num = 0;
          
          this.tasks = this.tasks.map(
              task =>{
                  if(this.completed.includes(task.task_id)){
-                     var ele = (task.task_id)-1;
-                     this.tasks.splice(num,1);
-                     var updates = {};
-                     updates['tasks/' + ele + '/task_status'] = "Review"
-                     firebase.database().ref().update(updates);
+                    //  var ele = (task.task_id)-1;
+                    //  this.tasks.splice(num,1);
+                    //  var updates = {};
+                    //  updates['tasks/' + ele + '/task_status'] = "Review"
+                    //  firebase.database().ref().update(updates);
+
+                            firebase.database().ref('tasks/' + task.task_id).update(
+                            {"task_status":"Review"}
+                            )
+                                .then(function() {
+                                    alert("Submitted")
+                                })
+                  
+
+
 
                  }
                  else{
                      return task
                  }
-                 num++
+                //  num++
              },
          )
           window.location.reload();   

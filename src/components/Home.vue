@@ -460,7 +460,7 @@ export default {
                                     var task = childSnapshot.val();
                                     console.log(proj, task.project_name);
                                     if (proj == task.project_name) {
-                                        if(task.task_status == "Completed") {
+                                        if(task.task_status == "Complete") {
                                             num_c += 1;
                                         } else {
                                             num_inc += 1;
@@ -489,7 +489,7 @@ export default {
                                 }
                                 this.tasks.push(task);
                                 this.num_task += 1;
-                                if (task.task_status == "Completed") {
+                                if (task.task_status == "Complete") {
                                     this.completed_tasks += 1;
                                 } else {
                                     this.incomplete_tasks += 1;
@@ -516,7 +516,7 @@ export default {
                                 snapshot.forEach((childSnapshot) => {
                                     var task = childSnapshot.val()
                                     if (proj == task.project_name) {
-                                        if(task.task_status == "Completed") {
+                                        if(task.task_status == "Complete") {
                                             num_c += 1
                                         } else {
                                             num_inc += 1;

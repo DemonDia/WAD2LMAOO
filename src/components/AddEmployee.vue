@@ -182,21 +182,9 @@ export default {
             // .then(data => {
             //     console.log(data)
             // });
-            var myref = firebase.database().ref('/users').push()
-            var key = myref.key;
-            var newData = {
-                current_pts: 0,
-                department_id: this.selected,
-                email: this.email,
-                employment_type: "Full Time",
-                name: this.name,
-                password: this.password,
-                phone_no: this.phone_no,
-                position: this.position,
-                user_id: key,
-                user_type: "employee",
-                image: this.image
-            }
+            // var myref = firebase.database().ref('/users').push()
+            // var key = myref.key;
+
 
 // validation 
 
@@ -250,12 +238,26 @@ else if(this.position === ""){
     alert("Position cannot be empty")
 }
 else{
-    firebase.auth().createUserWithEmailAndPassword(this.email,this.password).then(
-        console.log("Done")
-    ).catch((error)=>{
-        console.log(error.code)
-        console.log(error.message)
-    })
+
+
+
+    firebase.auth().createUserWithEmailAndPassword(this.email,this.password).then((userCredential)=>{
+        var key = userCredential.user.uid
+    var newData = {
+        current_pts: 0,
+        department_id: this.selected,
+        email: this.email,
+        employment_type: "Full Time",
+        name: this.name,
+        password: this.password,
+        phone_no: this.phone_no,
+        position: this.position,
+        user_id: key,
+        user_type: "employee",
+        image: this.image
+    }
+
+
                 var updates = {};
             updates['/users/' + key] = newData;
 
@@ -263,6 +265,13 @@ else{
 
             // this.num++
             this.$router.push("/employees")
+
+    }
+    ).catch((error)=>{
+        console.log(error.code)
+        console.log(error.message)
+    })
+
 }
             
             // this.picture=null;
