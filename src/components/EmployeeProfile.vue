@@ -84,9 +84,9 @@
                     <table class="table table-hover mt-3">
                         <thead>
                             <tr>
-                                <th style="background: #b6cefb" class="text-center" scope="col">Task Status <button class="button" @click="sortTable('status', direction)"><img class="sort" src="../assets/sort.png"></button></th>
-                                <th style="background: #b6cefb" class="text-center" scope="col">Task Name <button class="button" @click="sortTable('task', direction)"><img class="sort" src="../assets/sort.png"></button></th>
-                                <th style="background: #b6cefb" class="text-center" scope="col">Project Name <button class="button" @click="sortTable('proj', direction)"><img class="sort" src="../assets/sort.png"></button></th>
+                                <th style="background: #b6cefb" class="text-center" scope="col">Task Status <button class="button" @click="sortTable('task_status', direction)"><img class="sort" src="../assets/sort.png"></button></th>
+                                <th style="background: #b6cefb" class="text-center" scope="col">Task Name <button class="button" @click="sortTable('task_name', direction)"><img class="sort" src="../assets/sort.png"></button></th>
+                                <th style="background: #b6cefb" class="text-center" scope="col">Project Name <button class="button" @click="sortTable('project_name', direction)"><img class="sort" src="../assets/sort.png"></button></th>
                             </tr>
                         </thead>
                         <tbody>
